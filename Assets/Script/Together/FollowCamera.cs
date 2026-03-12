@@ -5,11 +5,11 @@ public class Follow : MonoBehaviour
     public GameObject mainCamera;
     private void Reset()
     {
-        mainCamera = GameObject.Find("Main Camera");
+        mainCamera = GameObject.Find("Camera");
     }
     private void Awake()
     {
-        mainCamera = GameObject.Find("Main Camera");
+        mainCamera = GameObject.Find("Camera");
     }
     private void Update()
     {
