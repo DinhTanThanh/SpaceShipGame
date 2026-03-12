@@ -3,5 +3,5 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     public string itemName = "Coin_1";
-    public string itemCode = "";
+    public ItemCode itemCode;
 }

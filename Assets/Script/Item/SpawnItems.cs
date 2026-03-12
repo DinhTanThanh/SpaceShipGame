@@ -11,10 +11,11 @@ public class SpawnItems : MonoBehaviour
     public void SpawnItem(List<DropItem> DropList,Vector3 pos, Quaternion rot)
     {
         int indexItem=Random.Range(0,DropList.Count);
-        GameObject item = GameObject.Find(DropList[indexItem].prefabObject.itemName);
+        GameObject item = GameObject.Find(DropList[indexItem].prefabObject.itemCode.ToString());
         if (item == null) return;
         GameObject itemDrop = Instantiate(item);
         itemDrop.transform.position = pos;
         itemDrop.transform.rotation = rot;
+        itemDrop.transform.SetParent(transform);
     }
 }
