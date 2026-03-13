@@ -13,8 +13,6 @@ public class Inventory : MonoBehaviour
             return false;
         }
         int newCount = itemInventory.itemCount + itemCount;
-        Debug.Log(newCount);
-
         if (newCount > itemInventory.maxStack) return false;
         itemInventory.itemCount= newCount;
         return true;

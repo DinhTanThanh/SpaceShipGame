@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovingPlayer : MonoBehaviour
 {
-    public float speedShip = 0.01f;
+    public float speedShip = 0.005f;
     private void Update()
     {
         Moving();

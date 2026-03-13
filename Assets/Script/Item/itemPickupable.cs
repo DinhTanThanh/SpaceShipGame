@@ -39,4 +39,9 @@ public class ItemPickupable : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    private void OnMouseDown()
+    {
+        //Debug.Log(transform.parent.name);
+        PlayerCtrl.Instance.PlayerPickup.ItemPickup(this);
+    }
 }
