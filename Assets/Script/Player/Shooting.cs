@@ -11,17 +11,17 @@ public class Shooting : MonoBehaviour
     private void Reset()
     {
         playerController = FindFirstObjectByType<PlayerController>();
-        player = GameObject.Find("Player");
+        player = GameObject.Find(transform.parent.name);
         bullet = GameObject.Find("Bullet");
         SpawnBullett = GameObject.Find("SpawnBullett");
     }
     private void Awake()
     {
         playerController = FindFirstObjectByType<PlayerController>();
-        player = GameObject.Find("Player");
+        player = GameObject.Find(transform.parent.name);
         bullet = GameObject.Find("Bullet");
         SpawnBullett = GameObject.Find("SpawnBullett");
-        bullet.SetActive(false);
+        //bullet.SetActive(false);
     }
     private void Update()
     {
@@ -38,5 +38,6 @@ public class Shooting : MonoBehaviour
         bulletObject.transform.SetParent(SpawnBullett.transform);
         pos.z = 1f;
         bulletObject.transform.position= pos;
+        Debug.Log(transform.parent.name);
     }
 }
