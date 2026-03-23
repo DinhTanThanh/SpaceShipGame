@@ -7,24 +7,48 @@ public class Inventory : MonoBehaviour
     [SerializeField] protected List<ItemInventory> items;
     public bool AddItem(ItemCode itemCode,int itemCount)
     {
-        ItemInventory itemInventory = GetItemByCode(itemCode);
-        if (itemInventory == null)
+        while (true)
         {
+            var result = GetListItemByCode(itemCode);
+            if (result.item != null)
+            {
+                int newCount = result.item.itemCount + itemCount;
+                if (newCount > result.item.maxStack)
+                {
+                    int newCountEmpty = result.item.maxStack - result.item.itemCount;
+                    result.item.itemCount += newCountEmpty;
+                    itemCount -= newCountEmpty;
+                    if (!result.isSlot)
+                    {
+                        break;
+                    }
+                    continue;
+                }
+                result.item.itemCount = newCount;
+                break;
+            }
             return false;
         }
-        int newCount = itemInventory.itemCount + itemCount;
-        if (newCount > itemInventory.maxStack) return false;
-        itemInventory.itemCount= newCount;
         return true;
     }
-    public ItemInventory GetItemByCode(ItemCode itemCode)
+    public (ItemInventory item,bool isSlot) GetListItemByCode(ItemCode itemCode)
     {
-        ItemInventory itemInventory = this.items.Find((item) => item.itemProfileSO.itemCode == itemCode);
-        if (itemInventory == null)
+        //chỉ láy những item trong inventory đang chưa full stack còn nếu full hết (không có thằng nào trong này là còn trống stack thì trả về null)
+        //nếu danh sách không null thì tìm những thằng mà còn trống stack
+        List<ItemInventory> itemInventory = this.items.FindAll((item) => item.itemProfileSO.itemCode == itemCode);
+        foreach(ItemInventory item in itemInventory)
         {
-            itemInventory = AddEmptyItem(itemCode);
+            if (item.itemCount < item.maxStack)
+            {
+                return (item, CheckMaxSlot());
+            }
         }
-        return itemInventory;
+        if (CheckMaxSlot()) return (AddEmptyItem(itemCode), CheckMaxSlot());
+        return (null, false);
+    }
+    public bool CheckMaxSlot()
+    {
+        return items.Count < maxSlot;
     }
     public ItemInventory AddEmptyItem(ItemCode itemCode)
     {
@@ -41,5 +65,20 @@ public class Inventory : MonoBehaviour
             return itemInventory;
         }
         return null;
+    }
+    public bool DeductItem(ItemCode itemCode,int countItem)
+    {
+        if (!TryDeductItem(itemCode, countItem)) return false;
+        ItemInventory itemInventory = this.items.Find(item => item.itemProfileSO.itemCode == itemCode);
+        int newCout = itemInventory.itemCount - countItem;
+        itemInventory.itemCount= newCout;
+        return true;
+    }
+    public bool TryDeductItem(ItemCode itemCode,int countItem)
+    {
+        ItemInventory itemInventory = this.items.Find((item) => item.itemProfileSO.itemCode == itemCode);
+        int newCount = itemInventory.itemCount - countItem;
+        if (newCount < 0) return false;
+        return true;
     }
 }

@@ -37,6 +37,7 @@ public class ItemPickupable : MonoBehaviour
     }
     public void Pickup(GameObject gameObject)
     {
+        SpawnItems.instance.GoBackList(gameObject);
         gameObject.SetActive(false);
     }
     private void OnMouseDown()

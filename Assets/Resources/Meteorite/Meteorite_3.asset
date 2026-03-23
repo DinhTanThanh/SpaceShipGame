@@ -15,11 +15,11 @@ MonoBehaviour:
   meteoriteName: Meteorite
   maxHP: 7
   dropItems:
-  - prefabObject: {fileID: 11400000, guid: 7150fd6706e383e439015e784094aae8, type: 2}
+  - prefabObject: {fileID: 11400000, guid: 48e2c34bf49e9b74da99f68c205e95b1, type: 2}
     dropRate: 100000
     minItem: 0
     maxItem: 0
-  - prefabObject: {fileID: 11400000, guid: 4eb1bc0f759eb9e409133bfae9f09972, type: 2}
+  - prefabObject: {fileID: 11400000, guid: 9518dd56ae60d7041ac97d7a97b3388f, type: 2}
     dropRate: 100000
     minItem: 0
     maxItem: 0

@@ -17,7 +17,7 @@ public class PoolPrefab : MonoBehaviour
         GameObject objectPrefab = Instantiate(prefab);
         return objectPrefab;
     }
-    public GameObject SetPosition(GameObject prefab,Vector3 position,Quaternion rotation)
+    public virtual GameObject SetPosition(GameObject prefab,Vector3 position,Quaternion rotation)
     {
         GameObject ObPrefab = Spawn(prefab);
         ObPrefab.transform.position = position;

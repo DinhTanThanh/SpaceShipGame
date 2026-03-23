@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropItem
 {
-    public ItemSO prefabObject;
+    public ItemProfileSO prefabObject;
     public int dropRate=100000;
     public int minItem=0;
     public int maxItem=0;
