@@ -36,5 +36,6 @@ public class EnableByDistance : DamgeSender
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);
         gameObject.SetActive(false);
+        SpawnBullet.instance.GoBackList(gameObject);
     }
 }

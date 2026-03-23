@@ -7,11 +7,17 @@ public class SpawnSmoke : PoolPrefab
     public static SpawnSmoke instance;
     private void Reset()
     {
-        this.smoke = GameObject.Find("Smoke");
+        LoadComponent();
     }
     private void Awake()
     {
-        this.smoke = GameObject.Find("Smoke");
+        LoadComponent();
+        this.smoke.gameObject.SetActive(false);
         SpawnSmoke.instance= this;
+    }
+    public void LoadComponent()
+    {
+        if (smoke != null) return;
+        this.smoke = GameObject.Find("Smoke");
     }
 }
