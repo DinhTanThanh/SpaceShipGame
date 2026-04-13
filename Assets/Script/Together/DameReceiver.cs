@@ -27,4 +27,5 @@ public class DameReceiver : MonoBehaviour
     {
         this.HP-= hp;
     }
+
 }

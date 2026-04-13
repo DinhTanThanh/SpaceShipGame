@@ -13,14 +13,14 @@ public class ItemFollowShip : MonoBehaviour
     }
     private void Update()
     {
-        FollowShip();
+        FollowCameraa();
     }
     public void LoadComponent()
     {
         if (Camera != null) return;
         Camera = GameObject.Find("Camera").transform;
     }
-    public void FollowShip()
+    public void FollowCameraa()
     {
         transform.position = Camera.position;
     }

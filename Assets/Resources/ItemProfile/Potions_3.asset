@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Potions_3
   m_EditorClassIdentifier: 
   itemCode: 6
-  itemType: 1
+  itemType: 2
   nameItem: Potions_3
   defaultStack: 7
+  listUpgradeLevel: []

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolPrefab : MonoBehaviour
+public class PoolPrefab : LoadMonoBehaviour
 {
     public List<GameObject> ListGameObject= new List<GameObject>();
     public GameObject Spawn(GameObject prefab)
@@ -10,6 +10,7 @@ public class PoolPrefab : MonoBehaviour
         {
             if (item.name.Contains(prefab.name))
             {
+                Debug.Log("Vo");
                 ListGameObject.Remove(item);
                 return item;
             }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Coin_2
   m_EditorClassIdentifier: 
   itemCode: 2
-  itemType: 2
+  itemType: 1
   nameItem: Coin_2
   defaultStack: 7
+  listUpgradeLevel: []

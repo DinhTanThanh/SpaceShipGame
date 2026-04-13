@@ -16,3 +16,13 @@ MonoBehaviour:
   itemType: 2
   nameItem: Potions_1
   defaultStack: 7
+  listUpgradeLevel:
+  - ListIngredient:
+    - itemProfileSO: {fileID: 11400000, guid: 48e2c34bf49e9b74da99f68c205e95b1, type: 2}
+      countItem: 3
+    - itemProfileSO: {fileID: 11400000, guid: 20757d965dcb78246bb72a6bc6297430, type: 2}
+      countItem: 5
+    - itemProfileSO: {fileID: 11400000, guid: 1230dea942ca44a4496c2bd2a69eee2c, type: 2}
+      countItem: 8
+  - ListIngredient: []
+  - ListIngredient: []

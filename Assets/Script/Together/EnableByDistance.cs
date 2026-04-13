@@ -7,7 +7,7 @@ public class EnableByDistance : DamgeSender
     private void Reset()
     {
         mainCamera = GameObject.Find("Main Camera");
-        bulletContrl=GetComponent<BulletController>();
+        bulletContrl = GetComponent<BulletController>();
     }
     private void Awake()
     {
@@ -24,15 +24,26 @@ public class EnableByDistance : DamgeSender
     }
     public float Distance()
     {
-        float dis=Vector3.Distance(transform.position,mainCamera.transform.position);
-        return dis; 
+        float dis = Vector3.Distance(transform.position, mainCamera.transform.position);
+        return dis;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MeoteoriteDamereceiver meteorite=collision.GetComponentInChildren<MeoteoriteDamereceiver>();
-        if (meteorite == null) return;
-        SendDame(meteorite);
-        Vector3 newPos=collision.transform.position;
+        if (collision.GetComponentInChildren<MeoteoriteDamereceiver>())
+        {
+            MeoteoriteDamereceiver dameReceiver = collision.GetComponentInChildren<MeoteoriteDamereceiver>();
+            SendDame(dameReceiver);
+        }
+        else if (collision.GetComponentInChildren<EnemyDameReceiver>())
+        {
+            EnemyDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyDameReceiver>();
+            SendDame(dameReceiver);
+        }
+        else
+        {
+            return;
+        }
+        Vector3 newPos = collision.transform.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);
         gameObject.SetActive(false);

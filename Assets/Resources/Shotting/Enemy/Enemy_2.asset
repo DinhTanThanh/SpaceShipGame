@@ -10,16 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0242c9056d654914095224c7f227e7d4, type: 3}
-  m_Name: Meteorite_2
+  m_Name: Enemy_2
   m_EditorClassIdentifier: 
-  meteoriteName: Meteorite
-  maxHP: 5
-  dropItems:
-  - prefabObject: {fileID: 11400000, guid: 1230dea942ca44a4496c2bd2a69eee2c, type: 2}
-    dropRate: 0
-    minItem: 0
-    maxItem: 0
-  - prefabObject: {fileID: 11400000, guid: b1cde5c427686e0479b91b2846f607ff, type: 2}
-    dropRate: 0
-    minItem: 0
-    maxItem: 0
+  enemyName: Shotting
+  shottingType: 2
+  maxHP: 20
+  dropItems: []
