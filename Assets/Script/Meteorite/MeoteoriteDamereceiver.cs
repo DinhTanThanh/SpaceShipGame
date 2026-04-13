@@ -20,12 +20,18 @@ public class MeoteoriteDamereceiver : DameReceiver
             //Debug.Log("Object đã chết");
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.SpawnItem(MeteoriteCtrller.MeteoriteSO.dropItems,transform.position,Quaternion.Euler(0,0,0));
+            ResetMonterState();
+            SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);
+            SpawnItems.instance.SpawnItem(MeteoriteCtrller.ShottingSO.dropItems,transform.position,Quaternion.Euler(0,0,0));
         }
+    }
+    public void ResetMonterState()
+    {
+        this.HP = this.MeteoriteCtrller.ShottingSO.maxHP;
+        this.IsDead = false;
     }
     public override void Reborn()
     {
-        HP = MeteoriteCtrller.MeteoriteSO.maxHP;
+        HP = MeteoriteCtrller.ShottingSO.maxHP;
     }
-    
 }

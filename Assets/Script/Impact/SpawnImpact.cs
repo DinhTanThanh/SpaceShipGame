@@ -5,11 +5,11 @@ public class SpawnImpact : PoolPrefab
     [SerializeField] private GameObject impact;
     public GameObject Impact => impact;
     public static SpawnImpact instance;
-    private void Reset()
+    protected override void Reset()
     {
         impact = GameObject.Find("Impact");
     }
-    private void Awake()
+    protected override void Awake()
     {
         SpawnImpact.instance = this;
         impact = GameObject.Find("Impact");

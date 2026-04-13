@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ItemEnableByDistance : EnableByDistanceAbstract
 {
-    protected override void LoadComponet()
+    protected override void LoadComponent()
     {
-        gameObjectBeFollow = GameObject.Find("Player");
-        distanceLimit = 70f;
+        this.gameObjectBeFollow = GameObject.Find("Player");
+        this.distanceLimit = 70f;
     }
     private void Update()
     {

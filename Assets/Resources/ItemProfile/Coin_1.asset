@@ -16,3 +16,4 @@ MonoBehaviour:
   itemType: 1
   nameItem: Coin_1
   defaultStack: 7
+  listUpgradeLevel: []
