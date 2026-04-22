@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public GameObject mainCamera;
+    public GameObject objectFollow;
     private void Reset()
     {
-        mainCamera = GameObject.Find("Camera");
+        objectFollow = GameObject.Find("ManagerPosPlayer");
     }
     private void Awake()
     {
-        mainCamera = GameObject.Find("Camera");
+        objectFollow = GameObject.Find("ManagerPosPlayer");
     }
     private void Update()
     {
-        transform.position=mainCamera.transform.position;
+        transform.position=objectFollow.transform.position;
+        transform.rotation=objectFollow.transform.rotation;
     }
 }
