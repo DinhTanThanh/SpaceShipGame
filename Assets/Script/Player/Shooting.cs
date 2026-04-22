@@ -1,42 +1,40 @@
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class Shooting : Shoot
 {
-    public float timer = 0f;
-    public float timeDelay = 0.5f;
-    public GameObject player;
-    public GameObject bullet;
-    public GameObject SpawnBullett;
-    public PlayerController playerController;
-    private void Reset()
+    [SerializeField] protected PlayerController objectController;
+    public PlayerController ObjectController => objectController;
+    protected override void Reset()
     {
         LoadComponent();
     }
-    private void Awake()
+    protected override void Awake()
     {
         LoadComponent();
     }
-    protected void LoadComponent()
+    protected override void LoadComponent()
     {
-        playerController = GetComponentInParent<PlayerController>();
-        player = GameObject.Find(transform.parent.name);
+        objectController = GetComponentInParent<PlayerController>();
+        shooter = GameObject.Find(transform.parent.name);
         bullet = GameObject.Find("Bullet");
-        SpawnBullett = GameObject.Find("SpawnBullet");
+        spawnBullett = GameObject.Find("SpawnBullet");
+    }
+    protected override void ExecuteSpawn()
+    {
+        GameObject bulletObject = SpawnBullet.instance.SetPosition(bullet, shooter.transform.position, shooter.transform.rotation);
+        Vector3 pos = bulletObject.transform.position;
+        bulletObject.transform.SetParent(spawnBullett.transform);
+        pos.z = 1f;
+        bulletObject.transform.position = pos;
     }
     private void Update()
     {
         TimeDelay();
     }
-    public void TimeDelay()
+    protected override bool getControllerToSpawn()
     {
-        timer += Time.deltaTime;
-        if (playerController.inputManager.clickMouse == 0) return;
-        if (timer < timeDelay) return;
-        timer = 0f;
-        GameObject bulletObject= SpawnBullet.instance.SetPosition(bullet, player.transform.position, player.transform.rotation);
-        Vector3 pos = bulletObject.transform.position;
-        bulletObject.transform.SetParent(SpawnBullett.transform);
-        pos.z = 1f;
-        bulletObject.transform.position= pos;
+        if (objectController == null) return true;
+        if (objectController.inputManager.clickMouse == 0) return false;
+        return true;
     }
 }

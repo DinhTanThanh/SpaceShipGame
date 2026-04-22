@@ -14,16 +14,19 @@ public class EnemyDameReceiver : DameReceiver
     }
     private void Update()
     {
-        //if (IsDead == true)
-        //{
-        //    //Debug.Log("Object đã chết");
-        //    SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
-        //    transform.parent.gameObject.SetActive(false);
-        //    SpawnItems.instance.SpawnItem(MeteoriteCtrller.MeteoriteSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
-        //}
+        if (IsDead == true)
+        {
+            //Debug.Log("object đã chết");
+            SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
+            transform.parent.gameObject.SetActive(false);
+            Reborn();
+            SpawnEnemy.instance.GoBackList(transform.parent.gameObject);
+            //spawnitems.instance.spawnitem(meteoritectrller.meteoriteso.dropitems, transform.position, quaternion.euler(0, 0, 0));
+        }
     }
     public override void Reborn()
     {
-        HP = EnemyCtrl.ShottingSO.maxHP;
+        this.HP = EnemyCtrl.ShottingSO.maxHP;
+        this.IsDead = false;
     }
 }

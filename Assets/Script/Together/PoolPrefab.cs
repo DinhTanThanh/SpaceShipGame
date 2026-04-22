@@ -1,16 +1,22 @@
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PoolPrefab : LoadMonoBehaviour
 {
+    [SerializeField] protected int sttObject = 1;
+    [SerializeField] protected int sttLimitObject = 0;
     public List<GameObject> ListGameObject= new List<GameObject>();
+    protected virtual void SetLimitObject()
+    {
+        this.sttLimitObject = 0;
+    }
     public GameObject Spawn(GameObject prefab)
     {
         foreach(GameObject item in ListGameObject)
         {
-            if (item.name.Contains(prefab.name))
+            if (item!=null)
             {
-                Debug.Log("Vo");
                 ListGameObject.Remove(item);
                 return item;
             }
@@ -23,6 +29,11 @@ public class PoolPrefab : LoadMonoBehaviour
         GameObject ObPrefab = Spawn(prefab);
         ObPrefab.transform.position = position;
         ObPrefab.transform.rotation = rotation;
+        if (sttObject <= sttLimitObject)
+        {
+            ObPrefab.name = transform.name.Replace("Spawn", "") + "_" + sttObject;
+            this.sttObject++;
+        }
         ObPrefab.SetActive(true);
         return ObPrefab;
     }
