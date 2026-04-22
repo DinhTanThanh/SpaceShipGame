@@ -14,6 +14,7 @@ public class SpawnShootingAbleObject : PoolPrefab
     public string NamePosManager => namePosManager;
     [SerializeField] protected string nameMonterManager;
     public string NameMonterManager => nameMonterManager;
+   
     protected virtual void SetNameManager()
     {
         this.namePosManager = "Default";
@@ -22,10 +23,9 @@ public class SpawnShootingAbleObject : PoolPrefab
     public Transform RandomObject(Transform objectPrefab)
     {
         int index = Random.Range(0, objectPrefab.childCount);
-        Debug.Log(index);
         return objectPrefab.GetChild(index);
     }
-    public void Spawn()
+    public void SpawnRandom_Object()
     {
         Transform posSpawn = RandomObject(PosManager.transform);
         Transform shootSpawn = RandomObject(MonterManager.transform);
@@ -42,5 +42,22 @@ public class SpawnShootingAbleObject : PoolPrefab
         if (Timer < TimeDelay) return false;
         timer = 0f;
         return true;
+    }
+    protected bool CheckCountChildMonter(int limitCountChild)
+    {
+        if (CountChildEnable() >= limitCountChild) return false;
+        return true;
+    }
+    protected int CountChildEnable()
+    {
+        int count = 0;
+        foreach(Transform child in transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }

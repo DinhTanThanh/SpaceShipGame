@@ -3,8 +3,8 @@ using UnityEngine;
 public class SpawnBullet : PoolPrefab
 {
     public static SpawnBullet instance;
-    protected override void Awake()
+    protected override void LoadComponent()
     {
-        SpawnBullet.instance= this;    
+        SpawnBullet.instance = this;
     }
 }

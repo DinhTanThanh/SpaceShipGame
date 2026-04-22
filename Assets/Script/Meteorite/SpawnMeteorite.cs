@@ -27,6 +27,6 @@ public class SpawnMeteorite : SpawnShootingAbleObject
     }
     private void Update()
     {
-        if (DelaySpawn()) Spawn();
+        if (DelaySpawn()) SpawnRandom_Object();
     }
 }

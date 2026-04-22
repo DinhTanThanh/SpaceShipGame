@@ -31,11 +31,13 @@ public class EnableByDistance : DamgeSender
     {
         if (collision.GetComponentInChildren<MeoteoriteDamereceiver>())
         {
+            Debug.Log("va cham voi Meoteorite");
             MeoteoriteDamereceiver dameReceiver = collision.GetComponentInChildren<MeoteoriteDamereceiver>();
             SendDame(dameReceiver);
         }
         else if (collision.GetComponentInChildren<EnemyDameReceiver>())
         {
+            Debug.Log("va cham voi Enemy");
             EnemyDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyDameReceiver>();
             SendDame(dameReceiver);
         }

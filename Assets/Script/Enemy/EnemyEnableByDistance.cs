@@ -9,7 +9,6 @@ public class EnemyEnableByDistance : EnableByDistanceAbstract
         this.gameObjectBeFollow = GameObject.Find("Player");
         this.distanceLimit = 70f;
         this.meteoriteController=GetComponentInParent<MeteoriteController>();
-        Debug.Log("Vo roi");
     }
     protected override void Reset()
     {
@@ -24,6 +23,7 @@ public class EnemyEnableByDistance : EnableByDistanceAbstract
         if (!IsDistanceAchiveLimit()) return;
         SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);
         transform.parent.gameObject.SetActive(false);
-        meteoriteController.MeoteoriteDamereceiver.ResetMonterState();
+        if (meteoriteController == null) return;
+        meteoriteController.MeoteoriteDamereceiver.Reborn();
     }
 }

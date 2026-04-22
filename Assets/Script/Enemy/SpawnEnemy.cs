@@ -1,8 +1,15 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : SpawnShootingAbleObject
 {
+    [SerializeField] protected int countLimitObject = 3;
+    public int CountLimitObject=> countLimitObject; 
     public static SpawnEnemy instance;
+    protected override void SetLimitObject()
+    {
+        this.sttLimitObject = countLimitObject;
+    }
     protected override void SetNameManager()
     {
         this.namePosManager = "PosManager";
@@ -10,6 +17,7 @@ public class SpawnEnemy : SpawnShootingAbleObject
     }
     protected override void Reset()
     {
+        SetLimitObject();
         SetNameManager();
         base.Reset();
     }
@@ -23,10 +31,21 @@ public class SpawnEnemy : SpawnShootingAbleObject
         SpawnEnemy.instance = this;
         SetNameManager();
         base.Awake();
-
     }
     private void Update()
     {
-        if (DelaySpawn()) Spawn();
+        ExecuteSpawnMonter();
+    }
+    //vấn đề gặp là khi sô lượng chưa giới hạn thì spawn ra enemy nhanh quá làm cho enemy vừa bị hạ chưa kịp vào poolobject lại
+    //giải pháp là khi chưa đạt gới hạn số lượng thì sẽ delay spawn enemy 1s
+    protected void ExecuteSpawnMonter()
+    {
+        if (DelaySpawn())
+        {
+            if (CheckCountChildMonter(countLimitObject))
+            {
+                SpawnRandom_Object();
+            }
+        }
     }
 }
