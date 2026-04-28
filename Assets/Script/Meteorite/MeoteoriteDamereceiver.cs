@@ -6,7 +6,7 @@ public class MeoteoriteDamereceiver : DameReceiver
 {
     public PolygonCollider2D polygonCollider2D;
     public MeteoriteController MeteoriteCtrller;
-    private void Reset()
+    protected override void Reset()
     {
         MeteoriteCtrller=transform.parent.GetComponent<MeteoriteController>();
         polygonCollider2D=GetComponent<PolygonCollider2D>();

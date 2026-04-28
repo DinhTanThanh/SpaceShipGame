@@ -1,11 +1,13 @@
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
-public class ItemPickupable : MonoBehaviour
+public class ItemPickupable : LoadMonoBehaviour
 {
     public Rigidbody2D rb;
     public Collider2D collider2;
-    private void Reset()
+    [SerializeField] protected ItemCtrl itemCtrl;
+    public ItemCtrl ItemCtrl=>itemCtrl;
+    protected override void Reset()
     {
         LoadComponent();
         if (rb == null) return;
@@ -13,7 +15,7 @@ public class ItemPickupable : MonoBehaviour
         if (collider2 == null) return;
         collider2.isTrigger = true;
     }
-    private void Awake()
+    protected override void Awake()
     {
         LoadComponent();
         if (rb == null) return;
@@ -21,10 +23,11 @@ public class ItemPickupable : MonoBehaviour
         if (collider2 == null) return;
         collider2.isTrigger= true;
     }
-    public void LoadComponent()
+    protected override void LoadComponent()
     {
         rb= GetComponent<Rigidbody2D>();
         collider2= GetComponent<Collider2D>();
+        this.itemCtrl=GetComponentInParent<ItemCtrl>();
     }
     public ItemCode GetItemCode()
     {

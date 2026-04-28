@@ -6,7 +6,7 @@ public class EnemyEnableByDistance : EnableByDistanceAbstract
     public MeteoriteController MeteoriteController => meteoriteController;
     protected override void LoadComponent()
     {
-        this.gameObjectBeFollow = GameObject.Find("Player");
+        this.gameObjectBeFollow = GameObject.Find("Camera");
         this.distanceLimit = 70f;
         this.meteoriteController=GetComponentInParent<MeteoriteController>();
     }

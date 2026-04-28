@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class EnemyShooting : Shoot
 {
     [SerializeField] protected GameObject managerBulletEnemy;
@@ -23,6 +22,10 @@ public class EnemyShooting : Shoot
         this.bullet = this.getGameObject();
         this.spawnBullett = GameObject.Find("SpawnBulletEnemy");
     }
+    protected override void LoadComponentEnable()
+    {
+        this.SetTimeDelay();
+    }
     protected override bool getControllerToSpawn()
     {
         //tự động bắn nên không cần code để auto true đẻ cho nó tự kiểm tra tự bắn
@@ -35,6 +38,12 @@ public class EnemyShooting : Shoot
         bulletObject.transform.SetParent(spawnBullett.transform);
         pos.z = 1f;
         bulletObject.transform.position = pos;
+    }
+    protected Quaternion Direct(Vector3 target,Vector3 objectNow)
+    {
+        Vector3 newPos = target - objectNow;
+        float dir = Mathf.Atan2(newPos.y, newPos.x) * Mathf.Rad2Deg;
+        return Quaternion.Euler(0, 0, dir - 100);
     }
     protected void LoadManager()
     {
@@ -50,6 +59,10 @@ public class EnemyShooting : Shoot
     }
     protected override void SetTimeDelay()
     {
-        this.timeDelay = 1f;
+        this.timeDelay = 0.2f;
+    }
+    protected int RandomTimeSpawn()
+    {
+        return Random.Range(3, 7);
     }
 }

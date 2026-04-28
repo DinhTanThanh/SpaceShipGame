@@ -31,7 +31,7 @@ public class PoolPrefab : LoadMonoBehaviour
         ObPrefab.transform.rotation = rotation;
         if (sttObject <= sttLimitObject)
         {
-            ObPrefab.name = transform.name.Replace("Spawn", "") + "_" + sttObject;
+            ObPrefab.name = transform.name.Replace("MinionSummon", "") + "_" + sttObject;
             this.sttObject++;
         }
         ObPrefab.SetActive(true);

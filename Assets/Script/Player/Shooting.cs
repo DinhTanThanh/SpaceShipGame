@@ -4,20 +4,13 @@ public class Shooting : Shoot
 {
     [SerializeField] protected PlayerController objectController;
     public PlayerController ObjectController => objectController;
-    protected override void Reset()
-    {
-        LoadComponent();
-    }
-    protected override void Awake()
-    {
-        LoadComponent();
-    }
     protected override void LoadComponent()
     {
         objectController = GetComponentInParent<PlayerController>();
         shooter = GameObject.Find(transform.parent.name);
         bullet = GameObject.Find("Bullet");
         spawnBullett = GameObject.Find("SpawnBullet");
+        SetTimeDelay();
     }
     protected override void ExecuteSpawn()
     {
@@ -36,5 +29,9 @@ public class Shooting : Shoot
         if (objectController == null) return true;
         if (objectController.inputManager.clickMouse == 0) return false;
         return true;
+    }
+    protected override void SetTimeDelay()
+    {
+        this.timeDelay = 0.1f;
     }
 }

@@ -15,4 +15,12 @@ MonoBehaviour:
   enemyName: Shotting
   shottingType: 2
   maxHP: 20
-  dropItems: []
+  dropItems:
+  - prefabObject: {fileID: 11400000, guid: 031dcb2c3b5ed3d4bbb981734c404fea, type: 2}
+    dropRate: 0
+    minItem: 0
+    maxItem: 0
+  - prefabObject: {fileID: 11400000, guid: b1cde5c427686e0479b91b2846f607ff, type: 2}
+    dropRate: 0
+    minItem: 0
+    maxItem: 0

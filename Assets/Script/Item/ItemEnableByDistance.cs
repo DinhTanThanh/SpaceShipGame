@@ -4,7 +4,7 @@ public class ItemEnableByDistance : EnableByDistanceAbstract
 {
     protected override void LoadComponent()
     {
-        this.gameObjectBeFollow = GameObject.Find("Player");
+        this.gameObjectBeFollow = GameObject.Find("Camera");
         this.distanceLimit = 70f;
     }
     private void Update()

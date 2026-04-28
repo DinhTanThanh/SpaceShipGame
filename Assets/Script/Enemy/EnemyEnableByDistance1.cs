@@ -4,7 +4,7 @@ public class EnemyEnableByDistance1 : EnableByDistanceAbstract
 {
     protected override void LoadComponent()
     {
-        this.gameObjectBeFollow = GameObject.Find("Player");
+        this.gameObjectBeFollow = GameObject.Find("Camera");
         this.distanceLimit = 70f;
     }
     protected override void Reset()

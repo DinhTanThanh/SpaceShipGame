@@ -10,6 +10,10 @@ public class DamgeSender : MonoBehaviour
     {
         ExecuteReceiver(enemyDame, 1);
     }
+    public void SendDame(EnemyMotherDameReceiver enemyDame)
+    {
+        ExecuteReceiver(enemyDame, 1);
+    }
     public void ExecuteReceiver(DameReceiver dameReceiver,int dame)
     {
         dameReceiver.Receiver(dame);
