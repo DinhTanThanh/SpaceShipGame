@@ -19,7 +19,7 @@ public abstract class FollowObject : MonoBehaviour
     {
         Vector3 posObject = ObjectPrefab.transform.position;
         Vector3 posPrecent = transform.parent.position;
-        Vector3 newPosPrecent = Vector3.Lerp(posPrecent, posObject, Time.deltaTime);
+        Vector3 newPosPrecent = Vector3.Lerp(posPrecent, posObject, 0.2f*Time.deltaTime);
         newPosPrecent.z = order;
         transform.parent.position = newPosPrecent;
     }

@@ -13,7 +13,6 @@ public class EnemyMoving : LoadMonoBehaviour
     public Transform Target => target;
     protected override void LoadComponentEnable()
     {
-        Debug.Log(transform.parent.name);
         this.enemySpawnController = FindFirstObjectByType<EnemySpawnController>();
         this.target = ChangeObjectTarget();
         string nameObject ="Pos"+ReplaceNameGameObject(transform.parent.name);
@@ -27,7 +26,7 @@ public class EnemyMoving : LoadMonoBehaviour
 
     private void Update()
     {
-        Vector3 posEnemy = transform.parent.position;
+
         if (!CheckObjectActive(target))
         {
             this.target=ChangeObjectTarget();
@@ -37,15 +36,13 @@ public class EnemyMoving : LoadMonoBehaviour
             Debug.Log("Tất cả các Player dã chết");
             return;
         }
-        Vector3 posTarget = target.position;
-
-        float dis = Vector3.Distance(posEnemy, posTarget);
+        float dis = Vector3.Distance(transform.parent.position, target.position);
         if (dis < limitSpace)
         {
-            Direct(posTarget);
+            Direct(target.position);
             return;
         }
-        Direct(posTarget);
+        Direct(target.position);
         Moving(posEne.position);
     }
     protected void Moving(Vector3 target)
@@ -64,7 +61,7 @@ public class EnemyMoving : LoadMonoBehaviour
     }
     protected void SetSpeed()
     {
-        this.speed = 0.002f;
+        this.speed = 0.0025f;
     }
     protected string ReplaceNameGameObject(string nameGameObject)
     {

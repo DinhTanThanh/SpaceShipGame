@@ -34,7 +34,7 @@ public class SpawnShootingAbleObject : PoolPrefab
         GameObject newObject = SetPosition(shootSpawn.gameObject, keepPos, Quaternion.identity);
         newObject.transform.SetParent(transform);
         float dir = Mathf.Atan2(posSpawn.position.y, posSpawn.position.x) * Mathf.Rad2Deg;
-        newObject.transform.rotation = Quaternion.Euler(0, 0, dir + 120);
+        newObject.transform.rotation = Quaternion.Euler(0, 0, dir +120);
     }
     protected bool DelaySpawn()
     {
@@ -59,5 +59,9 @@ public class SpawnShootingAbleObject : PoolPrefab
             }
         }
         return count;
+    }
+    protected virtual void SetTimeDelay()
+    {
+        this.timeDelay = 1f;
     }
 }

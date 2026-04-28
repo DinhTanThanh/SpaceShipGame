@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DameReceiver : MonoBehaviour
+public class DameReceiver : LoadMonoBehaviour
 {
     [SerializeField] private int hp;
     public int HP

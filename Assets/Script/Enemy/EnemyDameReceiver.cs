@@ -5,11 +5,15 @@ public class EnemyDameReceiver : DameReceiver
 {
     public PolygonCollider2D polygonCollider2D;
     public EnemyController EnemyCtrl;
-    private void Reset()
+    protected override void LoadComponent()
     {
         EnemyCtrl = transform.parent.GetComponent<EnemyController>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         polygonCollider2D.isTrigger = true;
+        Reborn();
+    }
+    protected override void LoadComponentEnable()
+    {
         Reborn();
     }
     private void Update()
@@ -21,7 +25,7 @@ public class EnemyDameReceiver : DameReceiver
             transform.parent.gameObject.SetActive(false);
             Reborn();
             SpawnEnemy.instance.GoBackList(transform.parent.gameObject);
-            //spawnitems.instance.spawnitem(meteoritectrller.meteoriteso.dropitems, transform.position, quaternion.euler(0, 0, 0));
+            SpawnItems.instance.SpawnItem(EnemyCtrl.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()

@@ -31,21 +31,26 @@ public class EnableByDistance : DamgeSender
     {
         if (collision.GetComponentInChildren<MeoteoriteDamereceiver>())
         {
-            Debug.Log("va cham voi Meoteorite");
             MeoteoriteDamereceiver dameReceiver = collision.GetComponentInChildren<MeoteoriteDamereceiver>();
             SendDame(dameReceiver);
         }
         else if (collision.GetComponentInChildren<EnemyDameReceiver>())
         {
-            Debug.Log("va cham voi Enemy");
             EnemyDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyDameReceiver>();
+            SendDame(dameReceiver);
+        }
+        else if (collision.GetComponentInChildren<EnemyMotherDameReceiver>())
+        {
+            EnemyMotherDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyMotherDameReceiver>();
             SendDame(dameReceiver);
         }
         else
         {
             return;
         }
-        Vector3 newPos = collision.transform.position;
+        //Vector3 newPos = collision.transform.position;
+        //newPos.z = -5f;
+        Vector3 newPos = transform.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);
         gameObject.SetActive(false);

@@ -1,15 +1,12 @@
 using UnityEngine;
 
-public class Follow : MonoBehaviour
+public class Follow : LoadMonoBehaviour
 {
     public GameObject objectFollow;
-    private void Reset()
+    protected override void LoadComponent()
     {
-        objectFollow = GameObject.Find("ManagerPosPlayer");
-    }
-    private void Awake()
-    {
-        objectFollow = GameObject.Find("ManagerPosPlayer");
+        base.LoadComponent();
+        objectFollow = GameObject.Find("Camera");
     }
     private void Update()
     {

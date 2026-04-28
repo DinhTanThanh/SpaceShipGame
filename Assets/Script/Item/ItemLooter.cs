@@ -1,22 +1,15 @@
 ﻿using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
-public class ItemLooter : MonoBehaviour
+public class ItemLooter : LoadMonoBehaviour
 {
     public Rigidbody2D rb;
     public Collider2D collider2;
     public Inventory inventory;
     public PlayerController Ship;
-    private void Reset()
-    {
-        LoadComponent();
-    }
-    private void Awake()
-    {
-        LoadComponent();
-
-    }
-    public void LoadComponent()
+    [SerializeField] protected float timer = 0f;
+    [SerializeField] protected float delay = 0.5f;
+    protected override void LoadComponent()
     {
         rb = GetComponent<Rigidbody2D>();
         collider2 = GetComponent<Collider2D>();
@@ -31,10 +24,7 @@ public class ItemLooter : MonoBehaviour
     {
         ItemPickupable itemPickupable = collision.GetComponent<ItemPickupable>();
         if (itemPickupable == null) return;
-        //ItemCode itemCode=itemPickupable.GetItemCode();
-
-        //if (itemCode == ItemCode.NullItem) return;
-        ItemCtrl itemCtrl = itemPickupable.GetComponentInParent<ItemCtrl>();
+        ItemCtrl itemCtrl = itemPickupable.ItemCtrl;//nếu getcomponentinparent thì nó sẽ bị race condition (giải pháp là lưu luôn thằng cha không cần phải tìm lại)
         if (itemCtrl == null)
         {
             Debug.Log("Chưa tạo kịp");
@@ -45,6 +35,17 @@ public class ItemLooter : MonoBehaviour
         {
             itemPickupable.Pickup(collision.transform.parent.gameObject);
         }
-
+    }
+    protected void DelayPickupItem()
+    {
+        while (true)
+        {
+            this.timer += Time.deltaTime;
+            if (timer >= delay)
+            {
+                this.timer = 0f;
+                return;
+            } 
+        }
     }
 }
