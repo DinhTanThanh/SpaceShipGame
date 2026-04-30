@@ -23,31 +23,29 @@ public class SpawnItems : PoolPrefab
     public void SpawnItem(List<DropItem> DropList, Vector3 pos, Quaternion rot)
     {
         int indexItem = Random.Range(0, DropList.Count);
-        item = GameObject.Find(DropList[indexItem].prefabObject.itemCode.ToString());
+        this.item = GameObject.Find(DropList[indexItem].prefabObject.itemCode.ToString());
         if (item == null)
         {
-            Debug.Log("Không tìm thấy");
+            Debug.LogWarning("Không tìm thấy");
             return;
         };
         GameObject itemDrop = SetPosition(item, pos, rot);
         itemDrop.transform.SetParent(transform);
         ItemCtrl itemCtrl = itemDrop.GetComponent<ItemCtrl>();
         if (itemCtrl == null) return;
-        ItemCtrl itemCtrlFind = item.GetComponent<ItemCtrl>();
-        if (itemCtrlFind == null) return;
         ItemInventory tempInventory = new ItemInventory()
         {
-            itemProfileSO = itemCtrlFind.ItemInventory.itemProfileSO,
+            itemProfileSO = itemCtrl.ItemInventory.itemProfileSO,
             itemCount = 1
         };
-        itemCtrl.SetItemInventory(tempInventory);
+        //itemCtrl.SetItemInventory(tempInventory);
     }
     public GameObject SpawnItem(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
     {
         GameObject item = GameObject.Find(itemInventory.itemProfileSO.itemCode.ToString());
         if (item == null)
         {
-            Debug.Log("Không tìm thấy");
+            Debug.LogWarning("Không tìm thấy");
             return null;
         };
         GameObject itemDrop = SetPosition(item, pos, rot);
