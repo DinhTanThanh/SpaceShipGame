@@ -21,7 +21,14 @@ public class ObjMoveForwardLimitTarget : Movement
     }
     protected override void SetSpeed()
     {
-        this.speed = Random.Range(0.3f,0.4f);
+        if (Random.value > 0.5)
+        {
+            this.speed = Random.Range(0.25f, 0.35f);
+        }
+        else
+        {
+            this.speed = Random.Range(0.4f, 0.45f);
+        }
     }
     protected override void SetLimitDistance()
     {

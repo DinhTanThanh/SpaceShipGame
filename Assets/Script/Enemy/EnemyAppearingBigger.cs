@@ -6,7 +6,7 @@ public class EnemyAppearingBigger : ObjAppearing
     [Header("Enemy AppearingBigger")]
     [SerializeField] protected float currentScale = 0f;
     [SerializeField] protected float startScale = 0.1f;
-    [SerializeField] protected float speedScale = 0.001f;
+    [SerializeField] protected float speedScale = 0.002f;
     [SerializeField] protected float maxScale = 1f;
     [SerializeField] protected List<IObjAppearObserver> observers= new List<IObjAppearObserver>();
     [SerializeField] protected bool checkEnable = false;

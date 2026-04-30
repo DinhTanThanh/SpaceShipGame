@@ -1,19 +1,24 @@
 using UnityEngine;
 
-public class ItemCtrl : MonoBehaviour
+public class ItemCtrl : LoadMonoBehaviour
 {
     public ItemInventory ItemInventory;
     public void LoadItemProfileSO()
     {
-        string path = "ItemProfile/" + transform.name;
+        string nameObj = transform.name.Replace("(Clone)", "");
+        string path = "ItemProfile/" + nameObj;
         ItemInventory.itemProfileSO=Resources.Load<ItemProfileSO>(path);
         ItemInventory.itemCount = 1;
     }
-    private void Reset()
+    protected override void OnEnable()
     {
         LoadItemProfileSO();
     }
-    private void Awake()
+    protected override void Reset()
+    {
+        LoadItemProfileSO();
+    }
+    protected override void Awake()
     {
         LoadItemProfileSO();
     }
