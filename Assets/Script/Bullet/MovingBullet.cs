@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class MovingBullet : LoadMonoBehaviour
 {
-    public float speed;
+    [SerializeField] protected float speed;
+    public float Speed=>speed;
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.speed = 15f;
+        SetSpeedBullet(15);
     }
     void Update()
     {
-        transform.parent.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.parent.Translate(Vector3.up* this.speed * Time.deltaTime);
     }
     public virtual void SetSpeedBullet(float speedBullet)
     {

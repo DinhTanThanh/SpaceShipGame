@@ -17,10 +17,10 @@ MonoBehaviour:
   maxHP: 5
   dropItems:
   - prefabObject: {fileID: 11400000, guid: 1230dea942ca44a4496c2bd2a69eee2c, type: 2}
-    dropRate: 0
+    dropRate: 100000
     minItem: 0
     maxItem: 0
   - prefabObject: {fileID: 11400000, guid: b1cde5c427686e0479b91b2846f607ff, type: 2}
-    dropRate: 0
+    dropRate: 100000
     minItem: 0
     maxItem: 0

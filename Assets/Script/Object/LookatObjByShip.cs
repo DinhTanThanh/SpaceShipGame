@@ -7,14 +7,15 @@ public class LookatObjByShip : LookatObj
     protected override void LoadComponent()
     {
         SetRotation();
-        this.playerShip = GameObject.Find("Player").transform;
+        this.playerShip = GameObject.Find("Player")?.transform;
     }
     private void Update()
     {
+        if(this.playerShip == null) return;
         Direct(playerShip.position);
     }
     protected override void SetRotation()
     {
-        this.speedRotation = 0.8f;
+        this.speedRotation = 0.4f;
     }
 }

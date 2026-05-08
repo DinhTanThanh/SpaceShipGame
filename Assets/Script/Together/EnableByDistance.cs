@@ -16,7 +16,7 @@ public class EnableByDistance : DamgeSender
     }
     private void Update()
     {
-        if (Distance() > 20f)
+        if (Distance() > 70f)
         {
             SpawnBullet.instance.GoBackList(gameObject);
             gameObject.SetActive(false);
@@ -48,8 +48,6 @@ public class EnableByDistance : DamgeSender
         {
             return;
         }
-        //Vector3 newPos = collision.transform.position;
-        //newPos.z = -5f;
         Vector3 newPos = transform.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);
