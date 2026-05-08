@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 [Serializable]
 
-public class DropItem
+public class ItemDropRate
 {
     public ItemProfileSO prefabObject;
     public int dropRate=100000;

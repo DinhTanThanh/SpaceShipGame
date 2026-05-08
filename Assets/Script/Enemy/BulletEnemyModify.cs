@@ -4,11 +4,14 @@ public class BulletEnemyModify : BulletEnemyControllerAbstract
 {
     [SerializeField] protected float speedBulletEnemy;
     public float SpeedBulletEnemy => speedBulletEnemy;
+    [SerializeField] protected Vector3 directMove;
+    public Vector3 DirectMove=> directMove;
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.speedBulletEnemy = 20;
+        this.speedBulletEnemy = 25;
         SetSpeedBulletEnemy();
+        this.directMove = Vector3.up;
     }
     protected override void Start()
     {
@@ -17,6 +20,6 @@ public class BulletEnemyModify : BulletEnemyControllerAbstract
     }
     protected virtual void SetSpeedBulletEnemy()
     {
-        this.bulletEnemyController.MovingBullet.SetSpeedBullet(speedBulletEnemy);
+        this.bulletEnemyController.MovingBullet.SetSpeedBullet(this.speedBulletEnemy);
     }
 }

@@ -8,9 +8,9 @@ public class MeoteoriteDamereceiver : DameReceiver
     public MeteoriteController MeteoriteCtrller;
     protected override void Reset()
     {
-        MeteoriteCtrller=transform.parent.GetComponent<MeteoriteController>();
-        polygonCollider2D=GetComponent<PolygonCollider2D>();
-        polygonCollider2D.isTrigger = true;
+        this.MeteoriteCtrller=transform.parent.GetComponent<MeteoriteController>();
+        this.polygonCollider2D=GetComponent<PolygonCollider2D>();
+        this.polygonCollider2D.isTrigger = true;
         Reborn();
     }
     private void Update()
@@ -22,12 +22,12 @@ public class MeoteoriteDamereceiver : DameReceiver
             transform.parent.gameObject.SetActive(false);
             Reborn();
             SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);
-            SpawnItems.instance.SpawnItem(MeteoriteCtrller.ShottingSO.dropItems,transform.position,Quaternion.Euler(0,0,0));
+            SpawnItems.instance.DropItem(MeteoriteCtrller.ShottingSO.dropItems,transform.position,Quaternion.Euler(0,0,0));
         }
     }
     public override void Reborn()
     {
-        HP = MeteoriteCtrller.ShottingSO.maxHP;
+        this.hp = this.MeteoriteCtrller.ShottingSO.maxHP;
         this.IsDead = false;
     }
 }

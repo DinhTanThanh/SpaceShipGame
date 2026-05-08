@@ -17,6 +17,6 @@ public class DamgeSender : MonoBehaviour
     public void ExecuteReceiver(DameReceiver dameReceiver,int dame)
     {
         dameReceiver.Receiver(dame);
-        if(dameReceiver.HP<=0) dameReceiver.IsDead= true;
+        if(dameReceiver.Hp<=0) dameReceiver.IsDead= true;
     }
 }

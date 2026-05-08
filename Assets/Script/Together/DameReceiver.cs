@@ -2,30 +2,33 @@ using UnityEngine;
 
 public class DameReceiver : LoadMonoBehaviour
 {
-    [SerializeField] private int hp;
-    public int HP
-    {
-        get { return hp; }
-        set { hp = value; }
-    }
-    [SerializeField] private bool isDead;
+    [SerializeField] protected int hp;
+    [SerializeField] protected int maxHp;
+    public int Hp => hp;
+    public int MaxHp => maxHp;
+    [SerializeField] protected bool isDead;
     public bool IsDead
     {
-        get { return isDead; }
-        set { isDead = value; }
+        get { return this.isDead; }
+        set { this.isDead = value; }
     }
     public virtual void Reborn()
     {
-        this.HP = 1;
+        this.hp = 1;
+        this.maxHp = 1;
         this.IsDead = false;
     }
     public virtual void AddHP(int addHP)
     {
-        this.HP += addHP;
+        this.hp += addHP;
     }
-    public virtual void Receiver(int hp)
+    public virtual void Receiver(int dame)
     {
-        this.HP-= hp;
+        this.hp-= dame;
     }
-
+    public virtual bool CheckIsDead()
+    {
+        if (this.hp <= 0) return true;
+        return false;
+    }
 }

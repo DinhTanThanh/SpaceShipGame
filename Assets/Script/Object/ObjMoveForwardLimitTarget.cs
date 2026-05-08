@@ -12,7 +12,7 @@ public class ObjMoveForwardLimitTarget : Movement
         SetSpeed();
         SetLimitDistance();
         this.target = transform.Find("Target");
-        this.player = GameObject.Find("Player").transform;
+        this.player = GameObject.Find("Player")?.transform;
     }
     protected override void LoadComponentEnable()
     {
@@ -23,11 +23,11 @@ public class ObjMoveForwardLimitTarget : Movement
     {
         if (Random.value > 0.5)
         {
-            this.speed = Random.Range(0.25f, 0.35f);
+            this.speed = Random.Range(0.15f, 0.25f);
         }
         else
         {
-            this.speed = Random.Range(0.4f, 0.45f);
+            this.speed = Random.Range(0.3f, 0.35f);
         }
     }
     protected override void SetLimitDistance()
@@ -36,8 +36,10 @@ public class ObjMoveForwardLimitTarget : Movement
     }
     private void Update()
     {
-        Vector3 posTarget = target.position;
-        Vector3 posPlayer = player.position;
+        if (this.target == null) return;
+        Vector3 posTarget = this.target.position;
+        if (this.player == null) return;
+        Vector3 posPlayer = this.player.position;
         Moving(posTarget,posPlayer);
     }
 }

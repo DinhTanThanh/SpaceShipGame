@@ -7,10 +7,11 @@ public class AbilityLookatTarget :LookatObj
     protected override void LoadComponent()
     {
         this.speedRotation = 1f;
-        this.target = GameObject.Find("Player").transform;
+        this.target = GameObject.Find("Player")?.transform;
     }
     private void Update()
     {
+        if (this.target == null) return;
         Direct(target.position);
     }
     protected override void SetRotation()

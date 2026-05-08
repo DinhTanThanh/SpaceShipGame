@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 public class EnemyShooting : Shoot
 {
     [SerializeField] protected GameObject managerBulletEnemy;
     public GameObject ManagerBulletEnemy=>managerBulletEnemy;
+    [SerializeField] protected Transform tempt;
+    public Transform Tempt => tempt;
     protected override void Awake()
     {
         LoadComponent();
@@ -21,6 +24,7 @@ public class EnemyShooting : Shoot
         this.shooter = GameObject.Find(transform.parent.name);
         this.bullet = this.getGameObject();
         this.spawnBullett = GameObject.Find("SpawnBulletEnemy");
+        this.tempt = transform.parent.Find("temp");
     }
     protected override void LoadComponentEnable()
     {
@@ -33,8 +37,9 @@ public class EnemyShooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
-        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(bullet, shooter.transform.position, shooter.transform.rotation);
+        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(bullet,tempt.position /*shooter.transform.position*/,shooter.transform.rotation);
         Vector3 pos = bulletObject.transform.position;
+
         bulletObject.transform.SetParent(spawnBullett.transform);
         pos.z = 1f;
         bulletObject.transform.position = pos;

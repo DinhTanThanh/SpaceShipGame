@@ -6,19 +6,19 @@ public class MeteoriteController : ShottingController
     public MeoteoriteDamereceiver MeoteoriteDamereceiver => meoteoriteDamereceiver;
     protected override void Reset()
     {
-        LoadMeteoriteSO();
+        LoadEnemySO();
         LoadComponent();
     }
     protected override void Awake()
     {
-        LoadMeteoriteSO();
+        LoadEnemySO();
         LoadComponent();
     }
     protected override void LoadComponent()
     {
         this.meoteoriteDamereceiver=GetComponentInChildren<MeoteoriteDamereceiver>();
     }
-    public override void LoadMeteoriteSO()
+    public override void LoadEnemySO()
     {
         if (shottingSO != null) return;
         string nameMeteoriteSO= "Shotting/Meteorite/" + transform.name;

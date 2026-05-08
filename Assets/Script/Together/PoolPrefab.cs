@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoolPrefab : LoadMonoBehaviour
 {
+    [Header("PoolPrefab")]
     [SerializeField] protected int sttObject = 1;
     [SerializeField] protected int sttLimitObject = 0;
     public List<GameObject> ListGameObject= new List<GameObject>();
@@ -39,6 +40,6 @@ public class PoolPrefab : LoadMonoBehaviour
     }
     public void GoBackList(GameObject prefab)
     {
-        ListGameObject.Add(prefab);
+        this.ListGameObject.Add(prefab);
     }
 }

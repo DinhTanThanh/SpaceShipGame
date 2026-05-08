@@ -8,7 +8,7 @@ public class LevelByDistance : Level
     
     protected void GetTarget()
     {
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("Player")?.transform;
     }
     protected void DistanceCurrent()
     {

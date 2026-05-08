@@ -24,13 +24,13 @@ public class EnemyMotherDameReceiver : DameReceiver
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
             Reborn();
-            SpawnEnemy.instance.GoBackList(transform.parent.gameObject);
-            SpawnItems.instance.SpawnItem(EnemyMotherShipCtrl.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            //SpawnEnemy.instance.GoBackList(transform.parent.gameObject);
+            SpawnItems.instance.DropItem(EnemyMotherShipCtrl.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()
     {
-        this.HP = EnemyMotherShipCtrl.ShottingSO.maxHP;
+        this.hp = EnemyMotherShipCtrl.ShottingSO.maxHP;
         this.IsDead = false;
     }
 }

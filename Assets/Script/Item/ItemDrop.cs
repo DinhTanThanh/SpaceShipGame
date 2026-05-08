@@ -32,7 +32,7 @@ public class ItemDrop : InventoryAbstract
         Inventory.Items.Remove(temp);
         Vector3 pos = player.position;
         pos.x += 2.5f;
-        GameObject itemDrop= SpawnItems.instance.SpawnItem(temp, pos,Quaternion.Euler(0,0,0));
+        GameObject itemDrop= SpawnItems.instance.DropItemInventory(temp, pos,Quaternion.Euler(0,0,0));
         ItemCtrl itemCtrl=itemDrop.GetComponent<ItemCtrl>();
         itemCtrl.SetItemInventory(temp);
         return true;

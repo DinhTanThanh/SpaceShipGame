@@ -27,7 +27,7 @@ public class Shooting : Shoot
     protected override bool getControllerToSpawn()
     {
         if (objectController == null) return true;
-        if (objectController.inputManager.clickMouse == 0) return false;
+        if (objectController.InputManager.clickMouse == 0) return false;
         return true;
     }
     protected override void SetTimeDelay()

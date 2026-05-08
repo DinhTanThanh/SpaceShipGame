@@ -8,7 +8,7 @@ public class AbilityMoving : Movement
     {
         SetLimitDistance();
         SetSpeed();
-        this.target = GameObject.FindGameObjectWithTag("Player").transform; //GameObject.Find("Player").transform;
+        this.target = GameObject.FindGameObjectWithTag("Player")?.transform; //GameObject.Find("Player").transform;
     }
     protected override void SetSpeed()
     {
@@ -20,6 +20,7 @@ public class AbilityMoving : Movement
     }
     private void Update()
     {
+        if (this.target == null) return;
         Vector3 posTarget = target.position;
         Moving(posTarget, posTarget);
     }
