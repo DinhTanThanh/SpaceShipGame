@@ -2,10 +2,14 @@
 using UnityEngine;
 public class EnemyShooting : Shoot
 {
+    [SerializeField] protected float disLimit;
+    public float DisLimit => disLimit;
     [SerializeField] protected GameObject managerBulletEnemy;
     public GameObject ManagerBulletEnemy=>managerBulletEnemy;
-    [SerializeField] protected Transform tempt;
-    public Transform Tempt => tempt;
+    [SerializeField] protected Transform gatewayShotting;
+    public Transform GatewayShotting => gatewayShotting;
+    [SerializeField] protected Transform objTarget;
+    public Transform ObjTarget => objTarget;
     protected override void Awake()
     {
         LoadComponent();
@@ -13,6 +17,7 @@ public class EnemyShooting : Shoot
     protected override void Reset()
     {
         LoadComponent();
+        this.SetDisLimit(13);
     }
     private void Update()
     {
@@ -21,10 +26,19 @@ public class EnemyShooting : Shoot
     protected override void LoadComponent()
     {
         this.SetTimeDelay();
+        this.LoadObjectTarget();
         this.shooter = GameObject.Find(transform.parent.name);
         this.bullet = this.getGameObject();
         this.spawnBullett = GameObject.Find("SpawnBulletEnemy");
-        this.tempt = transform.parent.Find("temp");
+        this.gatewayShotting = transform.parent.Find("GatewayShotting");
+    }
+    protected override void TimeDelay()
+    {
+        timer += Time.deltaTime;
+        if (timer < timeDelay) return;
+        timer = 0f;
+        if (!this.CheckLimitWithTarget()) return;
+        ExecuteSpawn();
     }
     protected override void LoadComponentEnable()
     {
@@ -37,7 +51,7 @@ public class EnemyShooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
-        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(bullet,tempt.position /*shooter.transform.position*/,shooter.transform.rotation);
+        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(bullet, gatewayShotting.position,shooter.transform.rotation);
         Vector3 pos = bulletObject.transform.position;
 
         bulletObject.transform.SetParent(spawnBullett.transform);
@@ -64,10 +78,27 @@ public class EnemyShooting : Shoot
     }
     protected override void SetTimeDelay()
     {
-        this.timeDelay = 0.2f;
+        this.timeDelay = 0.8f;
     }
     protected int RandomTimeSpawn()
     {
         return Random.Range(3, 7);
+    }
+
+    protected virtual void LoadObjectTarget()
+    {
+        if (this.objTarget != null) return;
+        this.objTarget = GameObject.Find("Player")?.transform;
+        Debug.LogWarning("Load ObjectTarget: " + transform.name);
+    }
+    protected virtual bool CheckLimitWithTarget()
+    {
+        float dis = Vector3.Distance(this.objTarget.position, transform.parent.position);
+        if (dis < this.disLimit) return true;
+        return false;
+    }
+    protected virtual void SetDisLimit(float disLimit)
+    {
+        this.disLimit = disLimit;
     }
 }

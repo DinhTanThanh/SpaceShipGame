@@ -25,7 +25,7 @@ public class SpawnShootingAbleObject : PoolPrefab
         int index = Random.Range(0, objectPrefab.childCount);
         return objectPrefab.GetChild(index);
     }
-    public void SpawnRandom_Object()
+    public Transform SpawnRandom_Object()
     {
         Transform posSpawn = RandomObject(PosManager.transform);
         Transform shootSpawn = RandomObject(MonterManager.transform);
@@ -35,6 +35,7 @@ public class SpawnShootingAbleObject : PoolPrefab
         newObject.transform.SetParent(transform);
         float dir = Mathf.Atan2(posSpawn.position.y, posSpawn.position.x) * Mathf.Rad2Deg;
         newObject.transform.rotation = Quaternion.Euler(0, 0, dir +120);
+        return newObject.transform;
     }
     protected bool DelaySpawn()
     {

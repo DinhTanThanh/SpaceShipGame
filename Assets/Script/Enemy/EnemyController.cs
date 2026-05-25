@@ -28,6 +28,10 @@ public class EnemyController : ShottingController
     {
         string nameMeteoriteSO = "Shotting/Enemy/" + transform.name;
         this.shottingSO = Resources.Load<ShottingSO>(nameMeteoriteSO);
+        if (this.shottingSO == null)
+        {
+            this.shottingSO = Resources.Load<ShottingSO>("Shotting/Enemy/EnemyDefault");
+        }
     }
     protected virtual void LoadLookatObjByShip()
     {

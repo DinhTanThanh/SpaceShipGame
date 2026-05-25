@@ -20,7 +20,6 @@ public class EnemyDameReceiver : DameReceiver
     {
         if (IsDead == true)
         {
-            Debug.Log("object đã chết");
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
             //this.Reborn();

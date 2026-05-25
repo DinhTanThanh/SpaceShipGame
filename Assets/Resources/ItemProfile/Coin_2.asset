@@ -16,4 +16,5 @@ MonoBehaviour:
   itemType: 1
   nameItem: Coin_2
   defaultStack: 7
+  sprite: {fileID: 21300000, guid: cc4498c00885cda4e9dac4c123305e21, type: 3}
   listUpgradeLevel: []

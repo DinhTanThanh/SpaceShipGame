@@ -16,6 +16,6 @@ public class LookatObjByShip : LookatObj
     }
     protected override void SetRotation()
     {
-        this.speedRotation = 0.4f;
+        this.speedRotation = 0.6f;
     }
 }

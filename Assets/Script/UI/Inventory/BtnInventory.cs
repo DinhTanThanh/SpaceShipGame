@@ -27,6 +27,7 @@ public class BtnInventory : LoadMonoBehaviour
         this.gameObject.SetActive(false);
         this.isOpen = false;
     }
+   
 }
 
    

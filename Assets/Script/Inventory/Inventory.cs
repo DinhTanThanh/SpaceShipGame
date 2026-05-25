@@ -1,11 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
 public class Inventory : MonoBehaviour
 {
     [SerializeField] protected int maxSlot = 70;
     [SerializeField] protected List<ItemInventory> items;
     public List<ItemInventory> Items => items;
+    [SerializeField] protected List<IObjChangeItemObserver> listChangeItem=new List<IObjChangeItemObserver>();
+    //kết hợp observer và dirty flag pattern đẻ tổi ưu hiệu xuất hiển thị danh sách item trông túi đồ UI
+    //observer để khi inventory có thay đổi mới load
+    //dirty flag chi load những item bị thay đổi
+    public void AddItemChange(IObjChangeItemObserver objChangeItem)
+    {
+        this.listChangeItem.Add(objChangeItem);
+    }
+    protected void OnChangeItem()
+    {
+        foreach(IObjChangeItemObserver itemChange in this.listChangeItem)
+        {
+            itemChange.OnChangeItem();
+        }
+    }
     public bool AddItem(ItemInventory itemInventory)
     {
         if (CheckMaxSlot())
@@ -17,6 +32,7 @@ public class Inventory : MonoBehaviour
                     if (child.itemProfileSO.itemCode == itemInventory.itemProfileSO.itemCode)
                     {
                         int newCount = child.itemCount + itemInventory.itemCount;
+                        child.isDirty = true;
                         if (newCount > child.maxStack)
                         {
                             itemInventory.itemCount -= child.maxStack - child.itemCount;
@@ -30,13 +46,16 @@ public class Inventory : MonoBehaviour
                     }
                 }
                 items.Add(itemInventory);
+                itemInventory.isDirty = true;
             }
             else
             {
                 AddItem(itemInventory.itemProfileSO.itemCode, 1);
             }
+            OnChangeItem();
+            return true;
         }
-        return true;
+        else return false;   
     }
     public bool AddItem(ItemCode itemCode, int itemCount)
     {
@@ -51,13 +70,11 @@ public class Inventory : MonoBehaviour
                     int newCountEmpty = result.item.maxStack - result.item.itemCount;
                     result.item.itemCount += newCountEmpty;
                     itemCount -= newCountEmpty;
-                    if (!result.isSlot)
-                    {
-                        break;
-                    }
+                    result.item.isDirty = true;
                     continue;
                 }
                 result.item.itemCount = newCount;
+                result.item.isDirty = true;
                 break;
             }
             return false;

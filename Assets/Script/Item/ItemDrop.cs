@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ItemDrop : InventoryAbstract
+public class ItemDrop : BaseInventory
 {
     [SerializeField] Transform player;
     protected override void LoadComponent()
@@ -15,7 +15,7 @@ public class ItemDrop : InventoryAbstract
     protected override void Awake()
     {
         base.Awake();
-        Invoke("TestDrop", 5);
+        //Invoke("TestDrop", 5);
     }
     protected void TestDrop()
     {

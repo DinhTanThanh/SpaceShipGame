@@ -2,7 +2,7 @@
 
 public class MeteoriteMoving : MonoBehaviour
 {
-    public float speed = 0.001f;
+    public float speed = 0.003f;
     private void Update()
     {
         transform.parent.Translate(Vector3.up*speed);
