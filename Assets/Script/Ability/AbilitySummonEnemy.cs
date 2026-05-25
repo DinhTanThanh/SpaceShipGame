@@ -3,19 +3,23 @@ using UnityEngine;
 
 public class AbilitySummonEnemy : BaseAbility
 {
+    [Header("Ability Summon Enemy")]
+    
+    [SerializeField] protected int countLimitEnemy;
+    [SerializeField] protected int numberEnemy = 1;
+    [SerializeField] protected string stringNameEnemy;
+    public int NumberEnemy => numberEnemy;
+    public int CountLimitEnemy => countLimitEnemy;
+    public string StringNameEnemy => stringNameEnemy;
     [SerializeField] protected AbilitySummonController abilitySummonController;
     [SerializeField] protected GameObject enemy;
     [SerializeField] protected Transform gateWaySpawn;
-    [SerializeField] protected List<GameObject> ListEnemySpawned = new List<GameObject>();
-    [SerializeField] protected string stringNameEnemy;
-    [SerializeField] protected int countLimitEnemy;
-    [SerializeField] protected int numberEnemy=1;
+ 
     public AbilitySummonController AbilitySummonController => abilitySummonController;
     public GameObject Enemy => enemy;
     public Transform GateWaySpawn => gateWaySpawn;
-    public string StringNameEnemy => stringNameEnemy;
-    public int NumberEnemy=> numberEnemy;
-    public int CountLimitEnemy => countLimitEnemy;
+  
+    [SerializeField] protected List<GameObject> ListEnemySpawned = new List<GameObject>();
     private void Update()
     {
         SpawnEnemy();
@@ -23,12 +27,18 @@ public class AbilitySummonEnemy : BaseAbility
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.abilitySummonController=GetComponentInParent<AbilitySummonController>();
-        LoadGameObjectEnemy();
-        LoadGateWaySpawn();
-        SetDelayTimer();
-        SetNameEnemy();
-        SetCountLimitEnemy();
+        this.LoadAbilitySummonController();
+        this.LoadGameObjectEnemy();
+        this.LoadGateWaySpawn();
+        this.SetDelayTimer();
+        this.SetNameEnemy();
+        this.SetCountLimitEnemy();
+    }
+    protected virtual void LoadAbilitySummonController()
+    {
+        if (this.abilitySummonController != null) return;
+        this.abilitySummonController = GetComponentInParent<AbilitySummonController>();
+        Debug.LogWarning("Load AbilitySummonController: " + transform.name);
     }
     protected virtual void LoadGameObjectEnemy()
     {
@@ -38,7 +48,8 @@ public class AbilitySummonEnemy : BaseAbility
             Debug.LogWarning("NOT LOADED MANAGER ENEMY");
             return;
         }
-        this.enemy = managerEnemy.GetChild(0).gameObject;
+        this.enemy = managerEnemy.Find("Enemy_1")?.gameObject;
+        Debug.LogWarning("Load Enemy: " + transform.name);
     }
     protected override void SetDelayTimer()
     {
@@ -51,7 +62,7 @@ public class AbilitySummonEnemy : BaseAbility
     }
     protected virtual void SetCountLimitEnemy()
     {
-        this.countLimitEnemy = 3;
+        this.countLimitEnemy = 7;
     }
     protected virtual void LoadGateWaySpawn()
     {
@@ -59,10 +70,10 @@ public class AbilitySummonEnemy : BaseAbility
     }
     protected virtual void SpawnEnemy()
     {
-        if (!Timing()) return;
-        if (CheckLimitEnemy())
+        if (!this.Timing()) return;
+        if (this.CheckLimitEnemy())
         {
-            EnableAndResetPos();
+            this.EnableAndResetPos();
             return;
         }
         GameObject enemySpawned = Spawn.Instance.SpawnObject(this.enemy, this.gateWaySpawn.position, this.abilitySummonController.EnemyMotherShipCtrl.transform.rotation);

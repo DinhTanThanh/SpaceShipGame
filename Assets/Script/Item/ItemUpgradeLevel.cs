@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemUpgradeLevel : InventoryAbstract
+public class ItemUpgradeLevel : BaseInventory
 {
     protected override void LoadComponent()
     {
@@ -10,7 +10,7 @@ public class ItemUpgradeLevel : InventoryAbstract
     protected override void Awake()
     {
         base.Awake();
-        Invoke("Test", 2);
+        //Invoke("Test", 2);
     }
     protected void Test()
     {

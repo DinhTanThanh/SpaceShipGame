@@ -4,14 +4,16 @@ public abstract class Shoot : LoadMonoBehaviour
 {
     public float timer = 0f;
     public float timeDelay = 0.5f;
+
     [SerializeField] protected GameObject shooter;
     public GameObject Shooter => shooter;
     [SerializeField] protected GameObject bullet;
     public GameObject Bullet=> bullet;
     [SerializeField] protected GameObject spawnBullett;
     public GameObject SpawnBullett=>spawnBullett;
+ 
     protected abstract bool getControllerToSpawn();
-    public virtual void TimeDelay()
+    protected virtual void TimeDelay()
     {
         timer += Time.deltaTime;
         if (!getControllerToSpawn()) return;

@@ -16,4 +16,5 @@ MonoBehaviour:
   itemType: 2
   nameItem: Potions_3
   defaultStack: 7
+  sprite: {fileID: 21300000, guid: 3b2c6146f3b18004a9116bb9934edaf6, type: 3}
   listUpgradeLevel: []
