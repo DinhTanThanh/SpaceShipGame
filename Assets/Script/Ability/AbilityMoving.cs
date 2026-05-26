@@ -16,7 +16,7 @@ public class AbilityMoving : Movement
     }
     protected override void SetLimitDistance()
     {
-        this.limitDistance = 13f;
+        this.limitDistance = 18f;
     }
     private void Update()
     {

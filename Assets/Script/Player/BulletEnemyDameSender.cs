@@ -48,12 +48,15 @@ public class BulletEnemyDameSender : LoadMonoBehaviour
             playerDameReceiver.Receiver(1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;
+            
             GameObject Impact= SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation);
             Impact.transform.SetParent(this.managerImpact.transform);
             if (playerDameReceiver.CheckIsDead())
             {
                 playerDameReceiver.IsDead = true;
             }
+            SpawnBulletEnemy.instance.GoBackList(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
         
     }
