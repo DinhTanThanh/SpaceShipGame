@@ -17,7 +17,7 @@ public class EnemyShooting : Shoot
     protected override void Reset()
     {
         LoadComponent();
-        this.SetDisLimit(13);
+        this.SetDisLimit(18);
     }
     private void Update()
     {
