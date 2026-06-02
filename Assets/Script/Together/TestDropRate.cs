@@ -21,7 +21,7 @@ public class TestDropRate : PoolPrefab
     protected void SpawnTest()
     {
         this.dropCount++;
-        List<ItemDropRate> listItemWillDrop = DropItemRate(meteoriteCtr.ShottingSO.dropItems);
+        List<ItemDropRate> listItemWillDrop = DropItemRate(meteoriteCtr.ShootingSO.dropItems);
         if (listItemWillDrop.Count <= 0) return;
         ShowingTesting showing;
         foreach (ItemDropRate itemDrop in listItemWillDrop)

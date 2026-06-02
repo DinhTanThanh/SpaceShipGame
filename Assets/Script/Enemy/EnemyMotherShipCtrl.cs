@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMotherShipCtrl : ShottingController
+public class EnemyMotherShipCtrl : ShootingController
 {
     [SerializeField] protected GameObject managerEnemy;
     public GameObject ManagerEnemy => managerEnemy;
@@ -10,7 +10,6 @@ public class EnemyMotherShipCtrl : ShottingController
     {
         base.LoadComponent();
         this.LoadManagerEnemy();
-        this.LoadComponentEnable();
         this.LoadabilitySummonController();
         this.LoadEnemySO();
     }
@@ -32,8 +31,8 @@ public class EnemyMotherShipCtrl : ShottingController
     }
     public override void LoadEnemySO()
     {
-        string nameMeteoriteSO = "Shotting/Enemy/" + transform.name;
-        this.shottingSO = Resources.Load<ShottingSO>(nameMeteoriteSO);
+        string nameMeteoriteSO = "Shooting/Enemy/" + transform.name;
+        this.shootingSO = Resources.Load<ShootingSO>(nameMeteoriteSO);
         //Debug.LogWarning("Load ShottingSO: " + transform.name);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : ShottingController
+public class EnemyController : ShootingController
 {
     [SerializeField] protected EnemyShooting enemyShooting;
     public EnemyShooting EnemyShooting => enemyShooting;
@@ -26,11 +26,11 @@ public class EnemyController : ShottingController
     }
     public override void LoadEnemySO()
     {
-        string nameMeteoriteSO = "Shotting/Enemy/" + transform.name;
-        this.shottingSO = Resources.Load<ShottingSO>(nameMeteoriteSO);
-        if (this.shottingSO == null)
+        string nameMeteoriteSO = "Shooting/Enemy/" + transform.name;
+        this.shootingSO = Resources.Load<ShootingSO>(nameMeteoriteSO);
+        if (this.shootingSO == null)
         {
-            this.shottingSO = Resources.Load<ShottingSO>("Shotting/Enemy/EnemyDefault");
+            this.shootingSO = Resources.Load<ShootingSO>("Shooting/Enemy/EnemyDefault");
         }
     }
     protected virtual void LoadLookatObjByShip()

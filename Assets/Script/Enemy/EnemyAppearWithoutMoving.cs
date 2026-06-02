@@ -8,7 +8,6 @@ public class EnemyAppearWithoutMoving : EnemyExplosionAbstract,IObjAppearObserve
     {
         base.Awake();
         this.enemyExplosionAppearing.AddObjecrAppear(this);
-        Debug.Log("1");
     }
     protected override void LoadComponent()
     {

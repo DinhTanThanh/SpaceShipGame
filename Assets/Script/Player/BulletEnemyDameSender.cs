@@ -33,7 +33,6 @@ public class BulletEnemyDameSender : LoadMonoBehaviour
     {
         if (this.managerImpact != null) return;
         this.managerImpact = GameObject.Find("ManagerImpact");
-        //Debug.LogWarning("Load ManagerImpact: " + transform.name);
     }
     protected virtual void SetAttribute()
     {
@@ -42,18 +41,18 @@ public class BulletEnemyDameSender : LoadMonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerDameReceiver playerDameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
-        if ((playerDameReceiver!=null))
+        DameReceiver dameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
+        if (dameReceiver!=null &&(dameReceiver as PlayerDameReceiver || dameReceiver as SupportShipDameReceiver))
         {
-            playerDameReceiver.Receiver(1);
+            dameReceiver.Receiver(1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;
             
             GameObject Impact= SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation);
             Impact.transform.SetParent(this.managerImpact.transform);
-            if (playerDameReceiver.CheckIsDead())
+            if (dameReceiver.CheckIsDead())
             {
-                playerDameReceiver.IsDead = true;
+                dameReceiver.IsDead = true;
             }
             SpawnBulletEnemy.instance.GoBackList(transform.parent.gameObject);
             transform.parent.gameObject.SetActive(false);

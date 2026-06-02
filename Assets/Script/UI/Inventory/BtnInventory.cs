@@ -5,7 +5,7 @@ public class BtnInventory : LoadMonoBehaviour
     private static BtnInventory instance;
     public static BtnInventory Instance => instance;
     [SerializeField] protected bool isOpen=false;
-    public bool IsOpen => IsOpen;
+    public bool IsOpen => isOpen;
     protected override void Awake()
     {
         base.Awake();

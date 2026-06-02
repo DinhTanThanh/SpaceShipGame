@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class EnableByDistance : DamgeSender
+public class EnableByDistance : DameSender
 {
     public GameObject mainCamera;
     public BulletController bulletContrl;
-    private void Reset()
+    protected override void Reset()
     {
+        base.Reset();
         mainCamera = GameObject.Find("Main Camera");
         bulletContrl = GetComponent<BulletController>();
     }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         mainCamera = GameObject.Find("Main Camera");
         bulletContrl = GetComponent<BulletController>();
     }
@@ -29,25 +31,9 @@ public class EnableByDistance : DamgeSender
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponentInChildren<MeoteoriteDamereceiver>())
-        {
-            MeoteoriteDamereceiver dameReceiver = collision.GetComponentInChildren<MeoteoriteDamereceiver>();
-            SendDame(dameReceiver);
-        }
-        else if (collision.GetComponentInChildren<EnemyDameReceiver>())
-        {
-            EnemyDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyDameReceiver>();
-            SendDame(dameReceiver);
-        }
-        else if (collision.GetComponentInChildren<EnemyMotherDameReceiver>())
-        {
-            EnemyMotherDameReceiver dameReceiver = collision.GetComponentInChildren<EnemyMotherDameReceiver>();
-            SendDame(dameReceiver);
-        }
-        else
-        {
-            return;
-        }
+        DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
+        if (dameReceive == null) return;
+        SendDame(dameReceive);
         Vector3 newPos = transform.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);

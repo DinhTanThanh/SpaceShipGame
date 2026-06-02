@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InputHotKeyManager : LoadMonoBehaviour
 {
@@ -45,9 +45,13 @@ public class InputHotKeyManager : LoadMonoBehaviour
         if (index == 0) return;
         ItemSlot itemSlot = this.hotKeyController.PressHotKey.ListItemSlot[index - 1];
         if (itemSlot == null) return;
-        DrapItem drapItem = itemSlot.GetComponentInChildren<DrapItem>();
-        if (drapItem == null) return;
-        Debug.Log("Press skill: " + index);
-
+        BaseSkill baseSkill= itemSlot.GetComponentInChildren<BaseSkill>();
+        if (baseSkill == null)
+        {
+            Debug.Log("Load khong dược");
+            return;
+        }
+        Debug.Log("thuc hien");
+        baseSkill.ActiveSkill();
     }
 }

@@ -95,7 +95,7 @@ public class AbilitySummonEnemy : BaseAbility
             Debug.LogWarning("Null hpbar");
             return;
         }
-        hpBar.SetEnemyController(enemy.GetComponent<EnemyController>());
+        hpBar.SetShootingController(enemy.GetComponent<EnemyController>());
         hpBar.FollowTarget.SetTarget(enemy.transform);
         newHpBar.SetActive(true);
     }

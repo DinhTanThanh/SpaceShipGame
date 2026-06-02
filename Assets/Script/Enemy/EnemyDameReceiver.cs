@@ -7,10 +7,22 @@ public class EnemyDameReceiver : DameReceiver
     public EnemyController EnemyCtrl;
     protected override void LoadComponent()
     {
-        EnemyCtrl = transform.parent.GetComponent<EnemyController>();
-        polygonCollider2D = GetComponent<PolygonCollider2D>();
-        polygonCollider2D.isTrigger = true;
-        Reborn();
+        this.LoadEnemyController();
+        this.LoadPolygonCollider2D();
+        this.polygonCollider2D.isTrigger = true;
+        this.Reborn();
+    }
+    protected virtual void LoadPolygonCollider2D()
+    {
+        if (this.polygonCollider2D != null) return;
+        this.polygonCollider2D = GetComponent<PolygonCollider2D>();
+        Debug.LogWarning("Load PolygonCollider2D: " + transform.name);
+    }
+    protected virtual void LoadEnemyController()
+    {
+        if (this.EnemyCtrl != null) return;
+        this.EnemyCtrl = transform.parent.GetComponent<EnemyController>();
+        Debug.LogWarning("Load EnemyController: " + transform.name);
     }
     protected override void LoadComponentEnable()
     {
@@ -18,18 +30,25 @@ public class EnemyDameReceiver : DameReceiver
     }
     private void Update()
     {
-        if (IsDead == true)
+        this.OnDead();
+    }
+    protected virtual void OnDead()
+    {
+        if (this.IsDead == true)
         {
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            //this.Reborn();
-            SpawnItems.instance.DropItem(EnemyCtrl.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            SpawnItems.instance.DropItem(this.EnemyCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            Vector3 posDrop = this.transform.position;
+            posDrop.x += 0.7f;
+            posDrop.y += 0.7f;
+            SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, posDrop, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()
     {
-        this.hp = this.EnemyCtrl.ShottingSO.maxHP;
-        this.maxHp=this.EnemyCtrl.ShottingSO.maxHP;
+        this.hp = this.EnemyCtrl.ShootingSO.maxHP;
+        this.maxHp=this.EnemyCtrl.ShootingSO.maxHP;
         this.IsDead = false;
     }
 }

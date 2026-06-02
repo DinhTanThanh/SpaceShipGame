@@ -41,14 +41,13 @@ public class UIInventorySpawnerCtrl : LoadMonoBehaviour,IObjChangeItemObserver
         {
             if (!this.dicItem.ContainsKey(item))
             {
-                Debug.Log("vo");
-                CreateNewUIItemSlot(item);
+                this.CreateNewUIItemSlot(item);
                 continue;
             }
             if (item.isDirty)
             {
                 Debug.Log("cap nhat");
-                UpdateNumberUISlot(item, dicItem[item]);
+                this.UpdateNumberUISlot(item, dicItem[item]);
                 item.isDirty = false;
             }
         }

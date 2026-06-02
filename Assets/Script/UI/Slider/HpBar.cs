@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HpBar : LoadMonoBehaviour
 {
-    [SerializeField] protected EnemyController enemyController;
-    public EnemyController EnemyController => enemyController;
+    [SerializeField] protected ShootingController shootingController;
+    public ShootingController ShottingController => shootingController;
     [SerializeField] protected SliderChangeHp sliderChangeHp;
     public SliderChangeHp SliderChangeHp => sliderChangeHp;
     [SerializeField] protected FollowTarget followTarget;
@@ -34,20 +34,20 @@ public class HpBar : LoadMonoBehaviour
     }
     protected virtual void ChangeHpBar()
     {
-        if (this.enemyController == null) return;
-        int currentHp = this.enemyController.DameReceiver.Hp;
-        int maxHp = this.enemyController.DameReceiver.MaxHp;
+        if (this.shootingController == null) return;
+        int currentHp = this.shootingController.DameReceiver.Hp;
+        int maxHp = this.shootingController.DameReceiver.MaxHp;
 
         this.sliderChangeHp.SetCurrentHp(currentHp);
         this.sliderChangeHp.SetMaxHp(maxHp);
     }
-    public virtual void SetEnemyController(EnemyController enemyController)
+    public virtual void SetShootingController(ShootingController shootingController)
     {
-        this.enemyController = enemyController;
+        this.shootingController = shootingController;
     }
     protected virtual void CheckTargetIsDead()
     {
-        this.isDead = this.enemyController.DameReceiver.IsDead;
+        this.isDead = this.shootingController.DameReceiver.IsDead;
         if (!this.isDead) return;
         this.gameObject.SetActive(false);
         SpawnHpBar.Instance.GoBackList(this.gameObject);
