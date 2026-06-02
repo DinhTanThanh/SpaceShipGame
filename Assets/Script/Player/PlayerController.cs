@@ -1,21 +1,38 @@
 using UnityEngine;
 
-public class PlayerController : ShottingController
+public class PlayerController : ShootingController
 {
     [SerializeField] protected InputManager inputManager;
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected PlayerCtrl playerCtrl;
-
+    [SerializeField] protected Shooting shooting;
+    [SerializeField] protected AbilityWarpCtrl abilityWarpCtrl;
     public InputManager InputManager => inputManager;
     public Inventory Inventory => inventory;
     public PlayerCtrl PlayerCtrl => playerCtrl;
+    public Shooting Shooting => shooting;
+    public AbilityWarpCtrl AbilityWarpCtrl => abilityWarpCtrl;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadInventory();
         this.LoadInputManager();
         this.LoadPlayerCtrl();
-        LoadEnemySO();
+        this.LoadShooting();
+        this.LoadEnemySO();
+        this.LoadAbilityWarpCtrl();
+    }
+    protected virtual void LoadAbilityWarpCtrl()
+    {
+        if (this.abilityWarpCtrl != null) return;
+        this.abilityWarpCtrl = FindFirstObjectByType<AbilityWarpCtrl>();
+        Debug.LogWarning("Load AbilityWarpCtrl: " + transform.name);
+    }
+    protected virtual void LoadShooting()
+    {
+        if (this.shooting != null) return;
+        this.shooting=GetComponentInChildren<Shooting>();
+        Debug.LogWarning("Load Shooting: " + transform.name);
     }
     protected virtual void LoadPlayerCtrl()
     {
@@ -37,9 +54,9 @@ public class PlayerController : ShottingController
     }
     public override void LoadEnemySO()
     {
-        if (this.shottingSO != null) return;
-        string path = "Shotting/Player/" + transform.name;
-        this.shottingSO = Resources.Load<ShottingSO>(path);
+        if (this.shootingSO != null) return;
+        string path = "Shooting/Player/" + transform.name;
+        this.shootingSO = Resources.Load<ShootingSO>(path);
         Debug.LogWarning("Load EnemySO: " + transform.name);
     }
 }

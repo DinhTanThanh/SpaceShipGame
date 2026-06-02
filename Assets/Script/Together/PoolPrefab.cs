@@ -12,7 +12,7 @@ public class PoolPrefab : LoadMonoBehaviour
     {
         this.sttLimitObject = 0;
     }
-    public GameObject Spawn(GameObject prefab)
+    public virtual GameObject Spawn(GameObject prefab)
     {
         foreach(GameObject item in ListGameObject)
         {

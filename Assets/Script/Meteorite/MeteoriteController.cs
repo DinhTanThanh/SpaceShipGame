@@ -1,18 +1,19 @@
 using UnityEngine;
 
-public class MeteoriteController : ShottingController
+public class MeteoriteController : ShootingController
 {
-    [SerializeField] protected MeoteoriteDamereceiver meoteoriteDamereceiver;
-    public MeoteoriteDamereceiver MeoteoriteDamereceiver => meoteoriteDamereceiver;
+    [SerializeField] protected MeteoriteDamereceiver meoteoriteDamereceiver;
+    public MeteoriteDamereceiver MeoteoriteDamereceiver => meoteoriteDamereceiver;
     protected override void LoadComponent()
     {
+        base.LoadComponent();
         this.LoadEnemySO();
-        this.meoteoriteDamereceiver=GetComponentInChildren<MeoteoriteDamereceiver>();
+        this.meoteoriteDamereceiver=GetComponentInChildren<MeteoriteDamereceiver>();
     }
     public override void LoadEnemySO()
     {
-        if (shottingSO != null) return;
-        string nameMeteoriteSO= "Shotting/Meteorite/" + transform.name;
-        shottingSO=Resources.Load<ShottingSO>(nameMeteoriteSO);
+        if (shootingSO != null) return;
+        string nameMeteoriteSO= "Shooting/Meteorite/" + transform.name;
+        shootingSO=Resources.Load<ShootingSO>(nameMeteoriteSO);
     }
 }

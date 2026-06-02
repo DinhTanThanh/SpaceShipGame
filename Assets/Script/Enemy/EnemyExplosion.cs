@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
-public class EnemyExplosion : LoadMonoBehaviour
+public class EnemyExplosion : DameSender
 {
     [SerializeField] protected PolygonCollider2D poligonCollider;
     [SerializeField] protected EnemyExplosionController enemyExplosionController;
@@ -30,10 +30,11 @@ public class EnemyExplosion : LoadMonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Transform enemyExplosionPos = collision.transform.parent?.parent?.transform;
+        if (enemyExplosionPos == null) return;
         PlayerDameReceiver playerDameReceiver=enemyExplosionPos.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver != null)
         {
-            playerDameReceiver.Receiver(2);
+            ExecuteReceiver(playerDameReceiver,2);
             SpawnExplosion.Instance.SetPosition(SpawnExplosion.Instance.Explosion, enemyExplosionPos.position, Quaternion.identity);
             if (playerDameReceiver.CheckIsDead())
             {

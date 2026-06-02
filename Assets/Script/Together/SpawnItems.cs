@@ -23,6 +23,21 @@ public class SpawnItems : PoolPrefab
         if (ManageItems != null) return;
         this.manageItems = GameObject.Find("ManageItems").transform;
     }
+    public override GameObject Spawn(GameObject prefab)
+    {
+        foreach (GameObject item in ListGameObject)
+        {
+            string nameItem = item.name;
+            nameItem = nameItem.Replace("(Clone)", "");
+            if (nameItem==prefab.name)
+            {
+                ListGameObject.Remove(item);
+                return item;
+            }
+        }
+        GameObject objectPrefab = Instantiate(prefab);
+        return objectPrefab;
+    }
     public void DropItem(List<ItemDropRate> DropList, Vector3 pos, Quaternion rot)
     {
         List<ItemDropRate> listItemWillDrop = DropItemRate(DropList);
@@ -46,6 +61,7 @@ public class SpawnItems : PoolPrefab
                 itemCount = 1
             };
             itemCtrl.SetItemInventory(tempInventory);
+            pos.x += 0.7f;
         }
     }
     protected List<ItemDropRate> DropItemRate(List<ItemDropRate> items)

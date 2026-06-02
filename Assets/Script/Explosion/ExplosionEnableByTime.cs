@@ -21,7 +21,6 @@ public class ExplosionEnableByTime : EnableByTime
     protected virtual void CheckEnableExplosion()
     {
         if (!this.CheckAchieveLimit()) return;
-        Debug.Log("dat dk");
         transform.parent.gameObject.SetActive(false);
         SpawnExplosion.Instance.GoBackList(transform.parent.gameObject);
     }

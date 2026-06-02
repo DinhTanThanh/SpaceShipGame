@@ -18,9 +18,13 @@ public class DameReceiver : LoadMonoBehaviour
         this.maxHp = 1;
         this.IsDead = false;
     }
-    public virtual void AddHP(int addHP)
+    public virtual void AddHP(int addHp)
     {
-        this.hp += addHP;
+        this.hp += addHp;
+    }
+    public virtual void AddMaxHP(int addMaxHP)
+    {
+        this.maxHp += addMaxHP;
     }
     public virtual void Receiver(int dame)
     {

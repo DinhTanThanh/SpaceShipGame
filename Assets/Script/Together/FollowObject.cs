@@ -25,7 +25,7 @@ public abstract class FollowObject : LoadMonoBehaviour
     }
     protected virtual void Moving()
     {
-        Vector3 posObject = ObjectTarget.transform.position;
+        Vector3 posObject = this.ObjectTarget.transform.position;
         Vector3 posPrecent = transform.parent.position;
         Vector3 newPosPrecent = Vector3.Lerp(posPrecent, posObject, this.speed * Time.deltaTime);
         newPosPrecent.z = order;

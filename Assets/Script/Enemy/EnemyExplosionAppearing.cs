@@ -16,7 +16,6 @@ public class EnemyExplosionAppearing : ObjAppearing
         this.ResetCurrenSCale();
         this.InitScale();
         this.ObAppearObserverStart();   
-        Debug.Log("Chayj");
     }
     private void Update()
     {

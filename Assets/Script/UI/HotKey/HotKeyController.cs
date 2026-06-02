@@ -6,6 +6,8 @@ public class HotKeyController : LoadMonoBehaviour
     public static HotKeyController Instance => instance;
     [SerializeField] protected PressHotKey pressHotKey;
     public PressHotKey PressHotKey => pressHotKey;
+    [SerializeField] protected Inventory inventory;
+    public Inventory Inventory => inventory;
     protected override void Awake()
     {
         if (HotKeyController.instance != null) Debug.LogError("Only one singleton is allowed to exist");
@@ -16,6 +18,13 @@ public class HotKeyController : LoadMonoBehaviour
     {
         base.LoadComponent();
         this.LoadPressHotKey();
+        this.LoadInventory();
+    }
+    protected virtual void LoadInventory()
+    {
+        if (this.inventory != null) return;
+        this.inventory = FindFirstObjectByType<Inventory>();
+        Debug.LogWarning("Load Inventory: " + transform.name);
     }
     protected virtual void LoadPressHotKey()
     {

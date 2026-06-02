@@ -20,17 +20,15 @@ public class EnemyMotherDameReceiver : DameReceiver
     {
         if (IsDead == true)
         {
-            //Debug.Log("object đã chết");
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            Reborn();
-            //SpawnEnemy.instance.GoBackList(transform.parent.gameObject);
-            SpawnItems.instance.DropItem(EnemyMotherShipCtrl.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            SpawnItems.instance.DropItem(this.EnemyMotherShipCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()
     {
-        this.hp = EnemyMotherShipCtrl.ShottingSO.maxHP;
+        this.hp = this.EnemyMotherShipCtrl.ShootingSO.maxHP;
+        this.maxHp = this.EnemyMotherShipCtrl.ShootingSO.maxHP;
         this.IsDead = false;
     }
 }
