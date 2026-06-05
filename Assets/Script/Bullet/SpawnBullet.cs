@@ -7,4 +7,17 @@ public class SpawnBullet : PoolPrefab
     {
         SpawnBullet.instance = this;
     }
+    public override GameObject Spawn(GameObject prefab)
+    {
+        foreach (GameObject item in this.ListGameObject)
+        {
+            if (item != null && item.name.Replace("(Clone)","").CompareTo(prefab.name)==0)
+            {
+                this.ListGameObject.Remove(item);
+                return item;
+            }
+        }
+        GameObject objectPrefab = Instantiate(prefab);
+        return objectPrefab;
+    }
 }

@@ -7,11 +7,13 @@ public class PlayerController : ShootingController
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected Shooting shooting;
     [SerializeField] protected AbilityWarpCtrl abilityWarpCtrl;
+    [SerializeField] protected PlayerGatewaysController playerGatewaysController;
     public InputManager InputManager => inputManager;
     public Inventory Inventory => inventory;
     public PlayerCtrl PlayerCtrl => playerCtrl;
     public Shooting Shooting => shooting;
     public AbilityWarpCtrl AbilityWarpCtrl => abilityWarpCtrl;
+    public PlayerGatewaysController PlayerGatewaysController => playerGatewaysController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -21,6 +23,13 @@ public class PlayerController : ShootingController
         this.LoadShooting();
         this.LoadEnemySO();
         this.LoadAbilityWarpCtrl();
+        this.LoadPlayerGatewaysController();
+    }
+    protected virtual void LoadPlayerGatewaysController()
+    {
+        if (this.playerGatewaysController != null) return;
+        this.playerGatewaysController=GetComponentInChildren<PlayerGatewaysController>();
+        Debug.LogWarning("Load PlayerGatewaysController: " + transform.name);
     }
     protected virtual void LoadAbilityWarpCtrl()
     {

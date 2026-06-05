@@ -29,7 +29,7 @@ public class RecoverySkill : BaseSkill
         if (this.playerController.AbilityWarpCtrl.PlayerRecovery.IsDone)
         {
             this.timer += Time.deltaTime;
-            if (this.timer < this.timeDelay) return;
+            if (this.timer <= this.timeDelay) return;
             this.timer = 0f;
             this.PlayerController.AbilityWarpCtrl.PlayerRecovery.SetIsDone(false);
         }

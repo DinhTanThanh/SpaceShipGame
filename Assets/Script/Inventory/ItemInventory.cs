@@ -8,5 +8,6 @@ public class ItemInventory
     public int maxStack = 7;
     public int currentLevel = 0;
     public bool isDirty = false;
+    public bool isDirtySkill = true;
 }
     
