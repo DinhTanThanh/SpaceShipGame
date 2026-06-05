@@ -13,18 +13,18 @@ public class SkillAppearing : LoadMonoBehaviour,IObjChangeItemObserver
     }
     public void OnChangeItem()
     {
-        //hàm này chưa cải tiến (phương hướng cải tiến sẽ dùng dirty design pattern để load hotkey thay đổi chứ không load hết hotkey như hiện tại)
         foreach (ItemInventory child in this.hotKeyController.Inventory.Items)
         {
             if (child.itemProfileSO.itemType == ItemType.Skill)
             {
+                if (!child.isDirtySkill) continue;
                 string nameSkill=child.itemProfileSO.itemCode.ToString();
-                //Debug.Log(nameSkill);
                 nameSkill = nameSkill.Replace("_item","");
                 Debug.Log(nameSkill);
                 Transform skill = this.managerSkill.transform.Find(nameSkill);
                 if (skill == null) continue;
                 this.SetParentForSkill(skill);
+                child.isDirtySkill = false;
             }
         }
     }

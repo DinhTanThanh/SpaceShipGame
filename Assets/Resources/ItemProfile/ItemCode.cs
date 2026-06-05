@@ -7,7 +7,7 @@ public enum ItemCode
     Potions_1=4,
     Potions_2=5,
     Potions_3=6,
-    Bullet_pink_item= 7,
+    Bullet_Pink_item= 7,
     SupportShip_item=8,
     Recovery_item=9
 }

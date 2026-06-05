@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f27b9f8ab96afa74dbbe5a67e7349c69, type: 3}
-  m_Name: Bullet_pink_item
+  m_Name: Bullet_Pink_item
   m_EditorClassIdentifier: 
   itemCode: 7
-  itemType: 1
-  nameItem: Bullet_pink
+  itemType: 3
+  nameItem: Bullet_Pink
   defaultStack: 7
   sprite: {fileID: -2112940742898438566, guid: d4e1562600310ef40842f2a640dd4747, type: 3}
   listUpgradeLevel: []
