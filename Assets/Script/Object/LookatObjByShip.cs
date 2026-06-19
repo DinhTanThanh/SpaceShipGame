@@ -4,9 +4,13 @@ public class LookatObjByShip : LookatObj
 {
     [SerializeField] protected Transform playerShip;
     public Transform PlayerShip => playerShip;
+    protected override void Reset()
+    {
+        base.Reset();
+        SetRotation();
+    }
     protected override void LoadComponent()
     {
-        SetRotation();
         this.playerShip = GameObject.Find("Player")?.transform;
     }
     private void Update()

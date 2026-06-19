@@ -8,7 +8,7 @@ public class DameSender : LoadMonoBehaviour
     }
     public void ExecuteReceiver(DameReceiver dameReceiver,int dame)
     {
-        dameReceiver.Receiver(dame);
+        dameReceiver.Receive(dame);
         if(dameReceiver.Hp<=0) dameReceiver.IsDead= true;
     }
 }

@@ -33,6 +33,7 @@ public class SkillAppearing : LoadMonoBehaviour,IObjChangeItemObserver
         foreach(Transform child in transform)
         {
             if (child.childCount > 0) continue;
+            Debug.Log(child.name);
             skill.SetParent(child);
         }
     }

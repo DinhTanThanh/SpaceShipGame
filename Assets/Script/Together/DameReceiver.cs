@@ -26,7 +26,7 @@ public class DameReceiver : LoadMonoBehaviour
     {
         this.maxHp += addMaxHP;
     }
-    public virtual void Receiver(int dame)
+    public virtual void Receive(int dame)
     {
         this.hp-= dame;
     }

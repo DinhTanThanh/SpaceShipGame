@@ -8,7 +8,7 @@ public class AbilityMoving : Movement
     {
         SetLimitDistance();
         SetSpeed();
-        this.target = GameObject.FindGameObjectWithTag("Player")?.transform; //GameObject.Find("Player").transform;
+        this.target = GameObject.FindGameObjectWithTag("Player")?.transform; 
     }
     protected override void SetSpeed()
     {

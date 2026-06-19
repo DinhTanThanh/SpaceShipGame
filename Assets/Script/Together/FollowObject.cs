@@ -21,7 +21,7 @@ public abstract class FollowObject : LoadMonoBehaviour
     }
     public void Update()
     {
-        Moving();
+        this.Moving();
     }
     protected virtual void Moving()
     {

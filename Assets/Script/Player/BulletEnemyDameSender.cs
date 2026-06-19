@@ -44,7 +44,7 @@ public class BulletEnemyDameSender : LoadMonoBehaviour
         DameReceiver dameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
         if (dameReceiver!=null &&(dameReceiver as PlayerDameReceiver || dameReceiver as SupportShipDameReceiver))
         {
-            dameReceiver.Receiver(1);
+            dameReceiver.Receive(1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;
             

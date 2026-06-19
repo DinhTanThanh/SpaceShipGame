@@ -14,6 +14,11 @@ public class PlayerController : ShootingController
     public Shooting Shooting => shooting;
     public AbilityWarpCtrl AbilityWarpCtrl => abilityWarpCtrl;
     public PlayerGatewaysController PlayerGatewaysController => playerGatewaysController;
+    protected override void Awake()
+    {
+        base.Awake();
+        //DontDestroyOnLoad(this.gameObject);
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();

@@ -6,13 +6,20 @@ public class InputHotKeyManager : LoadMonoBehaviour
     public static InputHotKeyManager Instance => instance;
     [SerializeField] protected int isPressOne;
     public int IsPressOne => isPressOne;
-
     [SerializeField] protected HotKeyController hotKeyController;
     public HotKeyController HotKeyController => hotKeyController;
     protected override void Awake()
     {
         InputHotKeyManager.instance = this;
         base.Awake();
+    }
+    protected override void Reset()
+    {
+        base.Reset();
+        //foreach(ItemSlot press in this.hotKeyController.PressHotKey.ListItemSlot)
+        //{
+        //    Debug.Log(press.name);
+        //}
     }
     protected override void LoadComponent()
     {
