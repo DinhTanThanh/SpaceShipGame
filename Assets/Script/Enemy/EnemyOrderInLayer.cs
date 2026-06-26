@@ -1,17 +1,10 @@
 using UnityEngine;
 
-public class PlayerShipOrderLayer : SortOderInLayerAbstract
+public class EnemyOrderInLayer : BaseSortOderInLayer
 {
-    [SerializeField] protected SpriteRenderer spriteRenderer;
-    public SpriteRenderer SpriteRenderer => spriteRenderer;
     protected override void LoadComponent()
     {
-        this.orderInObj = 12;
-        this.spriteRenderer=GetComponent<SpriteRenderer>();
-        this.SetSortOrderObject();
-    }
-    protected override void SetSortOrderObject()
-    {
-        this.spriteRenderer.sortingOrder = this.orderInObj;
+        this.SetSortOrder(12);
+        base.LoadComponent();
     }
 }

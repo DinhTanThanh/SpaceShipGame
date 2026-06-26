@@ -1,14 +1,15 @@
 using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
-public class EnemyV2DameReceive : DameReceiver
+public class EnemyVDameReceive : DameReceiver
 {
     [SerializeField] protected PolygonCollider2D polygonCollider2D;
-    [SerializeField] protected EnemyV2Controller enemyV2Controller;
+    [SerializeField] protected EnemyVController enemyVController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPolygonCollider2D();
         this.LoadEnemyV2Controller();
+        this.Reborn();
     }
     protected virtual void LoadPolygonCollider2D()
     {
@@ -19,15 +20,22 @@ public class EnemyV2DameReceive : DameReceiver
     }
     protected virtual void LoadEnemyV2Controller()
     {
-        if (this.enemyV2Controller != null) return;
-        this.enemyV2Controller = GetComponentInParent<EnemyV2Controller>();
+        if (this.enemyVController != null) return;
+        this.enemyVController = GetComponentInParent<EnemyVController>();
         Debug.LogWarning("Load EnemyV2Controller: " + transform.name);
     }
     private void Update()
     {
         if (!this.isDead) return;
-        Transform pos = this.enemyV2Controller.transform;
+        Transform pos = this.enemyVController.transform;
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos.position, pos.rotation);
-        
+        SpawnItems.instance.DropItem(this.enemyVController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);
+        transform.parent.gameObject.SetActive(false);
+    }
+    public override void Reborn()
+    {
+        if (this.enemyVController == null) return;
+        this.maxHp = this.enemyVController.ShootingSO.maxHP;
+        this.hp = this.enemyVController.ShootingSO.maxHP;
     }
 }

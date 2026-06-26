@@ -39,6 +39,7 @@ public class BulletPinkDameSender : DameSender
     {
         DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
         if (dameReceive == null) return;
+        if (dameReceive is PlayerDameReceiver) return;
         SendDame(dameReceive);
         Vector3 newPos = transform.position;
         newPos.z = -5f;

@@ -50,7 +50,7 @@ public class AbilityWarp : BaseAbility
     }
     protected virtual void SetWarpSpeed()
     {
-        this.warpSpeed = 4f;
+        this.warpSpeed = 12f;
     }
     protected virtual void SetWarpDirection()
     {
@@ -71,7 +71,7 @@ public class AbilityWarp : BaseAbility
         SetWarpDirection();
         if (IsDirectionNoSet()) return;
         StartAnimationTeleport();
-        Invoke("Warping", 1f);
+        Invoke("Warping", 0.1f);
     }
 
     protected virtual void WarpLeft()

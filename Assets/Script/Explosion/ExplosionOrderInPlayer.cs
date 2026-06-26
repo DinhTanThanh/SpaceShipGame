@@ -1,23 +1,10 @@
 using UnityEngine;
 
-public class ExplosionOrderInPlayer : SortOderInLayerAbstract
+public class ExplosionOrderInPlayer : BaseSortOderInLayer
 {
-    [SerializeField] protected SpriteRenderer spriteRenderer;
-    protected override void SetSortOrderObject()
-    {
-        this.orderInObj = 12;
-        this.spriteRenderer.sortingOrder = this.orderInObj;
-    }
     protected override void LoadComponent()
     {
+        this.SetSortOrder(12);
         base.LoadComponent();
-        this.LoadSpriteRenderer();
-        this.SetSortOrderObject();
-    }
-    protected virtual void LoadSpriteRenderer()
-    {
-        if (this.spriteRenderer != null) return;
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
-        Debug.LogWarning("Load SpriteRenderer: " + transform.name);
     }
 }

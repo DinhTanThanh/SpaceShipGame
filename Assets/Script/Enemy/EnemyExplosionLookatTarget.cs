@@ -8,7 +8,7 @@ public class EnemyExplosionLookatTarget : LookatObj
     {
         base.LoadComponent();
         this.LoadPlayer();
-        this.SetRotation();
+        this.SetRotation(10f);
     }
     private void Update()
     {
@@ -19,9 +19,5 @@ public class EnemyExplosionLookatTarget : LookatObj
         if (this.player != null) return;
         this.player = GameObject.Find("Player")?.transform;
         Debug.LogWarning("Load Player: " + transform.name);
-    }
-    protected override void SetRotation()
-    {
-        this.speedRotation = 10f;
     }
 }

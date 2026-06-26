@@ -25,9 +25,8 @@ public class EnemyBirdEnableByDistance : EnableByDistanceAbstract
     private void Update()
     {
         if (!IsDistanceAchiveLimit()) return;
-        SpawnEnemyBird.Instance.GoBackList(transform.parent.gameObject);
-        this.transform.parent.gameObject.SetActive(false);
-        if (this.enemyBirdController == null) return;
-        this.enemyBirdController.EnemyBirdDameReceiver.Reborn();
+        this.enemyBirdController.DameReceiver.IsDead = true;
+        //SpawnEnemyBird.Instance.GoBackList(transform.parent.gameObject);
+        //this.transform.parent.gameObject.SetActive(false);
     }
 }

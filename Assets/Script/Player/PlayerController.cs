@@ -8,12 +8,14 @@ public class PlayerController : ShootingController
     [SerializeField] protected Shooting shooting;
     [SerializeField] protected AbilityWarpCtrl abilityWarpCtrl;
     [SerializeField] protected PlayerGatewaysController playerGatewaysController;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     public InputManager InputManager => inputManager;
     public Inventory Inventory => inventory;
     public PlayerCtrl PlayerCtrl => playerCtrl;
     public Shooting Shooting => shooting;
     public AbilityWarpCtrl AbilityWarpCtrl => abilityWarpCtrl;
     public PlayerGatewaysController PlayerGatewaysController => playerGatewaysController;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
     protected override void Awake()
     {
         base.Awake();
@@ -29,6 +31,13 @@ public class PlayerController : ShootingController
         this.LoadEnemySO();
         this.LoadAbilityWarpCtrl();
         this.LoadPlayerGatewaysController();
+        this.LoadSpriteRenderer();
+    }
+    protected virtual void LoadSpriteRenderer()
+    {
+        if (this.spriteRenderer != null) return;
+        this.spriteRenderer=GetComponentInChildren<SpriteRenderer>();
+        Debug.LogWarning("Load SpriteRenderer: " + transform.name);
     }
     protected virtual void LoadPlayerGatewaysController()
     {

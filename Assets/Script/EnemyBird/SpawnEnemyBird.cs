@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class SpawnEnemyBird : PoolPrefab
 {
+    [Header("Spawn Enemy Bird")]
     private static SpawnEnemyBird instance;
     [SerializeField] protected float timer = 0f;
-    [SerializeField] protected float timeDelay = 1f;
+    [SerializeField] protected float timeDelay = 3f;
     [SerializeField] protected int indexPosCurrent=0;
     [SerializeField] protected GameObject enemyBird;
     [SerializeField] protected Transform posManager;
+    [SerializeField] protected GameObject spawnHpBar;
     [SerializeField] protected List<Transform> listPosition;
+    [SerializeField] protected List<GameObject> listSpawnEnemy;
+    [SerializeField] protected BossSpaceController bossSpaceController;
     public static SpawnEnemyBird Instance => instance;
 
     public List<Transform> ListPosition=> listPosition;
@@ -22,6 +26,20 @@ public class SpawnEnemyBird : PoolPrefab
         this.LoadEnemyBird();
         this.LoadPosManager();
         this.GetListPosition();
+        this.LoadSpawnHpBar();
+        this.LoadBossSpaceController();
+    }
+    protected virtual void LoadBossSpaceController()
+    {
+        if (this.bossSpaceController != null) return;
+        this.bossSpaceController=FindFirstObjectByType<BossSpaceController>();
+        Debug.LogWarning("Load BossSpaceController: " + transform.name);
+    }
+    protected virtual void LoadSpawnHpBar()
+    {
+        if (this.spawnHpBar != null) return;
+        this.spawnHpBar = GameObject.Find("SpawnHpBar");
+        Debug.LogWarning("Load SpawnHpBar: " + transform.name);
     }
     protected virtual void GetListPosition()
     {
@@ -49,14 +67,41 @@ public class SpawnEnemyBird : PoolPrefab
         base.Awake();
         SpawnEnemyBird.instance= this;
     }
-    private void Update()
+    private void FixedUpdate()
     {
+        if (this.bossSpaceController.DameReceiver.IsDead) return;
+        if (this.CountEnemyBirdInList() > 4) return;
         if (!this.Timing()) return;
         Transform tranformPos = this.GetPosition();
         float valueRandom = Random.Range(-5, 6);
         Vector3 randomPos = new Vector3(0, 0, valueRandom);
-        GameObject enemyBird=SpawnEnemyBird.Instance.SetPosition(this.enemyBird, tranformPos.position+randomPos, tranformPos.rotation);
+        GameObject enemyBird = SpawnEnemyBird.Instance.SetPosition(this.enemyBird, tranformPos.position + randomPos, tranformPos.rotation);
+        this.listSpawnEnemy.Add(enemyBird);
         enemyBird.transform.SetParent(transform);
+        GameObject objHpBar = SpawnHpBar.Instance.SetPosition(SpawnHpBar.Instance.HpBar, enemyBird.transform.position, Quaternion.identity);
+        objHpBar.transform.SetParent(this.spawnHpBar.transform);
+        HpBar hpBar = objHpBar.GetComponent<HpBar>();
+        if (hpBar == null) return;
+        hpBar.transform.localScale = new Vector3(1f, 2f, 1f);
+        EnemyBirdController enemyBirdController = enemyBird.GetComponent<EnemyBirdController>();
+        if (enemyBirdController == null) return;
+        enemyBirdController.DameReceiver.Reborn();
+        hpBar.SetShootingController(enemyBirdController);
+        hpBar.FollowTarget.SetTarget(enemyBird.transform);
+    }
+    protected virtual int CountEnemyBirdInList()
+    {
+        int count = 0;
+        for(int i=0;i<this.listSpawnEnemy.Count;i++)
+        {
+            if (!this.listSpawnEnemy[i].activeSelf)
+            {
+                this.listSpawnEnemy.RemoveAt(i);
+                continue;
+            }
+            count++;
+        }
+        return count;
     }
     protected virtual int RandomIndexPosition()
     {
@@ -74,7 +119,7 @@ public class SpawnEnemyBird : PoolPrefab
     }
     protected virtual bool Timing()
     {
-        this.timer += Time.deltaTime;
+        this.timer += Time.fixedDeltaTime;
         if (this.timer < this.timeDelay) return false;
         this.timer = 0f;
         return true;

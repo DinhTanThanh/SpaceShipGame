@@ -11,7 +11,7 @@ public class ItemVitalityUp : LoadMonoBehaviour
     {
         base.Reset();
         this.SetMaxHpIncrease(5);
-        this.SetHealPercent(0.1f);
+        this.SetHealPercent(0.3f);
     }
     protected override void LoadComponent()
     {
@@ -43,11 +43,10 @@ public class ItemVitalityUp : LoadMonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         PlayerDameReceiver playerDameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver == null) return;
         playerDameReceiver.AddMaxHP(this.maxHpIncrease);
-        int healAmount = (int)(playerDameReceiver.Hp * this.healPercent);
+        int healAmount = (int)(playerDameReceiver.MaxHp * this.healPercent);
         playerDameReceiver.SetHealAmount(healAmount);
         playerDameReceiver.SetIsHealHP(true);
         this.transform.parent.gameObject.SetActive(false);

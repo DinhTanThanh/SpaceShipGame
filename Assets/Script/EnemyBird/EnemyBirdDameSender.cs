@@ -30,8 +30,9 @@ public class EnemyBirdDameSender : DameSender
         if (playerDameReceive == null) return;
         playerDameReceive.Receive(3);
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
-        transform.parent.gameObject.SetActive(false);
-        SpawnEnemyBird.Instance.GoBackList(transform.parent.gameObject);
+        //transform.parent.gameObject.SetActive(false);
+        //SpawnEnemyBird.Instance.GoBackList(transform.parent.gameObject);
         SpawnItems.instance.DropItem(this.EnemyBirdController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+        this.enemyBirdController.DameReceiver.IsDead = true;
     }
 }

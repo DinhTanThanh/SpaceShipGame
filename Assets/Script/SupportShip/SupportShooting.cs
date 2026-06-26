@@ -14,7 +14,7 @@ public class SupportShooting : Shoot
     {
         base.LoadComponent();
         this.LoadSupportShipController();
-        this.SetTimeDelay();
+        this.SetTimeDelay(this.supportShipController.PlayerController.Shooting.timeDelay * 1.2f);
         this.shooter = transform.parent.gameObject;
         this.LoadBullet();
         this.spawnBullett = GameObject.Find("SpawnBullet");
@@ -41,7 +41,7 @@ public class SupportShooting : Shoot
     }
     protected override void LoadComponentEnable()
     {
-        this.SetTimeDelay();
+        this.SetTimeDelay(this.supportShipController.PlayerController.Shooting.timeDelay * 1.2f);
     }
     protected override bool getControllerToSpawn()
     {
@@ -56,10 +56,5 @@ public class SupportShooting : Shoot
         bulletObject.transform.SetParent(spawnBullett.transform);
         pos.z = 1f;
         bulletObject.transform.position = pos;
-    }
-    
-    protected override void SetTimeDelay()
-    {
-        this.timeDelay = this.supportShipController.PlayerController.Shooting.timeDelay*1.2f;
     }
 }

@@ -14,8 +14,8 @@ public class BulletPinkSkill : BaseSkill
     protected virtual void LoadBulletCurrent()
     {
         if (this.bulletCurrent != null) return;
-        this.bulletCurrent = GameObject.Find("ManagerBullet")?.transform.Find("Bullet_Pink")?.gameObject;
-        Debug.LogWarning("Load Bullet Pink: "+transform.name);
+        this.bulletCurrent = GameObject.Find("ManagerBullet")?.transform.Find("Bullet_Blue")?.gameObject;
+        Debug.LogWarning("Load Bullet Blue: " + transform.name);
     }
     protected virtual void LoadPlayerController()
     {

@@ -9,8 +9,8 @@ public class ObjMoveForwardLimitTarget : Movement
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        SetSpeed();
-        SetLimitDistance();
+        this.SetSpeed();
+        this.SetLimitDistance(0f);
         this.target = transform.Find("Target");
         this.player = GameObject.Find("Player")?.transform;
     }
@@ -29,10 +29,6 @@ public class ObjMoveForwardLimitTarget : Movement
         {
             this.speed = Random.Range(0.3f, 0.35f);
         }
-    }
-    protected override void SetLimitDistance()
-    {
-        this.limitDistance = 0f;
     }
     private void Update()
     {

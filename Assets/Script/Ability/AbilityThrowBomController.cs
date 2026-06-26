@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AbilityThrowBomController : LoadMonoBehaviour
 {
-    [SerializeField] protected EnemyV2Controller enemyV2Controller;
-    public EnemyV2Controller EnemyV2Controller => enemyV2Controller;
+    [SerializeField] protected EnemyVController enemyV2Controller;
+    public EnemyVController EnemyV2Controller => enemyV2Controller;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -12,7 +12,7 @@ public class AbilityThrowBomController : LoadMonoBehaviour
     protected virtual void LoadEnemyV2Controller()
     {
         if (this.enemyV2Controller != null) return;
-        this.enemyV2Controller = FindFirstObjectByType<EnemyV2Controller>();
+        this.enemyV2Controller = FindFirstObjectByType<EnemyVController>();
         Debug.LogWarning("Load EnemyV2Controller: "+transform.name);
     }
 }

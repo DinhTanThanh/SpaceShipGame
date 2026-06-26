@@ -4,22 +4,21 @@ using UnityEngine;
 public class AbilitySummonEnemy : BaseAbility
 {
     [Header("Ability Summon Enemy")]
-    
     [SerializeField] protected int countLimitEnemy;
     [SerializeField] protected int numberEnemy = 1;
     [SerializeField] protected string stringNameEnemy;
-    public int NumberEnemy => numberEnemy;
-    public int CountLimitEnemy => countLimitEnemy;
-    public string StringNameEnemy => stringNameEnemy;
     [SerializeField] protected AbilitySummonController abilitySummonController;
     [SerializeField] protected GameObject enemy;
     [SerializeField] protected Transform gateWaySpawn;
- 
+    [SerializeField] protected List<GameObject> ListEnemySpawned = new List<GameObject>();
+
+    public int NumberEnemy => numberEnemy;
+    public int CountLimitEnemy => countLimitEnemy;
+    public string StringNameEnemy => stringNameEnemy;
     public AbilitySummonController AbilitySummonController => abilitySummonController;
     public GameObject Enemy => enemy;
     public Transform GateWaySpawn => gateWaySpawn;
   
-    [SerializeField] protected List<GameObject> ListEnemySpawned = new List<GameObject>();
     private void Update()
     {
         SpawnEnemy();
@@ -97,7 +96,7 @@ public class AbilitySummonEnemy : BaseAbility
         }
         hpBar.SetShootingController(enemy.GetComponent<EnemyController>());
         hpBar.FollowTarget.SetTarget(enemy.transform);
-        newHpBar.SetActive(true);
+        //newHpBar.SetActive(true);
     }
     protected virtual bool CheckLimitEnemy()
     {

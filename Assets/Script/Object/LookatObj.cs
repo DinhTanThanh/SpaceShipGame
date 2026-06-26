@@ -4,9 +4,9 @@ public class LookatObj : LoadMonoBehaviour
 {
     [SerializeField] protected float speedRotation;
     public float SpeedRotation => speedRotation;
-    protected virtual void SetRotation()
+    public virtual void SetRotation(float speedRotaiton)
     {
-        this.speedRotation = 1f;
+        this.speedRotation = speedRotaiton;
     }
     protected virtual void Direct(Vector3 target)
     {
@@ -16,6 +16,6 @@ public class LookatObj : LoadMonoBehaviour
         float dir = Mathf.Atan2(newPos.y, newPos.x) * Mathf.Rad2Deg;
         Quaternion currentRotation = transform.parent.rotation;
         Quaternion targetRotation = Quaternion.Euler(0f,0f, dir - 90);
-        transform.parent.rotation= Quaternion.Lerp(currentRotation, targetRotation, speedRotation * Time.deltaTime);
+        transform.parent.rotation= Quaternion.Lerp(currentRotation, targetRotation, this.speedRotation * Time.deltaTime);
     }
 }

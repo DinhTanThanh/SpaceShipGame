@@ -13,13 +13,14 @@ public class EnemyBirdDameReceiver : DameReceiver
     }
     private void Update()
     {
-        if (IsDead == true)
+        if (this.IsDead == true)
         {
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
-            transform.parent.gameObject.SetActive(false);
-            Reborn();
+            SpawnItems.instance.DropItem(this.EnemyBirdController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
             SpawnEnemyBird.Instance.GoBackList(transform.parent.gameObject);
-            SpawnItems.instance.DropItem(EnemyBirdController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            transform.parent.gameObject.SetActive(false);
+
+            //this.Reborn();
         }
     }
     public override void Reborn()

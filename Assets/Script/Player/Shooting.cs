@@ -15,7 +15,7 @@ public class Shooting : Shoot
         spawnBullett = GameObject.Find("SpawnBullet");
         this.GetListGatewayStatus();
         this.listGatewayStatus[0].SetStatusGateway(true);
-        this.SetTimeDelay();
+        this.SetTimeDelay(0.1f);
     }
     protected virtual void GetListGatewayStatus()
     {
@@ -103,9 +103,5 @@ public class Shooting : Shoot
         if (objectController == null) return true;
         if (objectController.InputManager.clickMouse == 0) return false;
         return true;
-    }
-    protected override void SetTimeDelay()
-    {
-        this.timeDelay = 0.1f;
     }
 }
