@@ -4,10 +4,14 @@ public class MovingBullet : LoadMonoBehaviour
 {
     [SerializeField] protected float speed;
     public float Speed=>speed;
+    protected override void Reset()
+    {
+        base.Reset();
+        SetSpeedBullet(15);
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        SetSpeedBullet(15);
     }
     void Update()
     {

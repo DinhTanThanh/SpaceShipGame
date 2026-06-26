@@ -22,8 +22,8 @@ public abstract class Shoot : LoadMonoBehaviour
         ExecuteSpawn();
     }
     protected abstract void ExecuteSpawn();
-    protected virtual void SetTimeDelay()
+    public virtual void SetTimeDelay(float timeDelay)
     {
-        this.timeDelay = 0.5f;
+        this.timeDelay = timeDelay;
     }
 }

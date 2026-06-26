@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27b9f8ab96afa74dbbe5a67e7349c69, type: 3}
+  m_Name: ShipBlue
+  m_EditorClassIdentifier: 
+  itemCode: 10
+  itemType: 2
+  nameItem: ShipBlue
+  defaultStack: 7
+  sprite: {fileID: -3805430256361624941, guid: 2844179a14d07de439a93717bb4eb2b0, type: 3}
+  listUpgradeLevel: []

@@ -1,4 +1,5 @@
 using UnityEngine;
+[RequireComponent(typeof(PolygonCollider2D))]
 public class PlayerDameReceiver : DameReceiver
 {
     [Header("Player DameReceiver")]
@@ -7,12 +8,21 @@ public class PlayerDameReceiver : DameReceiver
     [SerializeField] protected bool isHealHp = false;
     [SerializeField] protected int healAmount;
     [SerializeField] protected PlayerController playerController;
+    [SerializeField] protected PolygonCollider2D polygonCollider2D;
     public PlayerController PlayerController => playerController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPlayerController();
+        this.LoadPolygonCollider2D();
         this.Reborn();
+    }
+    protected virtual void LoadPolygonCollider2D()
+    {
+        if (this.polygonCollider2D != null) return;
+        this.polygonCollider2D=GetComponent<PolygonCollider2D>();
+        this.polygonCollider2D.isTrigger = true;
+        Debug.LogWarning("Log PolygonCollider2D: " + transform.name);
     }
     protected virtual void LoadPlayerController()
     {

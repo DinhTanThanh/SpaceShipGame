@@ -10,10 +10,6 @@ public class LookatObjectByMouse : LookatObj
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-    protected override void SetRotation()
-    {
-        this.speedRotation = 3f;
-    }
     protected override void Direct(Vector3 target)
     {
         Vector3 posShip = transform.parent.position;

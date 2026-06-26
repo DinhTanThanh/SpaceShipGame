@@ -18,13 +18,8 @@ public class SpawnItemVitalityUp : PoolPrefab
     }
     protected virtual void LoadItemVitalityUp()
     {
-        if (this.itemVitalityUp != null)
-        {
-            this.itemVitalityUp.SetActive(false);
-            return;
-        }
+        if (this.itemVitalityUp != null) return;
         this.itemVitalityUp = GameObject.Find("ItemVitalityUp");
-        
         Debug.LogWarning("Load ItemVatilityUp: "+transform.name);
     }
 }

@@ -15,7 +15,7 @@ public class Shooting : Shoot
         spawnBullett = GameObject.Find("SpawnBullet");
         this.GetListGatewayStatus();
         this.listGatewayStatus[0].SetStatusGateway(true);
-        this.SetTimeDelay();
+        this.SetTimeDelay(0.1f);
     }
     protected virtual void GetListGatewayStatus()
     {
@@ -69,11 +69,6 @@ public class Shooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
-        //khi nhặt bullet sẽ hiển thị lên hotkey và người dùng chọn bắn đạn gì thì sẽ gán bulletCurrent sẽ là cái đó
-        //cái này làm temp để game chạy được thôi (sẽ cải tiến sau) cách cải tiến là "sẽ override lại Spawn của pooling để nó spawn theo tên bullet hiện tại"
-        //vòng lặp duyệt theo từng cổng và kiểm tra trạng thái của cổng
-        //hiện tại code này đang vi phạm quy tắt DRY
-
         foreach(GatewayStatus gatewayStatus in this.listGatewayStatus)
         {
             if (gatewayStatus.StatusGetway)
@@ -81,25 +76,6 @@ public class Shooting : Shoot
                 this.SpawnShootingBullet(gatewayStatus.transform.position, gatewayStatus.transform.rotation);
             }   
         }
-
-        //if (this.arrayStatusGateway[0])
-        //{
-        //    this.SpawnShootingBullet(this.shooter.transform.position, this.shooter.transform.rotation);
-        //}
-        //if (this.arrayStatusGateway[1])
-        //{
-        //    this.SpawnShootingBulletPink(this.shooter.transform.position, this.shooter.transform.rotation);
-        //    Transform gatewayBullet_2 = this.objectController.PlayerGatewaysController.GatewayBullet_2;
-        //    this.SpawnShootingBulletPink(gatewayBullet_2.position, gatewayBullet_2.rotation);
-        //}
-        //if (this.arrayStatusGateway[2])
-        //{
-        //    this.SpawnShootingBulletPink(this.shooter.transform.position, this.shooter.transform.rotation);
-        //    Transform gatewayBullet_2 = this.objectController.PlayerGatewaysController.GatewayBullet_2;
-        //    this.SpawnShootingBulletPink(gatewayBullet_2.position, gatewayBullet_2.rotation);
-        //    Transform gatewayBullet_3 = this.objectController.PlayerGatewaysController.GatewayBullet_3;
-        //    this.SpawnShootingBullet(gatewayBullet_3.position, gatewayBullet_3.rotation);
-        //}
     }
     protected virtual void SpawnShootingBullet(Vector3 position, Quaternion rotation)
     {
@@ -127,9 +103,5 @@ public class Shooting : Shoot
         if (objectController == null) return true;
         if (objectController.InputManager.clickMouse == 0) return false;
         return true;
-    }
-    protected override void SetTimeDelay()
-    {
-        this.timeDelay = 0.1f;
     }
 }

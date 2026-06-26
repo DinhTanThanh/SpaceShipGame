@@ -7,15 +7,12 @@ public class ObjMoveForwardLimitMouse : Movement
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.SetLimitDistance(0.5f);
         this.target = transform.Find("Target");
     }
     protected override void SetSpeed()
     {
-        this.speed = 2f;
-    }
-    protected override void SetLimitDistance()
-    {
-        this.limitDistance = 0.5f;
+        this.speed = 10f;
     }
     private void Update()
     {

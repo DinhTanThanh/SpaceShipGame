@@ -25,7 +25,7 @@ public class EnemyShooting : Shoot
     }
     protected override void LoadComponent()
     {
-        this.SetTimeDelay();
+        this.SetTimeDelay(0.8f);
         this.LoadObjectTarget();
         this.shooter = GameObject.Find(transform.parent.name);
         this.bullet = this.getGameObject();
@@ -42,7 +42,7 @@ public class EnemyShooting : Shoot
     }
     protected override void LoadComponentEnable()
     {
-        this.SetTimeDelay();
+        this.SetTimeDelay(0.8f);
     }
     protected override bool getControllerToSpawn()
     {
@@ -75,10 +75,6 @@ public class EnemyShooting : Shoot
         if (ManagerBulletEnemy == null) return null;
         if (ManagerBulletEnemy.transform.childCount <= 0) return null;
         return managerBulletEnemy.transform.GetChild(0).gameObject;
-    }
-    protected override void SetTimeDelay()
-    {
-        this.timeDelay = 0.8f;
     }
     protected int RandomTimeSpawn()
     {

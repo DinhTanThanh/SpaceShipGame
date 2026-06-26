@@ -6,17 +6,14 @@ public class AbilityMoving : Movement
     public Transform Target => target;
     protected override void LoadComponent()
     {
-        SetLimitDistance();
-        SetSpeed();
-        this.target = GameObject.FindGameObjectWithTag("Player")?.transform; //GameObject.Find("Player").transform;
+        base.LoadComponent();
+        this.SetLimitDistance(18f);
+        this.SetSpeed();
+        this.target = GameObject.FindGameObjectWithTag("Player")?.transform; 
     }
     protected override void SetSpeed()
     {
         this.speed =0.2f;
-    }
-    protected override void SetLimitDistance()
-    {
-        this.limitDistance = 18f;
     }
     private void Update()
     {

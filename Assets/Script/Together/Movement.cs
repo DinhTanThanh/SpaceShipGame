@@ -8,7 +8,7 @@ public class Movement : LoadMonoBehaviour
     public float Speed => speed;
     protected override void LoadComponent()
     {
-        SetLimitDistance();
+        base.LoadComponent();
         SetSpeed();
     }
     protected virtual void Moving(Vector3 target,Vector3 targetMouse)
@@ -32,8 +32,8 @@ public class Movement : LoadMonoBehaviour
     {
         this.speed = 0.005f;
     }
-    protected virtual void SetLimitDistance()
+    public virtual void SetLimitDistance(float limitDistance)
     {
-        this.limitDistance = 2f;
+        this.limitDistance = limitDistance;
     }
 }

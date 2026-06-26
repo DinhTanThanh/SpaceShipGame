@@ -19,7 +19,7 @@ public class MeteoriteDameSender : DameSender
     {
         PlayerDameReceiver playerDameReceive=collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceive == null) return;
-        playerDameReceive.Receiver(2);
+        playerDameReceive.Receive(2);
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
         transform.parent.gameObject.SetActive(false);
         SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);

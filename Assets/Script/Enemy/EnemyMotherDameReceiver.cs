@@ -18,9 +18,9 @@ public class EnemyMotherDameReceiver : DameReceiver
     }
     private void Update()
     {
-        if (IsDead == true)
+        if (this.IsDead == true)
         {
-            SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
+            SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
             SpawnItems.instance.DropItem(this.EnemyMotherShipCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
         }

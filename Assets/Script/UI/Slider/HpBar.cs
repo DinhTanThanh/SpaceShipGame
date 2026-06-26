@@ -49,6 +49,7 @@ public class HpBar : LoadMonoBehaviour
     {
         this.isDead = this.shootingController.DameReceiver.IsDead;
         if (!this.isDead) return;
+        Debug.Log("Vo list hpbar");
         this.gameObject.SetActive(false);
         SpawnHpBar.Instance.GoBackList(this.gameObject);
     }
