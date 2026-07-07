@@ -8,6 +8,7 @@ public class SpawnTonado : PoolPrefab
     [SerializeField] protected int indexCurrent = 0;
     [SerializeField] protected Transform managetPosTonado;
     [SerializeField] protected GameObject tonado;
+    [SerializeField] protected GameObject bossSpace;
     [SerializeField] protected List<Transform> listPositon;
     private static SpawnTonado instance;
     public static SpawnTonado Instance => instance;
@@ -29,6 +30,13 @@ public class SpawnTonado : PoolPrefab
         this.LoadTonado();
         this.LoadManagetPosTonado();
         this.GetListPosition();
+        this.LoadBossSpace();
+    }
+    protected virtual void LoadBossSpace()
+    {
+        if (this.bossSpace != null) return;
+        this.bossSpace = GameObject.Find("BossSpace");
+        Debug.LogWarning("Load BossSpace: " + transform.name);
     }
     protected virtual void LoadTonado()
     {
@@ -67,6 +75,7 @@ public class SpawnTonado : PoolPrefab
     }
     protected virtual void SpawnTonadoObject()
     {
+        if (!this.bossSpace.activeSelf) return;
         if (!this.Timing()) return;
         Transform pos = this.GetPosition();
         GameObject objectTonado= this.SetPosition(this.tonado, pos.position, pos.rotation);

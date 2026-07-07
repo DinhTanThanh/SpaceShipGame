@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CountTime : LoadMonoBehaviour
+public class CountTime : DameSender
 {
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float timeDelay;

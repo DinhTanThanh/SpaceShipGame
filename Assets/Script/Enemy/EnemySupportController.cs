@@ -4,13 +4,26 @@ public class EnemySupportController : ShootingController
 {
     [SerializeField] protected AbilityLookatTarget abilityLookatTarget;
     [SerializeField] protected EnemySupportDameReceiver enemySupportDameReceiver;
+    [SerializeField] protected GameObject bossFinal;
     public EnemySupportDameReceiver EnemySupportDameReceiver => enemySupportDameReceiver;
+    private void Update()
+    {
+        if (this.bossFinal.activeSelf) return;
+        this.gameObject.SetActive(false);
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadEnemySO();
         this.LoadEnemySupportDameReceiver();
         this.LoadAbilityLookatTarget();
+        this.LoadBossFinal();
+    }
+    protected virtual void LoadBossFinal()
+    {
+        if (this.bossFinal != null) return;
+        this.bossFinal = GameObject.Find("BossFinal");
+        Debug.LogWarning("Load BossFinal: " + transform.name);
     }
     protected virtual void LoadAbilityLookatTarget()
     {

@@ -21,7 +21,7 @@ public class AbilitySummonEnemy : BaseAbility
   
     private void Update()
     {
-        SpawnEnemy();
+        this.SpawnEnemy();
     }
     protected override void LoadComponent()
     {
@@ -69,6 +69,7 @@ public class AbilitySummonEnemy : BaseAbility
     }
     protected virtual void SpawnEnemy()
     {
+        if (this.numberEnemy >= this.countLimitEnemy) return;
         if (!this.Timing()) return;
         if (this.CheckLimitEnemy())
         {
@@ -96,7 +97,6 @@ public class AbilitySummonEnemy : BaseAbility
         }
         hpBar.SetShootingController(enemy.GetComponent<EnemyController>());
         hpBar.FollowTarget.SetTarget(enemy.transform);
-        //newHpBar.SetActive(true);
     }
     protected virtual bool CheckLimitEnemy()
     {
@@ -111,7 +111,20 @@ public class AbilitySummonEnemy : BaseAbility
             enemyEnable.SetActive(true);
             enemyEnable.transform.position = this.gateWaySpawn.position;
             enemyEnable.transform.rotation = this.abilitySummonController.EnemyMotherShipCtrl.transform.rotation;
+            this.numberEnemy++;
             return;
         }
+    }
+    public virtual int GetCountEnemyInList()
+    {
+        return this.numberEnemy;
+    }
+    public virtual List<GameObject> GetListEnemy()
+    {
+        return this.ListEnemySpawned;
+    }
+    public virtual void ResetNumberEnemy()
+    {
+        this.numberEnemy = 1;
     }
 }

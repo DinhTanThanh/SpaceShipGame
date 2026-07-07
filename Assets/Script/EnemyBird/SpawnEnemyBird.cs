@@ -69,6 +69,7 @@ public class SpawnEnemyBird : PoolPrefab
     }
     private void FixedUpdate()
     {
+        if (!this.bossSpaceController.transform.gameObject.activeSelf) return;
         if (this.bossSpaceController.DameReceiver.IsDead) return;
         if (this.CountEnemyBirdInList() > 4) return;
         if (!this.Timing()) return;

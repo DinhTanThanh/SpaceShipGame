@@ -16,9 +16,9 @@ public abstract class Shoot : LoadMonoBehaviour
     protected virtual void TimeDelay()
     {
         timer += Time.deltaTime;
-        if (!getControllerToSpawn()) return;
         if (timer < timeDelay) return;
         timer = 0f;
+        if (!getControllerToSpawn()) return;
         ExecuteSpawn();
     }
     protected abstract void ExecuteSpawn();

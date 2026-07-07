@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AwakeEnemy_V : LoadMonoBehaviour
+public class SummonEnemy_V : LoadMonoBehaviour
 {
     [SerializeField] protected GameObject enemy_v2;
     [SerializeField] protected GameObject enemy_v3;
@@ -10,11 +10,11 @@ public class AwakeEnemy_V : LoadMonoBehaviour
         this.LoadEnemy_v2();
         this.LoadEnemy_v3();
     }
-    protected override void Awake()
+    protected override void OnEnable()
     {
-        base.Awake();
-        this.enemy_v2.gameObject.SetActive(true);
-        this.enemy_v3.gameObject.SetActive(true);
+        base.OnEnable();
+        this.enemy_v2.SetActive(true);
+        this.enemy_v3.SetActive(true);
     }
     protected virtual void LoadEnemy_v2()
     {

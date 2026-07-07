@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpawnMeteorite : SpawnShootingAbleObject
 {
     [SerializeField] protected int numberLimit;
+    [SerializeField] protected EnemyMotherShipCtrl enemyMotherShipController;
     public int NumberLimit => numberLimit;
     public static SpawnMeteorite instance;
     protected override void SetNameManager()
@@ -21,6 +22,13 @@ public class SpawnMeteorite : SpawnShootingAbleObject
     {
         this.posManager = GameObject.Find(namePosManager);
         this.monterManager = GameObject.Find(nameMonterManager);
+        this.LoadEnemyMotherShipCtrl();
+    }
+    protected virtual void LoadEnemyMotherShipCtrl()
+    {
+        if (this.enemyMotherShipController != null) return;
+        this.enemyMotherShipController = FindFirstObjectByType<EnemyMotherShipCtrl>();
+        Debug.LogWarning("Load EnemyMotherShipCtrl: " + transform.name);
     }
     protected virtual void SetNumberLimit(int numberLimit)
     {
@@ -35,6 +43,7 @@ public class SpawnMeteorite : SpawnShootingAbleObject
     }
     private void Update()
     {
+        if (this.enemyMotherShipController.DameReceiver.IsDead) return;
         this.TrySpawnMeteorite();
     }
     protected virtual void TrySpawnMeteorite()

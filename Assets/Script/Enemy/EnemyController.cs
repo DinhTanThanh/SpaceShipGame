@@ -2,23 +2,36 @@ using UnityEngine;
 
 public class EnemyController : ShootingController
 {
+    [SerializeField] protected GameObject motherShip;
     [SerializeField] protected EnemyShooting enemyShooting;
-    public EnemyShooting EnemyShooting => enemyShooting;
     [SerializeField] protected LookatObjByShip lookatObjectShip;
+    public EnemyShooting EnemyShooting => enemyShooting;
     public LookatObjByShip LookatObjShip=>lookatObjectShip;
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        LoadComponentEnable();
-        LoadEnemySO();
-        LoadObjectShooting();
-        LoadLookatObjByShip();
+        this.LoadComponentEnable();
+        this.LoadEnemySO();
+        this.LoadObjectShooting();
+        this.LoadLookatObjByShip();
+        this.LoadMotherShip();
+    }
+    private void Update()
+    {
+        if (this.motherShip.activeSelf) return;
+        this.damgeReceiver.IsDead = true;
     }
     protected virtual void LoadObjectShooting()
     {
         if (this.enemyShooting != null) return;
         this.enemyShooting=GetComponentInChildren<EnemyShooting>();
         Debug.LogWarning("Load ObjectShooting: " + transform.name);
+    }
+    protected virtual void LoadMotherShip()
+    {
+        if(this.motherShip != null) return;
+        this.motherShip = GameObject.Find("MotherShip_1");
+        Debug.LogWarning("Load MotherShip_1: " + transform.name);
     }
     protected override void LoadComponentEnable()
     {

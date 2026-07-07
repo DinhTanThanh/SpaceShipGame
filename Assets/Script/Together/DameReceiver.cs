@@ -35,4 +35,10 @@ public class DameReceiver : LoadMonoBehaviour
         if (this.hp <= 0) return true;
         return false;
     }
+    public virtual void SetMaxHpAndHp(int hp, int maxHp)
+    {
+        this.hp = hp;
+        this.maxHp = maxHp;
+        this.isDead=false;
+    }
 }

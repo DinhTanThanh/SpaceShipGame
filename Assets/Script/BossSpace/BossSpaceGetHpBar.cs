@@ -4,6 +4,11 @@ public class BossSpaceGetHpBar : LoadMonoBehaviour
 {
     [SerializeField] protected BossSpaceController bossSpaceController;
     public BossSpaceController BossSpaceController => bossSpaceController;
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.GetHpBar();
+    }
     protected override void Start()
     {
         base.Start();
@@ -22,6 +27,7 @@ public class BossSpaceGetHpBar : LoadMonoBehaviour
     }
     protected virtual void GetHpBar()
     {
+        if (SpawnHpBar.Instance == null) return;
         GameObject objHpBar = SpawnHpBar.Instance.SetPosition(SpawnHpBar.Instance.HpBar, this.bossSpaceController.transform.position, Quaternion.identity);
         HpBar hpBar = objHpBar.GetComponent<HpBar>();
         if (hpBar == null) return;

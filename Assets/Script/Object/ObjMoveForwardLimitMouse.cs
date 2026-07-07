@@ -12,7 +12,7 @@ public class ObjMoveForwardLimitMouse : Movement
     }
     protected override void SetSpeed()
     {
-        this.speed = 10f;
+        this.speed = 5f;
     }
     private void Update()
     {

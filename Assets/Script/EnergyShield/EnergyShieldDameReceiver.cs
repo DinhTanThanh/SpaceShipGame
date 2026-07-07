@@ -3,12 +3,12 @@ using UnityEngine;
 public class EnergyShieldDameReceiver : DameReceiver
 {
     [SerializeField] protected PolygonCollider2D polygonCollider2D;
-    [SerializeField] protected EnergyShieldController energyShieldController;
+    [SerializeField] protected EnergyShieldYellowController energyShieldYellowController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPolygonCollider2D();
-        this.LoadEnergyShieldController();
+        this.LoadEnergyShieldYellowController();
         this.Reborn();
     }
     private void Update()
@@ -16,11 +16,11 @@ public class EnergyShieldDameReceiver : DameReceiver
         if (!this.isDead) return;
         this.transform.parent.gameObject.SetActive(false);
     }
-    protected virtual void LoadEnergyShieldController()
+    protected virtual void LoadEnergyShieldYellowController()
     {
-        if (this.energyShieldController != null) return;
-        this.energyShieldController = GetComponentInParent<EnergyShieldController>();
-        Debug.LogWarning("Load EnergyShieldController: " + transform.name);
+        if (this.energyShieldYellowController != null) return;
+        this.energyShieldYellowController = GetComponentInParent<EnergyShieldYellowController>();
+        Debug.LogWarning("Load EnergyShieldYellowController: " + transform.name);
     }
     protected virtual void LoadPolygonCollider2D()
     {
@@ -31,9 +31,9 @@ public class EnergyShieldDameReceiver : DameReceiver
     }
     public override void Reborn()
     {
-        if (this.energyShieldController == null) return;
-        this.hp = this.energyShieldController.ShootingSO.maxHP;
-        this.maxHp = this.energyShieldController.ShootingSO.maxHP;
+        if (this.energyShieldYellowController == null) return;
+        this.hp = this.energyShieldYellowController.ShootingSO.maxHP;
+        this.maxHp = this.energyShieldYellowController.ShootingSO.maxHP;
         this.isDead = false;
     }
 }

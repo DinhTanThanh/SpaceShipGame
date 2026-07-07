@@ -22,6 +22,10 @@ public class FollowTarget : LoadMonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!this.target.gameObject.activeSelf)
+        {
+            this.transform.gameObject.SetActive(false);
+        }
         this.LerpTarget();
     }
     protected virtual void LerpTarget()
