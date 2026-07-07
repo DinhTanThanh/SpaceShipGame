@@ -9,10 +9,10 @@ public class Shooting : Shoot
     public PlayerController ObjectController => objectController;
     protected override void LoadComponent()
     {
-        objectController = GetComponentInParent<PlayerController>();
+        this.objectController = GetComponentInParent<PlayerController>();
         this.LoadShooter();
-        bullet = GameObject.Find("Bullet");
-        spawnBullett = GameObject.Find("SpawnBullet");
+        this.bullet = GameObject.Find("Bullet");
+        this.spawnBullett = GameObject.Find("SpawnBullet");
         this.GetListGatewayStatus();
         this.listGatewayStatus[0].SetStatusGateway(true);
         this.SetTimeDelay(0.1f);
@@ -100,8 +100,8 @@ public class Shooting : Shoot
     }
     protected override bool getControllerToSpawn()
     {
-        if (objectController == null) return true;
-        if (objectController.InputManager.clickMouse == 0) return false;
+        if (this.objectController == null) return true;
+        if (this.objectController.InputManager.clickMouse == 0) return false;
         return true;
     }
 }

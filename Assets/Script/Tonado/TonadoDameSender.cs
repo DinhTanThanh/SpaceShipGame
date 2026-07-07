@@ -21,6 +21,6 @@ public class TonadoDameSender : CountTime
         PlayerDameReceiver playerDameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver == null) return;
         if (!this.Timing()) return;
-        playerDameReceiver.Receive(1);
+        SendDame(playerDameReceiver, 1);
     }
 }

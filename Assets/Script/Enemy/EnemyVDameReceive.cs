@@ -4,6 +4,11 @@ public class EnemyVDameReceive : DameReceiver
 {
     [SerializeField] protected PolygonCollider2D polygonCollider2D;
     [SerializeField] protected EnemyVController enemyVController;
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.Reborn();
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -37,5 +42,6 @@ public class EnemyVDameReceive : DameReceiver
         if (this.enemyVController == null) return;
         this.maxHp = this.enemyVController.ShootingSO.maxHP;
         this.hp = this.enemyVController.ShootingSO.maxHP;
+        this.isDead = false;
     }
 }

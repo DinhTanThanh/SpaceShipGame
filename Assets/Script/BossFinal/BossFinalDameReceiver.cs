@@ -5,13 +5,26 @@ public class BossFinalDameReceiver : DameReceiver
     [SerializeField] protected ShakeCamera shakeCamera;
     [SerializeField] protected PolygonCollider2D polygonCollider2D;
     [SerializeField] protected BossFinalController bossFinalController;
+    [SerializeField] protected UIVictoryController uiController;
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.Reborn();
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadBossFinalController();
         this.LoadPolygonCollider2D();
         this.LoadShakeCamera();
+        this.LoadUIController();
         this.Reborn();
+    }
+    protected virtual void LoadUIController()
+    {
+        if (this.uiController != null) return;
+        this.uiController = FindFirstObjectByType<UIVictoryController>();
+        Debug.LogWarning("Load UIController: " + transform.name);
     }
     protected virtual void LoadBossFinalController()
     {
@@ -40,10 +53,12 @@ public class BossFinalDameReceiver : DameReceiver
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
             SpawnItems.instance.DropItem(bossFinalController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            this.uiController.SetIsShowUI(true);
         }
     }
     public override void Reborn()
     {
+        if (this.bossFinalController == null) return;
         this.hp = this.bossFinalController.ShootingSO.maxHP;
         this.maxHp = this.bossFinalController.ShootingSO.maxHP;
         this.IsDead = false;

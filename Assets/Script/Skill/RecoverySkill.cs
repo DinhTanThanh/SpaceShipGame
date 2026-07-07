@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class RecoverySkill : BaseSkill
@@ -7,12 +8,20 @@ public class RecoverySkill : BaseSkill
     [SerializeField] protected float maxPercentRecovery=0.5f;
     [SerializeField] protected float percentRecovery=0.1f;
     [SerializeField] protected bool isOpen=false;
+    [SerializeField] protected TextMeshProUGUI textMeshPro;
     [SerializeField] protected PlayerController playerController;
     public PlayerController PlayerController => playerController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPlayerController();
+        this.LoadTextMeshProUGUI();
+    }
+    protected virtual void LoadTextMeshProUGUI()
+    {
+        if (this.textMeshPro != null) return;
+        this.textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+        Debug.LogWarning("Load TextMeshProUGUI: " + transform.name);
     }
     protected virtual void LoadPlayerController()
     {
@@ -29,9 +38,12 @@ public class RecoverySkill : BaseSkill
         if (this.playerController.AbilityWarpCtrl.PlayerRecovery.IsDone)
         {
             this.timer += Time.deltaTime;
+            string countDown = (this.timeDelay - this.timer).ToString("F2")+"s";
+            this.textMeshPro.text = countDown;
             if (this.timer <= this.timeDelay) return;
             this.timer = 0f;
             this.PlayerController.AbilityWarpCtrl.PlayerRecovery.SetIsDone(false);
+            this.textMeshPro.text = "";
         }
     }
     public override void ActiveSkill()

@@ -4,9 +4,9 @@ public class GetHpBarMotherShip :LoadMonoBehaviour
 {
     [SerializeField] protected EnemyMotherShipCtrl enemyMotherShipController;
     public EnemyMotherShipCtrl EnemyMotherShipCtrl => enemyMotherShipController;
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Awake();
+        base.OnEnable();
         this.GetHpBar();
     }
     protected virtual void GetHpBar()

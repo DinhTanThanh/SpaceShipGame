@@ -19,7 +19,6 @@ public class BomDameSender : DameSender
     {
         PlayerDameReceiver playerDameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver == null) return;
-        playerDameReceiver.Receive(2);
-
+        SendDame(playerDameReceiver,2);
     }
 }

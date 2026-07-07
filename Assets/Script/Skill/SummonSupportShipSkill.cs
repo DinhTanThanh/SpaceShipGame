@@ -1,27 +1,30 @@
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class SummonSupportShipSkill : BaseSkill
 {
     [SerializeField] protected bool isOpen = false;
-    public bool IsOpen => isOpen;
     [SerializeField] protected float timer = 0f;
-    [SerializeField] protected float delayTime = 10f;
+    [SerializeField] protected float delayTime = 60f;
     [SerializeField] protected Transform supportShip;
-    public Transform SupportShip => supportShip;
-
     [SerializeField] protected Transform managerSupportShip;
+    [SerializeField] protected DameReceiver dameReceiver;
+    [SerializeField] protected TextMeshProUGUI textMeshProUGUI;
+    public bool IsOpen => isOpen;
+    public Transform SupportShip => supportShip;
     public Transform ManagerSupportShip => managerSupportShip;
-    [SerializeField] DameReceiver dameReceiver;
     private void Update()
     {
-        if (!this.dameReceiver.IsDead) return;
+        if (!this.isOpen) return;
         this.timer += Time.deltaTime;
+        string countDown = (this.delayTime - this.timer).ToString("F2") + "s";
+        this.textMeshProUGUI.text = countDown;
         if (this.timer < delayTime) return;
         this.timer = 0f;
-        this.dameReceiver.Reborn();
         this.isOpen = false;
+        this.textMeshProUGUI.text = "";
     }
     protected override void LoadComponent()
     {
@@ -29,7 +32,18 @@ public class SummonSupportShipSkill : BaseSkill
         this.LoadManagerSupportShip();
         this.LoadSupportShip();
         this.LoadDameReceiver();
-    }   
+        this.LoadTextMeshProUGUI();
+    }
+    public virtual void SetIsOpen(bool isOpen)
+    {
+        this.isOpen = isOpen;
+    }
+    protected virtual void LoadTextMeshProUGUI()
+    {
+        if (this.textMeshProUGUI != null) return;
+        this.textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+        Debug.LogWarning("Load TextMeshProUGUI: " + transform.name);
+    }
     protected virtual void LoadDameReceiver()
     {
         if (this.dameReceiver != null) return;
@@ -54,9 +68,10 @@ public class SummonSupportShipSkill : BaseSkill
     }
     public override void ActiveSkill()
     {
-        if (this.dameReceiver.IsDead) return;
+        if (this.isOpen) return;
         bool statusSkill = !this.isOpen;
         this.supportShip.gameObject.SetActive(statusSkill);
+        this.dameReceiver.Reborn();
         this.isOpen = statusSkill;
     }
 }

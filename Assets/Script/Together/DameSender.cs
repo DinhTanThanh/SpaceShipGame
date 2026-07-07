@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class DameSender : LoadMonoBehaviour
 {
-    public void SendDame(DameReceiver enemyDame)
+    public void SendDame(DameReceiver enemyDame,int dame)
     {
-        ExecuteReceiver(enemyDame, 1);
+        ExecuteReceiver(enemyDame, dame);
     }
     public void ExecuteReceiver(DameReceiver dameReceiver,int dame)
     {

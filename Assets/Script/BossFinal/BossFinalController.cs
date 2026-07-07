@@ -5,9 +5,15 @@ public class BossFinalController : ShootingController
     [SerializeField] protected BossGateWayController bossGateWayController;
     [SerializeField] protected ManagerPosController managerPosController;
     [SerializeField] protected AbilityMoving abilityMoving;
+    [SerializeField] protected Transform posOnEnable;
     public ManagerPosController ManagerPosController => managerPosController;
     public BossGateWayController BossGateWayController => bossGateWayController;
     public AbilityMoving AbilityMoving => abilityMoving;
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.transform.position = this.posOnEnable.position;
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -15,6 +21,7 @@ public class BossFinalController : ShootingController
         this.LoadBossGateWayController();
         this.LoadManagerPosController();
         this.LoadAbilityMoving();
+        this.LoadPosOnEnable();
     }
     protected virtual void LoadAbilityMoving()
     {
@@ -23,7 +30,12 @@ public class BossFinalController : ShootingController
         this.abilityMoving.SetLimitDistance(25f);
         Debug.LogWarning("Load AbilityMoving: " + transform.name);
     }
-   
+    protected virtual void LoadPosOnEnable()
+    {
+        if (this.posOnEnable != null) return;
+        this.posOnEnable = GameObject.Find("PosOnEnable")?.transform;
+        Debug.LogWarning("Load PosOnEnable: " + transform.name);
+    }
     public override void LoadEnemySO()
     {
         if (this.shootingSO != null) return;

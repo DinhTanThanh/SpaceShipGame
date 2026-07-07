@@ -25,7 +25,7 @@ public class BulletLazeDameSender : CountTime
             return;
         }
         if (!this.Timing()) return;
-        dameReceiver.Receive(1);
+        SendDame(dameReceiver, 1);
         if (dameReceiver.CheckIsDead())
         {
             dameReceiver.IsDead = true;

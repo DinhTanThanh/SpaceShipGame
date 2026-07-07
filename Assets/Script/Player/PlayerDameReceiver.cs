@@ -9,13 +9,21 @@ public class PlayerDameReceiver : DameReceiver
     [SerializeField] protected int healAmount;
     [SerializeField] protected PlayerController playerController;
     [SerializeField] protected PolygonCollider2D polygonCollider2D;
+    [SerializeField] protected UIDefeatController uiDefeatController;
     public PlayerController PlayerController => playerController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPlayerController();
         this.LoadPolygonCollider2D();
+        this.LoadUIDefeatController();
         this.Reborn();
+    }
+    protected virtual void LoadUIDefeatController()
+    {
+        if (this.uiDefeatController != null) return;
+        this.uiDefeatController = FindFirstObjectByType<UIDefeatController>();
+        Debug.LogWarning("Load UIDefeatController: "+transform.name);
     }
     protected virtual void LoadPolygonCollider2D()
     {
@@ -49,6 +57,7 @@ public class PlayerDameReceiver : DameReceiver
         this.maxHp = this.playerController.ShootingSO.maxHP;
         this.IsDead = false;
     }
+
     protected virtual bool Timing()
     {
         this.timer += Time.deltaTime;
@@ -79,6 +88,8 @@ public class PlayerDameReceiver : DameReceiver
     {
         if (this.IsDead == true)
         {
+            this.uiDefeatController.SetIsShowUI(true);
+            this.transform.parent.gameObject.SetActive(false);
             //SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             //transform.parent.gameObject.SetActive(false);
             //this.playerController.gameObject.SetActive(false);

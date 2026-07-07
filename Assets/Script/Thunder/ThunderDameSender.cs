@@ -19,8 +19,7 @@ public class ThunderDameSender : DameSender
         DameReceiver dameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
         if (dameReceiver != null && (dameReceiver as PlayerDameReceiver ||dameReceiver as SupportShipDameReceiver))
         {
-            ExecuteReceiver(dameReceiver,100);
-            //Làm va chạm của ship và thunder khác đi (cho nó đẹp)
+            ExecuteReceiver(dameReceiver,1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;
             SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(this.spawnImpact.transform);

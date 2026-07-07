@@ -7,6 +7,6 @@ public class ExplosionFireSender : DameSender
         DameReceiver dameReceiver=collision.transform.parent?.GetComponentInChildren<DameReceiver>();
         if (dameReceiver == null) return;
         Debug.Log(dameReceiver.transform.name);
-        dameReceiver.Receive((int)(dameReceiver.MaxHp*0.3f));
+        SendDame(dameReceiver, (int)(dameReceiver.MaxHp * 0.3f));
     }
 }

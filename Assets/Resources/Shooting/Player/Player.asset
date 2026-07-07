@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Player
   shottingType: 3
-  maxHP: 20
+  maxHP: 70
   dropItems: []

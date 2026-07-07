@@ -2,11 +2,19 @@ using JetBrains.Annotations;
 using UnityEngine;
 public class SupportShipDameReceiver : DameReceiver
 {
+    [SerializeField] protected SummonSupportShipSkill summonSupportShipSkill;
     public SupportShipController SupportShipController;
     protected override void LoadComponent()
     {
         SupportShipController = transform.parent.GetComponent<SupportShipController>();
+        this.LoadSummonSupportShipSkill();
         Reborn();
+    }
+    protected virtual void LoadSummonSupportShipSkill()
+    {
+        if (this.summonSupportShipSkill != null) return;
+        this.summonSupportShipSkill = FindFirstObjectByType<SummonSupportShipSkill>();
+        Debug.LogWarning("Load SummonSupportShipSkill: " + transform.name);
     }
     private void Update()
     {
@@ -16,6 +24,7 @@ public class SupportShipDameReceiver : DameReceiver
             transform.parent.gameObject.SetActive(false);
             //this.Reborn();
             SpawnItems.instance.DropItem(SupportShipController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            this.isDead = false;
         }
     }
     public override void Reborn()

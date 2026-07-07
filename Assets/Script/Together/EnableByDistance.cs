@@ -34,7 +34,7 @@ public class EnableByDistance : DameSender
         DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
         if (dameReceive == null) return;
         if (dameReceive is PlayerDameReceiver) return;
-        SendDame(dameReceive);
+        SendDame(dameReceive,1);
         Vector3 newPos = transform.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletContrl.SpawnImpact.transform);

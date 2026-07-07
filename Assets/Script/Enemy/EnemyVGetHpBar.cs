@@ -9,6 +9,11 @@ public class EnemyVGetHpBar : LoadMonoBehaviour
         base.Start();
         this.GetHpBar();
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.GetHpBar();
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -22,6 +27,7 @@ public class EnemyVGetHpBar : LoadMonoBehaviour
     }
     protected virtual void GetHpBar()
     {
+        if (SpawnHpBar.Instance == null) return;
         GameObject objHpBar = SpawnHpBar.Instance.SetPosition(SpawnHpBar.Instance.HpBar,this.enemyVController.transform.position,Quaternion.identity);
         HpBar hpBar = objHpBar.GetComponent<HpBar>();
         if (hpBar == null) return;

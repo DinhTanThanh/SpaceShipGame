@@ -40,7 +40,7 @@ public class BulletGreenDameSender : DameSender
         DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
         if (dameReceive == null) return;
         if (dameReceive is EnergyShieldDameReceiver ||dameReceive is BossFinalDameReceiver) return;
-        this.SendDame(dameReceive);
+        this.SendDame(dameReceive,1);
         Vector3 newPos = transform.parent.position;
         newPos.z = -5f;
         SpawnImpact.instance.SetPosition(SpawnImpact.instance.Impact, newPos, transform.rotation).transform.SetParent(bulletGreenController.SpawnImpact.transform);

@@ -1,7 +1,7 @@
 using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class BulletEnemyDameSender : LoadMonoBehaviour
+public class BulletEnemyDameSender : DameSender
 {
     [SerializeField] protected Rigidbody2D rigitbody2d;
     public Rigidbody2D Rigidbody2D => rigitbody2d;
@@ -44,7 +44,7 @@ public class BulletEnemyDameSender : LoadMonoBehaviour
         DameReceiver dameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
         if (dameReceiver!=null &&(dameReceiver as PlayerDameReceiver || dameReceiver as SupportShipDameReceiver))
         {
-            dameReceiver.Receive(1);
+            SendDame(dameReceiver, 1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;
             
