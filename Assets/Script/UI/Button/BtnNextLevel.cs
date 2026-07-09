@@ -46,6 +46,7 @@ public class BtnNextLevel : BaseButton
             Debug.Log("Dat gioi han level");
             return;
         }
+        SoundFX.Instance.PlayOneShotSoundClick();
         this.SetBossCurrent();
         Transform levelCurrent = this.levelController.GetLevelCurrent();
         BaseLevel level=levelCurrent.GetComponent<BaseLevel>();

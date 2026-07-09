@@ -69,7 +69,8 @@ public class Shooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
-        foreach(GatewayStatus gatewayStatus in this.listGatewayStatus)
+        SoundFX.Instance.PlayOneShotSoundShipShoot();
+        foreach (GatewayStatus gatewayStatus in this.listGatewayStatus)
         {
             if (gatewayStatus.StatusGetway)
             {

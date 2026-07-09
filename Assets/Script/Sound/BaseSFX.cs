@@ -3,6 +3,7 @@ using UnityEngine;
 public class BaseSFX : LoadMonoBehaviour
 {
     [SerializeField] protected AudioSource audioSource;
+    public AudioSource AudioSource => audioSource;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -13,11 +14,5 @@ public class BaseSFX : LoadMonoBehaviour
         if (this.audioSource != null) return;
         this.audioSource = GetComponent<AudioSource>();
         Debug.LogWarning("Load AudioSource: " + transform.name);
-    }
-    protected override void OnEnable()
-    {
-        base.Start();
-        this.audioSource.loop = false;
-        this.audioSource.Play();
     }
 }

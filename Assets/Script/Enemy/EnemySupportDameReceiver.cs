@@ -32,6 +32,7 @@ public class EnemySupportDameReceiver : DameReceiver
     private void Update()
     {
         if (!this.isDead) return;
+        SoundFX.Instance.PlayOneShotSoundSmallExplosion();
         Transform pos = this.enemySupportController.transform;
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos.position, pos.rotation);
         SpawnItems.instance.DropItem(this.enemySupportController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);

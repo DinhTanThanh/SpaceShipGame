@@ -16,6 +16,7 @@ public class BtnQuitExitGame : BaseButton
     }
     protected override void OnClick()
     {
+        SoundFX.Instance.PlayOneShotSoundClick();
         this.uiExitGame.SetActive(true);
     }
 }

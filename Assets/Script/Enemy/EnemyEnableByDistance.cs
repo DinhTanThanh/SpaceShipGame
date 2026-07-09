@@ -6,24 +6,27 @@ public class EnemyEnableByDistance : EnableByDistanceAbstract
     public MeteoriteController MeteoriteController => meteoriteController;
     protected override void LoadComponent()
     {
-        this.gameObjectBeFollow = GameObject.Find("Camera");
+        base.LoadComponent();
+        this.LoadCamera();
         this.distanceLimit = 70f;
+        this.LoadMeteoriteController();
+    }
+    protected virtual void LoadMeteoriteController()
+    {
+        if (this.meteoriteController != null) return;
         this.meteoriteController=GetComponentInParent<MeteoriteController>();
+        Debug.LogWarning("Load MeteoriteController: " + transform.name);
     }
-    protected override void Reset()
+    protected virtual void LoadCamera()
     {
-        LoadComponent();
-    }
-    protected override void Awake()
-    {
-        LoadComponent();
+        if (this.gameObjectBeFollow != null) return;
+        this.gameObjectBeFollow = GameObject.Find("Camera");
+        Debug.LogWarning("Load Camera: " + transform.name);
     }
     private void Update()
     {
+        Debug.Log(IsDistanceAchiveLimit());
         if (!IsDistanceAchiveLimit()) return;
-        SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);
-        transform.parent.gameObject.SetActive(false);
-        if (meteoriteController == null) return;
-        meteoriteController.MeoteoriteDamereceiver.Reborn();
+        this.meteoriteController.DameReceiver.IsDead = true;
     }
 }

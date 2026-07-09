@@ -4,7 +4,7 @@ public class LookatObjectByMouse : LookatObj
 {
     private void Update()
     {
-        Direct(GetTarget());
+        this.Direct(GetTarget());
     }
     public Vector3 GetTarget()
     {

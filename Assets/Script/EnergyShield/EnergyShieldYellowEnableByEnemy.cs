@@ -35,7 +35,6 @@ public class EnergyShieldYellowEnableByEnemy : LoadMonoBehaviour
     }
     protected virtual bool isFullEnemy()
     {
-        Debug.Log(this.energyShieldYellowController.AbilitySummonController.AbilitySummonEnemy.GetCountEnemyInList());
         return this.energyShieldYellowController.AbilitySummonController.AbilitySummonEnemy.GetCountEnemyInList() == this.numberLimitEnemy;
     }
     protected virtual bool CheckListEnemy()

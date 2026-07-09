@@ -49,6 +49,7 @@ public class BossFinalDameReceiver : DameReceiver
     {
         if (this.IsDead == true)
         {
+            SoundFX.Instance.PlayOneShotSoundBigExplosion();
             this.shakeCamera.SetIsShake(true);
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);

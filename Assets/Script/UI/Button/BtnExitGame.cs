@@ -4,18 +4,10 @@ public class BtnExitGame : BaseButton
 {
     [SerializeField] protected bool isOpen = false;
     [SerializeField] protected GameObject uiExitGame;
-    [SerializeField] protected GameObject SoundClick;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadUIExitGame();
-        this.LoadSoundClickGame();
-    }
-    protected virtual void LoadSoundClickGame()
-    {
-        if (this.SoundClick != null) return;
-        this.SoundClick = GameObject.Find("SoundClick");
-        Debug.LogWarning("Load SoundClick: " + transform.name);
     }
     protected virtual void LoadUIExitGame()
     {
@@ -25,8 +17,7 @@ public class BtnExitGame : BaseButton
     }
     protected override void OnClick()
     {
-        GameObject SoundClickUI = SpawnSoundClick.Instance.Spawn(this.SoundClick);
-        SoundClickUI.SetActive(true);
+        SoundFX.Instance.PlayOneShotSoundClick();
         this.uiExitGame.SetActive(!this.isOpen);
         this.isOpen = !this.isOpen;
     }

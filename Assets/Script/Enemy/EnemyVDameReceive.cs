@@ -32,6 +32,7 @@ public class EnemyVDameReceive : DameReceiver
     private void Update()
     {
         if (!this.isDead) return;
+        SoundFX.Instance.PlayOneShotSoundSmallExplosion();
         Transform pos = this.enemyVController.transform;
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos.position, pos.rotation);
         SpawnItems.instance.DropItem(this.enemyVController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);

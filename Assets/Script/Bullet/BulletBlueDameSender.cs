@@ -40,6 +40,7 @@ public class BulletBlueDameSender : DameSender
         DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
         if (dameReceive == null) return;
         if (dameReceive is PlayerDameReceiver) return;
+        SoundFX.Instance.PlayOneShotSoundImpact_2();
         SendDame(dameReceive,1);
         Vector3 newPos = transform.position;
         newPos.z = -5f;

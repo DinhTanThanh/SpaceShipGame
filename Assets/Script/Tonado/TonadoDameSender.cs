@@ -21,6 +21,8 @@ public class TonadoDameSender : CountTime
         PlayerDameReceiver playerDameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver == null) return;
         if (!this.Timing()) return;
+        SoundFX.Instance.PlayOneShotSoundElectric();
+
         SendDame(playerDameReceiver, 1);
     }
 }

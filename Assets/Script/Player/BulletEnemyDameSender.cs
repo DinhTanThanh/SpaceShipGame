@@ -44,6 +44,7 @@ public class BulletEnemyDameSender : DameSender
         DameReceiver dameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
         if (dameReceiver!=null &&(dameReceiver as PlayerDameReceiver || dameReceiver as SupportShipDameReceiver))
         {
+            SoundFX.Instance.PlayOneShotSoundImpact();
             SendDame(dameReceiver, 1);
             Vector3 newPos = transform.position;
             newPos.z = -5f;

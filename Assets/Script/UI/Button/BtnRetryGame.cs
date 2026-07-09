@@ -49,10 +49,11 @@ public class BtnRetryGame : BaseButton
     }
     protected override void OnClick()
     {
+        SoundFX.Instance.PlayOneShotSoundClick();
         this.playerController.gameObject.SetActive(true);
         Transform level = levelController.GetLevelCurrent();
         BaseLevel baseLevel = level.GetComponent<BaseLevel>();
-        baseLevel.ReborLevel();
+        baseLevel.RebornLevel();
         this.levelController.ActiveLevelCurrent();
         this.uiGameController.SetActive(false);
         this.playerController.DameReceiver.SetMaxHpAndHp(this.btnNextLevel.HpBeginLevel, this.btnNextLevel.HpBeginLevel);
