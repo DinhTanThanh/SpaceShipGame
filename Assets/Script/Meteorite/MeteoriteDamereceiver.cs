@@ -17,12 +17,12 @@ public class MeteoriteDamereceiver : DameReceiver
     {
         if (IsDead == true)
         {
-            //Debug.Log("Object đã chết");
-            SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
-            transform.parent.gameObject.SetActive(false);
-            Reborn();
-            SpawnMeteorite.instance.GoBackList(transform.parent.gameObject);
-            SpawnItems.instance.DropItem(MeteoriteCtrller.ShootingSO.dropItems,transform.position,Quaternion.Euler(0,0,0));
+            SoundFX.Instance.PlayOneShotSoundSmallExplosion();
+            SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, this.transform.position, this.transform.rotation);
+            this.transform.parent.gameObject.SetActive(false);
+            this.Reborn();
+            SpawnMeteorite.instance.GoBackList(this.transform.parent.gameObject);
+            SpawnItems.instance.DropItem(this.MeteoriteCtrller.ShootingSO.dropItems,this.transform.position,Quaternion.Euler(0,0,0));
         }
     }
     public override void Reborn()

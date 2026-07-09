@@ -6,12 +6,12 @@ public abstract class EnableByDistanceAbstract : LoadMonoBehaviour
     [SerializeField] protected float distanceNow;
     public float DistanceNow=>distanceNow;
     [SerializeField] protected GameObject gameObjectBeFollow;
-    public GameObject GameOBjectBeFollow => gameObjectBeFollow;
+    public GameObject GameObjectBeFollow => gameObjectBeFollow;
     
     public bool IsDistanceAchiveLimit()
     {
-        distanceNow = Vector3.Distance(transform.position, GameOBjectBeFollow.transform.position);
-        if (DistanceNow < distanceLimit) return false;
+        this.distanceNow = Vector3.Distance(this.transform.parent.position, this.GameObjectBeFollow.transform.position);
+        if (this.distanceNow < this.distanceLimit) return false;
         return true;
     }
 }

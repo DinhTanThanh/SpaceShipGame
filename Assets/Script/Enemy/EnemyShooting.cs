@@ -51,7 +51,8 @@ public class EnemyShooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
-        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(bullet, gatewayShotting.position,shooter.transform.rotation);
+        SoundFX.Instance.PlayOneShotSoundShoot();
+        GameObject bulletObject = SpawnBulletEnemy.instance.SetPosition(this.bullet, this.gatewayShotting.position,this.shooter.transform.rotation);
         Vector3 pos = bulletObject.transform.position;
 
         bulletObject.transform.SetParent(spawnBullett.transform);

@@ -18,7 +18,7 @@ public class Level_2 : BaseLevel
         return this.shootingController;
     }
 
-    public override void ReborLevel()
+    public override void RebornLevel()
     {
         this.shootingController.gameObject.SetActive(false);
         Invoke("EnableObject", 0.5f);

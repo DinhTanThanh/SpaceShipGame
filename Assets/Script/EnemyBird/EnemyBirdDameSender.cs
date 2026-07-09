@@ -28,6 +28,7 @@ public class EnemyBirdDameSender : DameSender
     {
         PlayerDameReceiver playerDameReceive = collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceive == null) return;
+        SoundFX.Instance.PlayOneShotSoundSmallExplosion();
         SendDame(playerDameReceive, 3);
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
         SpawnItems.instance.DropItem(this.EnemyBirdController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));

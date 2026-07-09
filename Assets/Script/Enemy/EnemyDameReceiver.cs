@@ -36,6 +36,7 @@ public class EnemyDameReceiver : DameReceiver
     {
         if (this.IsDead == true)
         {
+            SoundFX.Instance.PlayOneShotSoundSmallExplosion();
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
             SpawnItems.instance.DropItem(this.EnemyCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));

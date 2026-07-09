@@ -45,6 +45,7 @@ public class ItemVitalityUp : LoadMonoBehaviour
     {
         PlayerDameReceiver playerDameReceiver=collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver == null) return;
+        SoundFX.Instance.PlayOneShotSoundLoot();
         playerDameReceiver.AddMaxHP(this.maxHpIncrease);
         int healAmount = (int)(playerDameReceiver.MaxHp * this.healPercent);
         playerDameReceiver.SetHealAmount(healAmount);

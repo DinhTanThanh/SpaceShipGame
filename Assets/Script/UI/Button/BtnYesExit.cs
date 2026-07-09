@@ -4,7 +4,8 @@ public class BtnYesExit : BaseButton
 {
     protected override void OnClick()
     {
-        this.QuitGame();
+        SoundFX.Instance.PlayOneShotSoundClick();
+        Invoke("QuitGame", 0.1f);
     }
     protected virtual void QuitGame()
     {

@@ -18,6 +18,7 @@ public class UIWinGameController : LoadMonoBehaviour
     protected override void OnEnable()
     {
         base.OnEnable();
+        SoundFX.Instance.PlayOneShotSoundCompleteGame();
         this.GetElapsedTime();
     }
     protected virtual void GetElapsedTime()

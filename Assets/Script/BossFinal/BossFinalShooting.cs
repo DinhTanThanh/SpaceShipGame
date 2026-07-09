@@ -50,6 +50,7 @@ public class BossFinalShooting : LoadMonoBehaviour
         if (!this.Timing()) return;
         List<Transform> listGateway = this.bossFinalController.BossGateWayController.ListGateway;
         if (listGateway.Count <= 0) return;
+        SoundFX.Instance.PlayOneShotSoundShootLaze();
         Transform gateway = listGateway[0];
         Vector3 pos = gateway.transform.position;
         GameObject bulletLaze = SpawnBulletLaze.Instance.SetPosition(SpawnBulletLaze.Instance.BulletLaze, pos, gateway.rotation);
@@ -71,6 +72,7 @@ public class BossFinalShooting : LoadMonoBehaviour
             return;
         }
         if (!this.Timing()) return;
+        SoundFX.Instance.PlayOneShotSoundShoot();
         foreach(Transform gateway in this.bossFinalController.BossGateWayController.ListGateway)
         {
             Vector3 pos = gateway.transform.position;

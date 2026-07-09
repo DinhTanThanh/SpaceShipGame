@@ -25,6 +25,7 @@ public class BulletLazeDameSender : CountTime
             return;
         }
         if (!this.Timing()) return;
+        SoundFX.Instance.PlayOneShotSoundElectric();
         SendDame(dameReceiver, 1);
         if (dameReceiver.CheckIsDead())
         {

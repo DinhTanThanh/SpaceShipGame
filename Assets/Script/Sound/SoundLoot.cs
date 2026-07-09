@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class SoundManager : LoadMonoBehaviour
+public class SoundLoot : BaseSFX
 {
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+        this.audioSource.volume = 0.38f;
     }
 }

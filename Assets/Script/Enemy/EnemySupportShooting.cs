@@ -7,6 +7,7 @@ public class EnemySupportShooting : LoadMonoBehaviour
     private void Update()
     {
         if (!this.Timing()) return;
+        SoundFX.Instance.PlayOneShotSoundShoot();
         Vector3 pos = this.transform.parent.position;
         Quaternion rot = this.transform.parent.rotation;
         rot = rot * Quaternion.Euler(0, 0, 5f);

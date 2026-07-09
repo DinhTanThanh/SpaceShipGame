@@ -36,6 +36,7 @@ public class BossSpaceShooting : LoadMonoBehaviour
     protected virtual void BossSpaceShoot()
     {
         if (!this.Timing()) return;
+        SoundFX.Instance.PlayOneShotSoundShootLaze();
         foreach (Transform gateway in this.bossSpaceController.BossSpaceGateWayController.ListGateway)
         {
             Vector3 pos = gateway.transform.position;

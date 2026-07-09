@@ -18,7 +18,7 @@ public class Level_1 : BaseLevel
         throw new System.NotImplementedException();
     }
 
-    public override void ReborLevel()
+    public override void RebornLevel()
     {
         this.shootingController.gameObject.SetActive(false);
 

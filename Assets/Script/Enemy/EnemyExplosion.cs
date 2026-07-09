@@ -34,6 +34,7 @@ public class EnemyExplosion : DameSender
         PlayerDameReceiver playerDameReceiver=enemyExplosionPos.GetComponentInChildren<PlayerDameReceiver>();
         if (playerDameReceiver != null)
         {
+            SoundFX.Instance.PlayOneShotSoundSmallExplosion();
             ExecuteReceiver(playerDameReceiver,2);
             SpawnExplosion.Instance.SetPosition(SpawnExplosion.Instance.Explosion, enemyExplosionPos.position, Quaternion.identity);
             if (playerDameReceiver.CheckIsDead())

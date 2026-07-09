@@ -33,6 +33,7 @@ public class ItemLooter : LoadMonoBehaviour
         ItemInventory itemInventory = itemCtrl.ItemInventory;
         if (Ship.PlayerCtrl.ShipController.Inventory.AddItem(itemInventory))
         {
+            SoundFX.Instance.PlayOneShotSoundLoot();
             itemPickupable.Pickup(collision.transform.parent.gameObject);
         }
     }

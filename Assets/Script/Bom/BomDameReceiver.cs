@@ -19,6 +19,8 @@ public class BomDameReceiver : DameReceiver
     private void Update()
     {
         if (!this.isDead) return;
+        SoundFX.Instance.PlayOneShotSoundBoomExplosion();
+        SpawnBom.Instance.GoBackList(this.transform.parent.gameObject);
         Vector3 pos = transform.parent.position;
         this.transform.parent.gameObject.SetActive(false);
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos, Quaternion.identity);

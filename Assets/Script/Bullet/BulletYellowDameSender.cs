@@ -40,6 +40,7 @@ public class BulletYellowDameSender : DameSender
         DameReceiver dameReceive = collision.GetComponent<DameReceiver>();
         if (dameReceive == null) return;
         if (dameReceive is EnemySupportDameReceiver || dameReceive is EnergyShieldDameReceiver || dameReceive is BossFinalDameReceiver) return;
+        SoundFX.Instance.PlayOneShotSoundImpact_2();
         this.SendDame(dameReceive, 1);
         Vector3 newPos = transform.parent.position;
         newPos.z = -5f;
