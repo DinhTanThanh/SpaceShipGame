@@ -43,7 +43,7 @@ public class EnemyDameReceiver : DameReceiver
             Vector3 posDrop = this.transform.position;
             posDrop.x += 0.7f;
             posDrop.y += 0.7f;
-            SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, posDrop, Quaternion.Euler(0, 0, 0));
+            //SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, posDrop, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()

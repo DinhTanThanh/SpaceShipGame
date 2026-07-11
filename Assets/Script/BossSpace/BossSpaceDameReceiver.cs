@@ -51,9 +51,10 @@ public class BossSpaceDameReceiver : DameReceiver
         {
             this.shakeCamera.SetIsShake(true);
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
-            transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.DropItem(BossSpaceController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            this.transform.parent.gameObject.SetActive(false);
+            SpawnItems.instance.DropItem(this.BossSpaceController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
             this.uiController.SetIsShowUI(true);
+            SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, this.transform.parent.position, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()

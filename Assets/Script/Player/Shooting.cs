@@ -69,7 +69,13 @@ public class Shooting : Shoot
     }
     protected override void ExecuteSpawn()
     {
+        if (!this.objectController.DameReceiver.HasEnoughKi())
+        {
+            Debug.Log("Khong du KI de thuc hien");
+            return;
+        }
         SoundFX.Instance.PlayOneShotSoundShipShoot();
+        this.objectController.DameReceiver.ConsumeKi(1);
         foreach (GatewayStatus gatewayStatus in this.listGatewayStatus)
         {
             if (gatewayStatus.StatusGetway)
@@ -83,11 +89,11 @@ public class Shooting : Shoot
         GameObject bulletObject = SpawnBullet.instance.SetPosition(this.bullet, position, rotation);
         this.SetParent(bulletObject, SpawnBullet.instance.transform);
     }
-    protected virtual void SpawnShootingBulletPink(Vector3 position, Quaternion rotation)
-    {
-        GameObject bulletObject = SpawnBulletPink.Instance.SetPosition(SpawnBulletPink.Instance.BulletPink, position, rotation);
-        this.SetParent(bulletObject, SpawnBulletPink.Instance.transform);
-    }
+    //protected virtual void SpawnShootingBulletPink(Vector3 position, Quaternion rotation)
+    //{
+    //    GameObject bulletObject = SpawnBulletPink.Instance.SetPosition(SpawnBulletPink.Instance.BulletPink, position, rotation);
+    //    this.SetParent(bulletObject, SpawnBulletPink.Instance.transform);
+    //}
     protected virtual void SetParent(GameObject obj, Transform parent)
     {
         Vector3 pos = obj.transform.position;

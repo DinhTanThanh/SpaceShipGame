@@ -23,11 +23,11 @@ public class ObjMoveForwardLimitTarget : Movement
     {
         if (Random.value > 0.5)
         {
-            this.speed = Random.Range(0.15f, 0.25f);
+            this.speed = Random.Range(0.15f, 0.3f);
         }
         else
         {
-            this.speed = Random.Range(0.3f, 0.35f);
+            this.speed = Random.Range(0.3f, 0.4f);
         }
     }
     private void Update()

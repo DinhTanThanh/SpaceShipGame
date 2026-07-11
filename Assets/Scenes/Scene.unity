@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemInventory:
-    itemProfileSO: {fileID: 11400000, guid: 9675e17ef3a8e284ba44e8bd80fdb8e3, type: 2}
+    itemProfileSO: {fileID: 11400000, guid: 34f89fd519d89dc47989aa9116048714, type: 2}
     itemCount: 1
     maxStack: 7
     currentLevel: 0
@@ -1315,6 +1315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 0}
   damgeReceiver: {fileID: 254118082}
+  playerController: {fileID: 0}
   motherShip: {fileID: 0}
   enemyShooting: {fileID: 2020508095}
   lookatObjectShip: {fileID: 1768551796}
@@ -1666,6 +1667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
+  ki: 0
+  maxKI: 0
   isDead: 0
   uiController: {fileID: 1031949079}
   shakeCamera: {fileID: 684243158}
@@ -4704,6 +4707,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   maxHp: 10
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 254118083}
   EnemyCtrl: {fileID: 82737737}
@@ -5264,7 +5269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90b3986a171ae94b93fd786d4a2cfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   target: {fileID: 677647654}
   bossFinalController: {fileID: 299167742}
 --- !u!1 &299167739
@@ -5322,6 +5327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: c091e9968b0ecc047b3627bc2eaf9d95, type: 2}
   damgeReceiver: {fileID: 518915852}
+  playerController: {fileID: 1746371181}
   bossGateWayController: {fileID: 1034406564}
   managerPosController: {fileID: 1806850328}
   abilityMoving: {fileID: 299748471}
@@ -6049,6 +6055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 0eab7fce04eca0b4c9ea34c3d8ab497e, type: 2}
   damgeReceiver: {fileID: 986366942}
+  playerController: {fileID: 0}
 --- !u!1 &337284903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6270,6 +6277,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosionController: {fileID: 261703124}
   enemyExplosionAppearing: {fileID: 353833704}
+--- !u!1 &358992992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358992993}
+  m_Layer: 5
+  m_Name: KIPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &358992993
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358992992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2116498832}
+  - {fileID: 1629714266}
+  m_Father: {fileID: 1645578350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &375170558
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,7 +6412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d2c85ef8d942442af3a743924c6bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.4
   target: {fileID: 1849928281}
   bossSpaceController: {fileID: 786436179}
 --- !u!1 &384982361
@@ -7265,8 +7309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77eafdf66a850340a7b5757f99ec20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  maxHp: 1
+  hp: 70
+  maxHp: 70
+  ki: 150
+  maxKI: 150
   isDead: 0
   timer: 0
   timeDelay: 0.3
@@ -7323,6 +7369,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.8283119, y: 0.81655324}
       - {x: 0, y: 1.9200226}
+      - {x: -1.0854969, y: 0.42629313}
       - {x: -2.3247004, y: -0.43848777}
       - {x: -1.7432985, y: -0.12543863}
       - {x: -1.5707083, y: -0.35452735}
@@ -7478,7 +7525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3623de2032a14da894fc7a31cffb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 25
 --- !u!1 &465766381
 GameObject:
   m_ObjectHideFlags: 0
@@ -7727,7 +7774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.12641507, b: 0.12641507, a: 1}
+  m_Color: {r: 1, g: 0.1343725, b: 0.12549019, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7800,6 +7847,51 @@ MonoBehaviour:
   sttLimitObject: 0
   ListGameObject: []
   enemyExplosion: {fileID: 261703122}
+--- !u!1 &476432245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476432246}
+  - component: {fileID: 476432247}
+  m_Layer: 0
+  m_Name: GetHpBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &476432246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476432245}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.819998, y: 26.190002, z: -1.0912986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 974811474}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476432247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476432245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37e3bbdb524a8d45ad9525fea45f85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportShipController: {fileID: 974811475}
 --- !u!1 &477730554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8002,7 +8094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109, y: -13.20001}
+  m_AnchoredPosition: {x: 108, y: -13.20001}
   m_SizeDelta: {x: 199, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &481384731
@@ -8044,7 +8136,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.723
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -8769,6 +8861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 500
   maxHp: 500
+  ki: 0
+  maxKI: 0
   isDead: 0
   shakeCamera: {fileID: 684243158}
   polygonCollider2D: {fileID: 518915850}
@@ -9445,7 +9539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d2c85ef8d942442af3a743924c6bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.4
   target: {fileID: 1406210913}
   bossSpaceController: {fileID: 786436179}
 --- !u!1 &569362516
@@ -10394,6 +10488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 500
   maxHp: 500
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 620592740}
   energyShieldYellowController: {fileID: 918630976}
@@ -10708,7 +10804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90b3986a171ae94b93fd786d4a2cfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   target: {fileID: 1013294930}
   bossFinalController: {fileID: 299167742}
 --- !u!1 &650075160
@@ -11199,6 +11295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: e0c5ebaf3927b974fa11b76502d84b00, type: 2}
   damgeReceiver: {fileID: 1589444335}
+  playerController: {fileID: 1746371181}
   motherShip: {fileID: 1948729058}
   enemyShooting: {fileID: 1927721756}
   lookatObjectShip: {fileID: 1076874409}
@@ -11620,6 +11717,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   maxHp: 1
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 720611800}
 --- !u!60 &720611800
@@ -11973,6 +12072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 37e717926b0021c48bb372e7c8080ef3, type: 2}
   damgeReceiver: {fileID: 1545163002}
+  playerController: {fileID: 1746371181}
   abilityLookatTarget: {fileID: 1395484887}
   enemySupportDameReceiver: {fileID: 1545163002}
   bossFinal: {fileID: 299167739}
@@ -12684,7 +12784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &786436178
 Transform:
   m_ObjectHideFlags: 0
@@ -12723,6 +12823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: d32bfaf6ac9f30240be770afb3aa31d8, type: 2}
   damgeReceiver: {fileID: 1409270264}
+  playerController: {fileID: 1746371181}
   bossSpaceGetwayController: {fileID: 1737157180}
   managerPosController: {fileID: 1744610994}
   posOnEnable: {fileID: 1656805713}
@@ -12780,6 +12881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 63a6654b78bc87f4fafb65d93608ef0a, type: 2}
   damgeReceiver: {fileID: 1612501964}
+  playerController: {fileID: 1746371181}
   meoteoriteDamereceiver: {fileID: 1612501964}
 --- !u!1 &788438769
 GameObject:
@@ -15239,6 +15341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   timeDelay: 0.6
+  enemySupportController: {fileID: 736527629}
 --- !u!1 &916297601
 GameObject:
   m_ObjectHideFlags: 0
@@ -15296,7 +15399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7175521830830924091, guid: b84e6f5b17a50764c8483c113009a5c6, type: 3}
+  m_Sprite: {fileID: -3796407809905149519, guid: 2695795f9aa1691499374aabebf8c0df, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15411,6 +15514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 177c590e6f08e9f4ab42d04e9a66522a, type: 2}
   damgeReceiver: {fileID: 620592739}
+  playerController: {fileID: 0}
   abilitySummonController: {fileID: 982326856}
 --- !u!1 &933782501
 GameObject:
@@ -16142,6 +16246,7 @@ Transform:
   - {fileID: 487867037}
   - {fileID: 1135934538}
   - {fileID: 1573175953}
+  - {fileID: 476432246}
   m_Father: {fileID: 1263392596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &974811475
@@ -16158,8 +16263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 977b578c79c8d5846884e27d272d5e34, type: 2}
   damgeReceiver: {fileID: 1916285638}
-  supportShooting: {fileID: 1666830057}
   playerController: {fileID: 1746371181}
+  supportShooting: {fileID: 1666830057}
   player: {fileID: 1746371180}
 --- !u!1 &979238847
 GameObject:
@@ -16194,6 +16299,7 @@ Transform:
   - {fileID: 1094849650}
   - {fileID: 1452269607}
   - {fileID: 106058735}
+  - {fileID: 1571039557}
   m_Father: {fileID: 1746371180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &979238849
@@ -16365,6 +16471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 200
   maxHp: 200
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 986366943}
   energyShieldYellowController: {fileID: 0}
@@ -16685,6 +16793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 9203c9c32d02bfe42a155b0bedcb9d13, type: 2}
   damgeReceiver: {fileID: 1046258448}
+  playerController: {fileID: 1746371181}
   meoteoriteDamereceiver: {fileID: 1046258448}
 --- !u!1 &992718030
 GameObject:
@@ -17642,6 +17751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 7
   maxHp: 0
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1046258449}
   MeteoriteCtrller: {fileID: 989951123}
@@ -18201,8 +18312,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1498117201}
   m_HandleRect: {fileID: 1498117200}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19875,6 +19986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 0}
   damgeReceiver: {fileID: 0}
+  playerController: {fileID: 0}
   meoteoriteDamereceiver: {fileID: 1873536976}
 --- !u!4 &1175604137
 Transform:
@@ -20254,6 +20366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 36945a69086216d4986ddbd9d9f0a6c4, type: 2}
   damgeReceiver: {fileID: 1281226879}
+  playerController: {fileID: 1746371181}
   enemyBirdDameReceiver: {fileID: 1281226879}
   bossSpace: {fileID: 786436177}
 --- !u!50 &1242060083
@@ -20700,6 +20813,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   maxHp: 10
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1281226880}
   EnemyBirdController: {fileID: 1242060082}
@@ -21333,6 +21448,7 @@ MonoBehaviour:
   managerBulletEnemy: {fileID: 590308216}
   gatewayShotting: {fileID: 8272831}
   objTarget: {fileID: 1746371180}
+  shootingController: {fileID: 1948729061}
 --- !u!1 &1303780557
 GameObject:
   m_ObjectHideFlags: 0
@@ -22160,6 +22276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
+  ki: 0
+  maxKI: 0
   isDead: 0
   shakeCamera: {fileID: 684243158}
   polygonCollider2D: {fileID: 1409270265}
@@ -23861,7 +23979,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 123007455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.000000059604645, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -24104,7 +24222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3623de2032a14da894fc7a31cffb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 25
 --- !u!1 &1530339543
 GameObject:
   m_ObjectHideFlags: 0
@@ -25454,6 +25572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 250
   maxHp: 250
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1545163003}
   enemySupportController: {fileID: 736527629}
@@ -25580,6 +25700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 6ca7eaa44cd495840bf527fba4b89edd, type: 2}
   damgeReceiver: {fileID: 2021270358}
+  playerController: {fileID: 1746371181}
   enemyVDameReceive: {fileID: 2021270358}
   bossSpace: {fileID: 786436177}
 --- !u!4 &1547741282
@@ -25828,6 +25949,54 @@ Transform:
   - {fileID: 538661899}
   m_Father: {fileID: 1283691526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25.472}
+--- !u!1 &1571039556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571039557}
+  - component: {fileID: 1571039558}
+  m_Layer: 0
+  m_Name: RecoveryKI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1571039557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571039556}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 979238848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1571039558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571039556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e65c28ebdedec45a517c4114cfa0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  timeDelay: 0.2
+  isReady: 0
+  abilityWarpCtrl: {fileID: 979238849}
 --- !u!1 &1571185305
 GameObject:
   m_ObjectHideFlags: 0
@@ -26301,6 +26470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   maxHp: 10
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1589444337}
   EnemyCtrl: {fileID: 703124798}
@@ -26439,6 +26610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 5908c6540993bd843b4624b916309dfd, type: 2}
   damgeReceiver: {fileID: 1631909421}
+  playerController: {fileID: 1746371181}
   abilityLookatTarget: {fileID: 2049492891}
   enemySupportDameReceiver: {fileID: 1631909421}
   bossFinal: {fileID: 299167739}
@@ -26776,6 +26948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 2
   maxHp: 2
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1612501965}
   MeteoriteCtrller: {fileID: 787780258}
@@ -27023,6 +27197,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderInObj: 11
   spriteRenderer: {fileID: 1622196639}
+--- !u!1 &1629714265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629714266}
+  - component: {fileID: 1629714268}
+  - component: {fileID: 1629714267}
+  m_Layer: 5
+  m_Name: BorderKIPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1629714266
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629714265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 358992993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 88, y: -28}
+  m_SizeDelta: {x: 150, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1629714267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629714265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -3796407809905149519, guid: 2695795f9aa1691499374aabebf8c0df, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1629714268
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629714265}
+  m_CullTransparentMesh: 1
 --- !u!1 &1630061658
 GameObject:
   m_ObjectHideFlags: 0
@@ -27107,6 +27356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   maxHp: 0
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1631562659}
   MeteoriteCtrller: {fileID: 1719380282}
@@ -27225,6 +27476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 250
   maxHp: 250
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1631909422}
   enemySupportController: {fileID: 1595888067}
@@ -27670,6 +27923,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 155311000}
+  - {fileID: 358992993}
   m_Father: {fileID: 9967484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -28227,6 +28481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 0fc8c4868a515954eb03fb1f22d22dc3, type: 2}
   damgeReceiver: {fileID: 1631562658}
+  playerController: {fileID: 1746371181}
   meoteoriteDamereceiver: {fileID: 1631562658}
 --- !u!1 &1722468434
 GameObject:
@@ -28486,6 +28741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: a5a2acd8975920743b3cdbb92ba7c8a4, type: 2}
   damgeReceiver: {fileID: 441493143}
+  playerController: {fileID: 1746371181}
   inputManager: {fileID: 1262421250}
   inventory: {fileID: 1158052735}
   playerCtrl: {fileID: 1447226654}
@@ -29215,6 +29471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   maxHp: 50
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1803847429}
   enemyVController: {fileID: 2119963410}
@@ -30019,6 +30277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 2
   maxHp: 0
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 1873536977}
   MeteoriteCtrller: {fileID: 1175604136}
@@ -31241,7 +31501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f60ea67ad509b94aaf68f3fb08a027a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRotation: 1
+  speedRotation: 0.5
   target: {fileID: 1746371180}
 --- !u!1 &1906740245
 GameObject:
@@ -31386,6 +31646,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 16
   maxHp: 16
+  ki: 0
+  maxKI: 0
   isDead: 0
   summonSupportShipSkill: {fileID: 0}
   SupportShipController: {fileID: 974811475}
@@ -31566,7 +31828,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 9
   m_Sprite: {fileID: -3441831729724377877, guid: 1f56fd608a1ec3148a5f279c1099362c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -32729,10 +32991,11 @@ MonoBehaviour:
   shooter: {fileID: 703124797}
   bullet: {fileID: 1597946287}
   spawnBullett: {fileID: 1221704706}
-  disLimit: 13
+  disLimit: 18
   managerBulletEnemy: {fileID: 590308216}
   gatewayShotting: {fileID: 1694734527}
   objTarget: {fileID: 1746371180}
+  shootingController: {fileID: 0}
 --- !u!1 &1929605034
 GameObject:
   m_ObjectHideFlags: 0
@@ -33352,6 +33615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 2af04cbe851c9184ca55e2d69a86317e, type: 2}
   damgeReceiver: {fileID: 95991554}
+  playerController: {fileID: 1746371181}
   posOnEnable: {fileID: 1656805712}
   managerEnemy: {fileID: 1746354285}
   abilitySummonController: {fileID: 982326856}
@@ -34197,6 +34461,7 @@ MonoBehaviour:
   managerBulletEnemy: {fileID: 590308216}
   gatewayShotting: {fileID: 0}
   objTarget: {fileID: 0}
+  shootingController: {fileID: 0}
 --- !u!4 &2020508096
 Transform:
   m_ObjectHideFlags: 0
@@ -34259,6 +34524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   maxHp: 50
+  ki: 0
+  maxKI: 0
   isDead: 0
   polygonCollider2D: {fileID: 2021270359}
   enemyVController: {fileID: 1547741281}
@@ -34428,7 +34695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3623de2032a14da894fc7a31cffb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 25
 --- !u!1 &2028746539
 GameObject:
   m_ObjectHideFlags: 0
@@ -36126,6 +36393,96 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2116498831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116498832}
+  - component: {fileID: 2116498834}
+  - component: {fileID: 2116498833}
+  - component: {fileID: 2116498835}
+  m_Layer: 5
+  m_Name: Value
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2116498832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116498831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 358992993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 88, y: -28}
+  m_SizeDelta: {x: 148, y: 9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2116498833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116498831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9245283, g: 0.8913848, b: 0.8913848, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6748613716605963115, guid: f77b6781ea4f98b468c1c2a637c7e00a, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2116498834
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116498831}
+  m_CullTransparentMesh: 1
+--- !u!114 &2116498835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116498831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81cecd06492c24e9c35c24207ac5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2116498833}
+  playerController: {fileID: 1746371181}
 --- !u!1 &2119963409
 GameObject:
   m_ObjectHideFlags: 0
@@ -36158,6 +36515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingSO: {fileID: 11400000, guid: 4536b1dce14624d44b32fef8fa0f30e1, type: 2}
   damgeReceiver: {fileID: 1803847428}
+  playerController: {fileID: 1746371181}
   enemyVDameReceive: {fileID: 1803847428}
   bossSpace: {fileID: 786436177}
 --- !u!4 &2119963411
@@ -36254,6 +36612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   timeDelay: 0.6
+  enemySupportController: {fileID: 1595888067}
 --- !u!1 &2121769800
 GameObject:
   m_ObjectHideFlags: 0

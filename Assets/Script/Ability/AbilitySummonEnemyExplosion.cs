@@ -39,6 +39,7 @@ public class AbilitySummonEnemyExplosion : BaseAbility
     }
     protected virtual void SummonEnemyExplosion()
     {
+        if (this.abilitySummonController.EnemyMotherShipCtrl.PlayerController.DameReceiver.IsDead) return;
         if (!this.Timing()) return;
         quaternion rot = this.abilitySummonController.EnemyMotherShipCtrl.transform.rotation;
         GameObject EnemyExplosion = SpawnEnemyExplosion.Instance.SetPosition(SpawnEnemyExplosion.Instance.EnemyExplosion,this.gateway.position , rot);

@@ -10,7 +10,7 @@ public class ItemVitalityUp : LoadMonoBehaviour
     protected override void Reset()
     {
         base.Reset();
-        this.SetMaxHpIncrease(5);
+        this.SetMaxHpIncrease(15);
         this.SetHealPercent(0.3f);
     }
     protected override void LoadComponent()

@@ -19,8 +19,9 @@ public class EnemyController : ShootingController
     private void Update()
     {
         if (this.motherShip.activeSelf) return;
-        this.damgeReceiver.IsDead = true;
+        this.transform.gameObject.SetActive(false);
     }
+    
     protected virtual void LoadObjectShooting()
     {
         if (this.enemyShooting != null) return;

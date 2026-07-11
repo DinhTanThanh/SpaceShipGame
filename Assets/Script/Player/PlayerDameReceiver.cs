@@ -55,6 +55,8 @@ public class PlayerDameReceiver : DameReceiver
     {
         this.hp = this.playerController.ShootingSO.maxHP;
         this.maxHp = this.playerController.ShootingSO.maxHP;
+        this.ki = this.playerController.ShootingSO.maxKI;
+        this.maxKI = this.playerController.ShootingSO.maxKI;
         this.IsDead = false;
     }
 
@@ -90,10 +92,6 @@ public class PlayerDameReceiver : DameReceiver
         {
             this.uiDefeatController.SetIsShowUI(true);
             this.transform.parent.gameObject.SetActive(false);
-            //SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
-            //transform.parent.gameObject.SetActive(false);
-            //this.playerController.gameObject.SetActive(false);
-            //SpawnItems.instance.DropItem(MeteoriteCtrller.ShottingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
 }

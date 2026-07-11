@@ -8,7 +8,8 @@ public class EnemyBirdController : ShootingController
     private void Update()
     {
         if (this.bossSpace.activeSelf) return;
-        this.damgeReceiver.IsDead = true;
+        this.transform.gameObject.SetActive(false);
+        //this.damgeReceiver.IsDead = true;
     }
     protected override void LoadComponent()
     {

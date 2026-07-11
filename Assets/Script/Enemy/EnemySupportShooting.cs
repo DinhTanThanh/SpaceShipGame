@@ -4,8 +4,21 @@ public class EnemySupportShooting : LoadMonoBehaviour
 {
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float timeDelay = 0.6f;
+    [SerializeField] protected EnemySupportController enemySupportController;
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadEnemySupportController();
+    }
+    protected virtual void LoadEnemySupportController()
+    {
+        if (this.enemySupportController != null) return;
+        this.enemySupportController = GetComponentInParent<EnemySupportController>();
+        Debug.LogWarning("Load EnemySupportController: " + transform.name);
+    }
     private void Update()
     {
+        if (this.enemySupportController.PlayerController.DameReceiver.IsDead) return;
         if (!this.Timing()) return;
         SoundFX.Instance.PlayOneShotSoundShoot();
         Vector3 pos = this.transform.parent.position;

@@ -4,8 +4,6 @@ public class SupportShipController : ShootingController
 {
     [SerializeField] protected SupportShooting supportShooting;
     public SupportShooting SupportShooting => supportShooting;
-    [SerializeField] protected PlayerController playerController;
-    public PlayerController PlayerController => playerController;
     [SerializeField] protected Transform player;
     public Transform Player => player;
     protected override void LoadComponent()

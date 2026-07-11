@@ -7,7 +7,7 @@ public class AbilityLookatTarget :LookatObj
     protected override void Reset()
     {
         base.Reset();
-        this.speedRotation = 1f;
+        this.speedRotation = 0.5f;
     }
     protected override void LoadComponent()
     {

@@ -25,7 +25,6 @@ public class EnemyEnableByDistance : EnableByDistanceAbstract
     }
     private void Update()
     {
-        Debug.Log(IsDistanceAchiveLimit());
         if (!IsDistanceAchiveLimit()) return;
         this.meteoriteController.DameReceiver.IsDead = true;
     }

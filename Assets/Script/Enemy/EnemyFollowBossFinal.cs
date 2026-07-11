@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyFollowBossFinal : LoadMonoBehaviour
 {
-    [SerializeField] protected float speed = 1f;
+    [SerializeField] protected float speed = 0.5f;
     [SerializeField] protected Transform target;
     [SerializeField] protected BossFinalController bossFinalController;
     public BossFinalController BossFinalController => bossFinalController;

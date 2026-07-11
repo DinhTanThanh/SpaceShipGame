@@ -15,4 +15,5 @@ MonoBehaviour:
   enemyName: Player
   shottingType: 3
   maxHP: 70
+  maxKI: 150
   dropItems: []

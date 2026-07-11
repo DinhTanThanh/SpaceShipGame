@@ -1,14 +1,14 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 public class EnemyShooting : Shoot
 {
     [SerializeField] protected float disLimit;
-    public float DisLimit => disLimit;
     [SerializeField] protected GameObject managerBulletEnemy;
-    public GameObject ManagerBulletEnemy=>managerBulletEnemy;
     [SerializeField] protected Transform gatewayShotting;
-    public Transform GatewayShotting => gatewayShotting;
     [SerializeField] protected Transform objTarget;
+    [SerializeField] protected ShootingController shootingController;
+    public float DisLimit => disLimit;
+    public GameObject ManagerBulletEnemy=>managerBulletEnemy;
+    public Transform GatewayShotting => gatewayShotting;
     public Transform ObjTarget => objTarget;
     protected override void Awake()
     {
@@ -31,9 +31,17 @@ public class EnemyShooting : Shoot
         this.bullet = this.getGameObject();
         this.spawnBullett = GameObject.Find("SpawnBulletEnemy");
         this.gatewayShotting = transform.parent.Find("GatewayShotting");
+        this.LoadShootingController();
+    }
+    protected virtual void LoadShootingController()
+    {
+        if (this.shootingController != null) return;
+        this.shootingController = GetComponentInParent<ShootingController>();
+        Debug.LogWarning("Load ShootingController: " + transform.name);
     }
     protected override void TimeDelay()
     {
+        if (this.shootingController.PlayerController.DameReceiver.IsDead) return;
         timer += Time.deltaTime;
         if (timer < timeDelay) return;
         timer = 0f;

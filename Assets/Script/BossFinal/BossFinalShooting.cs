@@ -14,6 +14,7 @@ public class BossFinalShooting : LoadMonoBehaviour
     public BossFinalController BossFinalController => bossFinalController;
     private void Update()
     {
+        if (this.bossFinalController.PlayerController.DameReceiver.IsDead) return;
         if (this.isShootBullet)
         {
             this.BossFinalShootBullet();

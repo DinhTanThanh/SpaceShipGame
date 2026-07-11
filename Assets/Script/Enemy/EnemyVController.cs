@@ -9,6 +9,7 @@ public class EnemyVController : ShootingController
     {
         if (this.bossSpace.activeSelf) return;
         this.transform.gameObject.SetActive(false);
+        //this.transform.gameObject.SetActive(false);
     }
     protected override void LoadComponent()
     {

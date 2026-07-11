@@ -36,7 +36,8 @@ public class EnemyVDameReceive : DameReceiver
         Transform pos = this.enemyVController.transform;
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos.position, pos.rotation);
         SpawnItems.instance.DropItem(this.enemyVController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);
-        transform.parent.gameObject.SetActive(false);
+        SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, this.transform.parent.position, Quaternion.Euler(0, 0, 0));
+        this.transform.parent.gameObject.SetActive(false);
     }
     public override void Reborn()
     {

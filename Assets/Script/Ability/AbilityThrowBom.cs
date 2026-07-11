@@ -17,6 +17,7 @@ public class AbilityThrowBom : BaseAbility
     }
     private void Update()
     {
+        if (this.abilityThrowBomController.EnemyV2Controller.PlayerController.DameReceiver.IsDead) return;
         if (!this.Timing()) return;
         Transform pos = this.abilityThrowBomController.EnemyV2Controller.transform;
         GameObject Bom = SpawnBom.Instance.SetPosition(SpawnBom.Instance.ObjectBome, pos.position, pos.rotation);
