@@ -4,8 +4,6 @@ public class SupportShipController : ShootingController
 {
     [SerializeField] protected SupportShooting supportShooting;
     public SupportShooting SupportShooting => supportShooting;
-    [SerializeField] protected PlayerController playerController;
-    public PlayerController PlayerController => playerController;
     [SerializeField] protected Transform player;
     public Transform Player => player;
     protected override void LoadComponent()
@@ -47,5 +45,10 @@ public class SupportShipController : ShootingController
         {
             this.shootingSO = Resources.Load<ShootingSO>("Shotting/SupportShip/EnemyDefault");
         }
+    }
+    private void Update()
+    {
+        if (this.playerController.gameObject.activeSelf) return;
+        this.transform.gameObject.SetActive(false);
     }
 }

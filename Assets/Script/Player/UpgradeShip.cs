@@ -29,7 +29,7 @@ public class UpgradeShip : LoadMonoBehaviour,IObjChangeItemObserver
             if(itemInventory.itemProfileSO.itemCode.ToString()== "ShipBlue")
             {
                 this.abilityWarpCtrl.PlayerController.SpriteRenderer.sprite = itemInventory.itemProfileSO.sprite;
-                this.abilityWarpCtrl.PlayerController.Shooting.SetTimeDelay(0.08f);
+                this.abilityWarpCtrl.PlayerController.Shooting.SetTimeDelay(0.08f); //tang toc ban cho tau
                 return;
             }
         }

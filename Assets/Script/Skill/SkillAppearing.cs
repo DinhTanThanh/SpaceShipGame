@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class SkillAppearing : LoadMonoBehaviour,IObjChangeItemObserver
 {
@@ -30,7 +32,13 @@ public class SkillAppearing : LoadMonoBehaviour,IObjChangeItemObserver
     }
     protected virtual void SetParentForSkill(Transform skill)
     {
+        List<Transform> listItemSlot=new List<Transform>();
         foreach(Transform child in transform)
+        {
+            listItemSlot.Add(child);
+        }
+        listItemSlot.Sort((a,b)=>string.Compare(b.name,a.name,StringComparison.OrdinalIgnoreCase));
+        foreach(Transform child in listItemSlot)
         {
             if (child.childCount > 0) continue;
             Debug.Log(child.name);

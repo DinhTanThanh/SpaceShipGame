@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SliderChangeHp : BaseSlider
 {
@@ -26,5 +27,12 @@ public class SliderChangeHp : BaseSlider
     public virtual void SetMaxHp(int maxHp)
     {
         this.maxHp = maxHp;
+    }
+    public virtual void ChangeColorHpbar(Color color)
+    {
+        GameObject fill_Area = this.transform.Find("Fill Area")?.gameObject;
+        if (fill_Area == null) Debug.Log("NULLLLLLLLLLLLLLLLLLLL");
+        Image image =fill_Area.GetComponentInChildren<Image>();
+        image.color = color;
     }
 }

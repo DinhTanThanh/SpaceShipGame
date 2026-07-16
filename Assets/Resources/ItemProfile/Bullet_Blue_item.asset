@@ -16,5 +16,5 @@ MonoBehaviour:
   itemType: 3
   nameItem: Bullet_Blue_item
   defaultStack: 7
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 10d7bb52f070c7a40a95fb914828d12a, type: 3}
   listUpgradeLevel: []

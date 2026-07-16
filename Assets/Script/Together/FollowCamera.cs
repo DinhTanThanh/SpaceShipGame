@@ -6,17 +6,17 @@ public class Follow : LoadMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadCamera();
+        this.LoadPlayer();
     }
-    protected virtual void LoadCamera()
+    protected virtual void LoadPlayer()
     {
         if (this.objectFollow != null) return;
-        this.objectFollow = GameObject.Find("Camera");
-        Debug.LogWarning("Load Camera: " + transform.name);
+        this.objectFollow = GameObject.Find("Player");
+        Debug.LogWarning("Load Player: " + transform.name);
     }
     private void Update()
     {
         this.transform.position=this.objectFollow.transform.position;
-        this.transform.rotation=this.objectFollow.transform.rotation;
+        //this.transform.rotation=this.objectFollow.transform.rotation;
     }
 }

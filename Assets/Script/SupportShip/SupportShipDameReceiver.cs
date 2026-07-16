@@ -18,13 +18,11 @@ public class SupportShipDameReceiver : DameReceiver
     }
     private void Update()
     {
-        if (IsDead == true)
+        if (this.IsDead == true)
         {
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            //this.Reborn();
-            SpawnItems.instance.DropItem(SupportShipController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
-            this.isDead = false;
+            this.Reborn();
         }
     }
     public override void Reborn()

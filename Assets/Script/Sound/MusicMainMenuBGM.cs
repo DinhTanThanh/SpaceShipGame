@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MusicMainMenuBGM : BaseMusic
 {
-    public virtual void TurnDownSound()
+    public virtual void TurnDownSound(float volume)
     {
-        this.audioSource.volume = 0.4f;
+        this.audioSource.volume = volume;
     }
 }

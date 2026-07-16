@@ -35,6 +35,7 @@ public class BossSpaceShooting : LoadMonoBehaviour
     }
     protected virtual void BossSpaceShoot()
     {
+        if (this.bossSpaceController.PlayerController.DameReceiver.IsDead) return;
         if (!this.Timing()) return;
         SoundFX.Instance.PlayOneShotSoundShootLaze();
         foreach (Transform gateway in this.bossSpaceController.BossSpaceGateWayController.ListGateway)

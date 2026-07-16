@@ -24,3 +24,7 @@ MonoBehaviour:
     dropRate: 100000
     minItem: 0
     maxItem: 0
+  - prefabObject: {fileID: 11400000, guid: 49f636e512480d34abec1839de1be93a, type: 2}
+    dropRate: 100000
+    minItem: 0
+    maxItem: 0

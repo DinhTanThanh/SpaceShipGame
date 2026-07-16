@@ -6,6 +6,8 @@ public class BtnNextLevel : BaseButton
     [SerializeField] protected CountTimeController countTimeController;
     [SerializeField] protected LevelController levelController;
     [SerializeField] protected PlayerController playerController;
+    [SerializeField] protected ChipiNoticeController chipiNoticeController;
+    [SerializeField] protected UIWinGameController uIWinGameController;
     public int HpBeginLevel => hpBeginLevel;
     protected override void LoadComponent()
     {
@@ -13,7 +15,21 @@ public class BtnNextLevel : BaseButton
         this.LoadCountTimeController();
         this.LoadLevelController();
         this.LoadPlayerController();
-        //this.GetHpBeginLevel();
+        this.LoadChipiNoticeController();
+        this.LoadUIWinGameController();
+        this.GetHpBeginLevel();
+    }
+    protected virtual void LoadUIWinGameController()
+    {
+        if (this.uIWinGameController != null) return;
+        this.uIWinGameController=GetComponentInParent<UIWinGameController>();
+        Debug.LogWarning("Load UIWinGameController: " + transform.name);
+    }
+    protected virtual void LoadChipiNoticeController()
+    {
+        if (this.chipiNoticeController != null) return;
+        this.chipiNoticeController = FindFirstObjectByType<ChipiNoticeController>();
+        Debug.LogWarning("Load ChipiNoticeController: " + transform.name);
     }
     protected virtual void GetHpBeginLevel()
     {
@@ -44,6 +60,8 @@ public class BtnNextLevel : BaseButton
         if (this.levelController.CheckLimitLevel())
         {
             Debug.Log("Dat gioi han level");
+            this.chipiNoticeController.ChipiMoving.SetUINoticeCurrent(this.chipiNoticeController.GetUINoticeByName("UINoticeLimitLevel"));
+            this.chipiNoticeController.gameObject.SetActive(true);
             return;
         }
         SoundFX.Instance.PlayOneShotSoundClick();
@@ -56,6 +74,8 @@ public class BtnNextLevel : BaseButton
         this.GetHpBeginLevel();
         this.transform.parent.parent.gameObject.SetActive(false);
         this.countTimeController.ResetTimer();
+        this.playerController.ActiveAction();
+        this.uIWinGameController.BtnActiveInventory.gameObject.SetActive(true);
     }
     protected virtual void SetBossCurrent()
     {

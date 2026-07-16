@@ -53,4 +53,5 @@ public class HpBar : LoadMonoBehaviour
         this.gameObject.SetActive(false);
         SpawnHpBar.Instance.GoBackList(this.gameObject);
     }
+    
 }

@@ -39,11 +39,14 @@ public class EnemyDameReceiver : DameReceiver
             SoundFX.Instance.PlayOneShotSoundSmallExplosion();
             SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.DropItem(this.EnemyCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            if (!this.EnemyCtrl.PlayerController.DameReceiver.IsDead)
+            {
+                SpawnItems.instance.DropItem(this.EnemyCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            }
             Vector3 posDrop = this.transform.position;
             posDrop.x += 0.7f;
             posDrop.y += 0.7f;
-            SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, posDrop, Quaternion.Euler(0, 0, 0));
+            //SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, posDrop, Quaternion.Euler(0, 0, 0));
         }
     }
     public override void Reborn()

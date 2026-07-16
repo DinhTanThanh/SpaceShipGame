@@ -443,7 +443,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c8d156c7b2edb8c44b1b6f413a040b77, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2784,6 +2784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1055471081}
+  musicController: {fileID: 1721548619}
 --- !u!1 &1080397830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e1022f1470e7040861c4ea69af2bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicMainMenuBGM: {fileID: 924290736}
 --- !u!1 &1852748522
 GameObject:
   m_ObjectHideFlags: 0

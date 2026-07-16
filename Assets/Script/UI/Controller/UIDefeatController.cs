@@ -6,10 +6,18 @@ public class UIDefeatController : LoadMonoBehaviour
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float timeDelay = 2f;
     [SerializeField] protected GameObject uiDefeatGame;
+    [SerializeField] protected UIVictoryController uiVictoryController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadUIDefeatGame();
+        this.LoadUIVictoryController();
+    }
+    protected virtual void LoadUIVictoryController()
+    {
+        if (this.uiVictoryController != null) return;
+        this.uiVictoryController = FindFirstObjectByType<UIVictoryController>();
+        Debug.LogWarning("Load UIVictoryController: " + transform.name);
     }
     protected virtual void LoadUIDefeatGame()
     {
@@ -20,6 +28,7 @@ public class UIDefeatController : LoadMonoBehaviour
     private void Update()
     {
         if (!this.isShowUI) return;
+        this.uiVictoryController.SetIsShowUI(false);
         this.uiDefeatGame.SetActive(true);
         this.isShowUI = false;
     }

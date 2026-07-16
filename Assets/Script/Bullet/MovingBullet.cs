@@ -7,7 +7,7 @@ public class MovingBullet : LoadMonoBehaviour
     protected override void Reset()
     {
         base.Reset();
-        SetSpeedBullet(15);
+        SetSpeedBullet(25);
     }
     protected override void LoadComponent()
     {

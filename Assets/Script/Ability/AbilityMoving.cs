@@ -13,7 +13,7 @@ public class AbilityMoving : Movement
     }
     protected override void SetSpeed()
     {
-        this.speed =0.2f;
+        this.speed =0.1f;
     }
     private void Update()
     {

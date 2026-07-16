@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 public class EnemyMotherDameReceiver : DameReceiver
@@ -34,8 +35,12 @@ public class EnemyMotherDameReceiver : DameReceiver
             this.shakeCamera.SetIsShake(true);
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.DropItem(this.EnemyMotherShipCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            if (!this.EnemyMotherShipCtrl.PlayerController.DameReceiver.IsDead)
+            {
+                SpawnItems.instance.DropItem(this.EnemyMotherShipCtrl.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            }
             this.uiController.SetIsShowUI(true);
+            SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, this.transform.parent.position, Quaternion.Euler(0, 0, 0));
         }
     }
     protected virtual void LoadShakeCamera()
