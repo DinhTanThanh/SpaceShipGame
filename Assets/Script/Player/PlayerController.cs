@@ -9,6 +9,9 @@ public class PlayerController : ShootingController
     [SerializeField] protected AbilityWarpCtrl abilityWarpCtrl;
     [SerializeField] protected PlayerGatewaysController playerGatewaysController;
     [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected ObjMoveForwardLimitMouse objMoveForwardLimitMouse;
+    [SerializeField] protected PlayerPushBack playerPushBack;
+    [SerializeField] protected ChipiNoticeController chipiNoticeController;
     public InputManager InputManager => inputManager;
     public Inventory Inventory => inventory;
     public PlayerCtrl PlayerCtrl => playerCtrl;
@@ -16,11 +19,9 @@ public class PlayerController : ShootingController
     public AbilityWarpCtrl AbilityWarpCtrl => abilityWarpCtrl;
     public PlayerGatewaysController PlayerGatewaysController => playerGatewaysController;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
-    protected override void Awake()
-    {
-        base.Awake();
-        //DontDestroyOnLoad(this.gameObject);
-    }
+    public ObjMoveForwardLimitMouse ObjMoveForwardLimitMouse => objMoveForwardLimitMouse;
+    public PlayerPushBack PlayerPushBack => playerPushBack;
+    public ChipiNoticeController ChipiNoticeController => chipiNoticeController;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -32,6 +33,27 @@ public class PlayerController : ShootingController
         this.LoadAbilityWarpCtrl();
         this.LoadPlayerGatewaysController();
         this.LoadSpriteRenderer();
+        this.LoadObjMoveForwardLimitMouse();
+        this.LoadPlayerPushBack();
+        this.LoadChipiNoticeController();
+    }
+    protected virtual void LoadChipiNoticeController()
+    {
+        if (this.chipiNoticeController != null) return;
+        this.chipiNoticeController = FindFirstObjectByType<ChipiNoticeController>();
+        Debug.LogWarning("Load ChipiNoticeController: " + transform.name);
+    }
+    protected virtual void LoadPlayerPushBack()
+    {
+        if (this.playerPushBack != null) return;
+        this.playerPushBack = GetComponentInChildren<PlayerPushBack>();
+        Debug.LogWarning("Load PlayerPushBack: " + transform.name);
+    }
+    protected virtual void LoadObjMoveForwardLimitMouse()
+    {
+        if (this.objMoveForwardLimitMouse != null) return;
+        this.objMoveForwardLimitMouse = GetComponentInChildren<ObjMoveForwardLimitMouse>();
+        Debug.LogWarning("Load ObjMoveForwardLimitMouse: " + transform.name);
     }
     protected virtual void LoadSpriteRenderer()
     {
@@ -81,5 +103,19 @@ public class PlayerController : ShootingController
         string path = "Shooting/Player/" + transform.name;
         this.shootingSO = Resources.Load<ShootingSO>(path);
         Debug.LogWarning("Load EnemySO: " + transform.name);
+    }
+    public virtual void DisableShoot()
+    {
+        this.shooting.gameObject.SetActive(false);
+    }
+    public virtual void DisableAction()
+    {
+        this.shooting.gameObject.SetActive(false);
+        this.objMoveForwardLimitMouse.gameObject.SetActive(false);
+    }
+    public virtual void ActiveAction()
+    {
+        this.shooting.gameObject.SetActive(true);
+        this.objMoveForwardLimitMouse.gameObject.SetActive(true);
     }
 }

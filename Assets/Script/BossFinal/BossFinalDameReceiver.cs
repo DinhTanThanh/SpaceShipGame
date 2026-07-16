@@ -53,7 +53,10 @@ public class BossFinalDameReceiver : DameReceiver
             this.shakeCamera.SetIsShake(true);
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.DropItem(bossFinalController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            if (!this.bossFinalController.PlayerController.DameReceiver.IsDead)
+            {
+                SpawnItems.instance.DropItem(bossFinalController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            }
             this.uiController.SetIsShowUI(true);
         }
     }

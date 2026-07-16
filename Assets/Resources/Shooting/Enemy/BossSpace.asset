@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Shotting
   shottingType: 2
-  maxHP: 100
+  maxHP: 250
+  maxKI: 0
   dropItems:
   - prefabObject: {fileID: 11400000, guid: 8ad4660ffbc00f149852185b340cfe93, type: 2}
-    dropRate: 100000
-    minItem: 0
-    maxItem: 0
-  - prefabObject: {fileID: 11400000, guid: 34f89fd519d89dc47989aa9116048714, type: 2}
     dropRate: 100000
     minItem: 0
     maxItem: 0

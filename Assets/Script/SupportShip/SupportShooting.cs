@@ -43,7 +43,7 @@ public class SupportShooting : Shoot
     {
         this.SetTimeDelay(this.supportShipController.PlayerController.Shooting.timeDelay * 1.2f);
     }
-    protected override bool getControllerToSpawn()
+    protected override bool GetControllerToSpawn()
     {
         //tự động bắn nên không cần code để auto true đẻ cho nó tự kiểm tra tự bắn
         return true;

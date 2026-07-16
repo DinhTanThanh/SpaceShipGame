@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class UIInventorySpawnerCtrl : LoadMonoBehaviour,IObjChangeItemObserver
 {
     [SerializeField] protected Transform holder;
-    public Transform Holder => holder;
     [SerializeField] protected Inventory inventoryPlayer;
+    [SerializeField] protected Dictionary<ItemInventory, GameObject> dicItem = new Dictionary<ItemInventory, GameObject>();
+    public Transform Holder => holder;
     public Inventory InventoryPlayer => inventoryPlayer;
-    [SerializeField] protected Dictionary<ItemInventory,GameObject> dicItem=new Dictionary<ItemInventory,GameObject>();
     public Dictionary<ItemInventory, GameObject> DicItem => dicItem;
     protected override void LoadComponent()
     {

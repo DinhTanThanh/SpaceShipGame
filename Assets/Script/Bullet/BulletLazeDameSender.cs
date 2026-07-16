@@ -18,18 +18,10 @@ public class BulletLazeDameSender : CountTime
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        PlayerDameReceiver dameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
-        if (dameReceiver == null)
-        {
-            Debug.Log("NUll");
-            return;
-        }
+        DameReceiver dameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
+        if (dameReceiver is not PlayerDameReceiver && dameReceiver is not SupportShipDameReceiver) return;
         if (!this.Timing()) return;
         SoundFX.Instance.PlayOneShotSoundElectric();
         SendDame(dameReceiver, 1);
-        if (dameReceiver.CheckIsDead())
-        {
-            dameReceiver.IsDead = true;
-        }
     }
 }

@@ -52,7 +52,7 @@ public class EnemyShooting : Shoot
     {
         this.SetTimeDelay(0.8f);
     }
-    protected override bool getControllerToSpawn()
+    protected override bool GetControllerToSpawn()
     {
         //tự động bắn nên không cần code để auto true đẻ cho nó tự kiểm tra tự bắn
         return true;

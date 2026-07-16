@@ -12,13 +12,13 @@ public abstract class Shoot : LoadMonoBehaviour
     [SerializeField] protected GameObject spawnBullett;
     public GameObject SpawnBullett=>spawnBullett;
  
-    protected abstract bool getControllerToSpawn();
+    protected abstract bool GetControllerToSpawn();
     protected virtual void TimeDelay()
     {
         this.timer += Time.deltaTime;
         if (this.timer < timeDelay) return;
         this.timer = 0f;
-        if (!getControllerToSpawn()) return;
+        if (!GetControllerToSpawn()) return;
         ExecuteSpawn();
     }
     protected abstract void ExecuteSpawn();

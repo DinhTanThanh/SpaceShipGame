@@ -8,14 +8,22 @@ public class BtnRetryGame : BaseButton
     [SerializeField] protected BtnNextLevel btnNextLevel;
     [SerializeField] protected PlayerController playerController;
     [SerializeField] protected CountTimeController countTimeController;
+    [SerializeField] protected BtnActiveInventory btnActiveInventory;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadLevelController();
-        this.LoadUIWinGameController();
+        this.LoadUIGameController();
         this.LoadBtnNextLevel();
         this.LoadPlayerController();
         this.LoadCountTimeController();
+        this.LoadBtnActiveInventory();
+    }
+    protected virtual void LoadBtnActiveInventory()
+    {
+        if (this.btnActiveInventory != null) return;
+        this.btnActiveInventory = FindFirstObjectByType<BtnActiveInventory>();
+        Debug.LogWarning("Load BtnActiveInventory; " + transform.name);
     }
     protected virtual void LoadCountTimeController()
     {
@@ -35,11 +43,11 @@ public class BtnRetryGame : BaseButton
         this.btnNextLevel = FindFirstObjectByType<BtnNextLevel>();
         Debug.LogWarning("Load BtnNextLevel: " + transform.name);
     }
-    protected virtual void LoadUIWinGameController()
+    protected virtual void LoadUIGameController()
     {
         if (this.uiGameController != null) return;
         this.uiGameController = transform.parent.parent.gameObject;
-        Debug.LogWarning("Load UIWinGame: " + transform.name);
+        Debug.LogWarning("Load UIGame: " + transform.name);
     }
     protected virtual void LoadLevelController()
     {
@@ -57,8 +65,11 @@ public class BtnRetryGame : BaseButton
         baseLevel.RebornLevel();
         this.levelController.ActiveLevelCurrent();
         this.uiGameController.SetActive(false);
+        Debug.Log(this.btnNextLevel.HpBeginLevel);
         this.playerController.DameReceiver.SetMaxHpAndHp(this.btnNextLevel.HpBeginLevel, this.btnNextLevel.HpBeginLevel);
         this.transform.parent.parent.gameObject.SetActive(false);
         this.countTimeController.ResetTimer();
+        this.playerController.ActiveAction();
+        this.btnActiveInventory.gameObject.SetActive(true);
     }
 }

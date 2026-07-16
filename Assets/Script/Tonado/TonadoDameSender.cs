@@ -18,11 +18,10 @@ public class TonadoDameSender : CountTime
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        PlayerDameReceiver playerDameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<PlayerDameReceiver>();
-        if (playerDameReceiver == null) return;
+        DameReceiver dameReceiver = collision.transform.parent?.parent?.GetComponentInChildren<DameReceiver>();
+        if (dameReceiver is not PlayerDameReceiver && dameReceiver is not SupportShipDameReceiver) return;
         if (!this.Timing()) return;
         SoundFX.Instance.PlayOneShotSoundElectric();
-
-        SendDame(playerDameReceiver, 1);
+        SendDame(dameReceiver, 1);
     }
 }

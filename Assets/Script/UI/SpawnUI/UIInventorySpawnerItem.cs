@@ -5,9 +5,9 @@ public class UIInventorySpawnerItem : PoolPrefab
     private static UIInventorySpawnerItem instance;
     public static UIInventorySpawnerItem Instance => instance;
     [SerializeField] protected GameObject prefab;
+    [SerializeField] protected GameObject uiInventory;
     public GameObject Prefab => prefab;
 
-    [SerializeField] protected GameObject uiInventory;
     public GameObject UiInventory => uiInventory;
     protected override void LoadComponent()
     {

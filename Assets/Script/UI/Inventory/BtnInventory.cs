@@ -3,9 +3,11 @@ using UnityEngine;
 public class BtnInventory : LoadMonoBehaviour
 {
     private static BtnInventory instance;
-    public static BtnInventory Instance => instance;
-    [SerializeField] protected bool isOpen=false;
+    [SerializeField] protected bool isOpen = false;
+    [SerializeField] protected PlayerController playerController;
     public bool IsOpen => isOpen;
+    public static BtnInventory Instance => instance;
+    public PlayerController PlayerController=> playerController;
     protected override void Awake()
     {
         base.Awake();
@@ -15,6 +17,17 @@ public class BtnInventory : LoadMonoBehaviour
     {
         base.Start();
         this.gameObject.SetActive(false);
+    }
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadPlayerController();
+    }
+    protected virtual void LoadPlayerController()
+    {
+        if (this.playerController != null) return;
+        this.playerController=FindFirstObjectByType<PlayerController>();
+        Debug.LogWarning("Load PlayerController: " + transform.name);
     }
     public virtual void ActiveInventory()
     {

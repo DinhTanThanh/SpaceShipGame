@@ -35,7 +35,10 @@ public class EnemyVDameReceive : DameReceiver
         SoundFX.Instance.PlayOneShotSoundSmallExplosion();
         Transform pos = this.enemyVController.transform;
         SpawnSmoke.instance.SetPosition(SpawnSmoke.instance.Smoke, pos.position, pos.rotation);
-        SpawnItems.instance.DropItem(this.enemyVController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);
+        if (!this.enemyVController.PlayerController.DameReceiver.IsDead)
+        {
+            SpawnItems.instance.DropItem(this.enemyVController.ShootingSO.dropItems, this.transform.parent.position, Quaternion.identity);
+        }
         SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, this.transform.parent.position, Quaternion.Euler(0, 0, 0));
         this.transform.parent.gameObject.SetActive(false);
     }

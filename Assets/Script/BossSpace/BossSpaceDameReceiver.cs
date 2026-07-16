@@ -49,10 +49,14 @@ public class BossSpaceDameReceiver : DameReceiver
     {
         if (this.IsDead == true)
         {
+            SoundFX.Instance.PlayOneShotSoundBigExplosion();
             this.shakeCamera.SetIsShake(true);
             SpawnExplosionFire.Instance.SetPosition(SpawnExplosionFire.Instance.ExplosionFire, transform.position, transform.rotation);
             this.transform.parent.gameObject.SetActive(false);
-            SpawnItems.instance.DropItem(this.BossSpaceController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            if (!this.BossSpaceController.PlayerController.DameReceiver.IsDead)
+            {
+                SpawnItems.instance.DropItem(this.BossSpaceController.ShootingSO.dropItems, transform.position, Quaternion.Euler(0, 0, 0));
+            }
             this.uiController.SetIsShowUI(true);
             SpawnItemVitalityUp.Instance.SetPosition(SpawnItemVitalityUp.Instance.ItemVitalityUp, this.transform.parent.position, Quaternion.Euler(0, 0, 0));
         }

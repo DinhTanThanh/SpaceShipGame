@@ -46,4 +46,9 @@ public class SupportShipController : ShootingController
             this.shootingSO = Resources.Load<ShootingSO>("Shotting/SupportShip/EnemyDefault");
         }
     }
+    private void Update()
+    {
+        if (this.playerController.gameObject.activeSelf) return;
+        this.transform.gameObject.SetActive(false);
+    }
 }

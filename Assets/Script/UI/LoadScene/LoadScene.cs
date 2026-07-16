@@ -39,7 +39,6 @@ public class LoadScene : LoadMonoBehaviour
     }
     protected virtual void LoadSceneByTime()
     {
-        Debug.Log("con chay");
         if (this.timer > this.timeDelay)
         {
             if (this.asyncLoad.progress >= 0.9f)

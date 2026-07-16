@@ -3,20 +3,39 @@ using UnityEngine;
 public class ObjMoveForwardLimitMouse : Movement
 {
     [SerializeField] protected Transform target;
+    [SerializeField] protected PlayerController playerController;
     public Transform Target => target;
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.SetLimitDistance(0.5f);
+        this.SetLimitDistance(4f);
+        this.LoadTarget();
+        this.LoadPlayerController();
+    }
+    protected virtual void LoadPlayerController()
+    {
+        if (this.playerController != null) return;
+        this.playerController = GetComponentInParent<PlayerController>();
+        Debug.LogWarning("Load PlayerController: " + transform.name);
+    }
+    protected virtual void LoadTarget()
+    {
+        if (this.target != null) return;
         this.target = transform.Find("Target");
+        Debug.LogWarning("Load Target: " + transform.name);
     }
     protected override void SetSpeed()
     {
-        this.speed = 5f;
+        this.speed = 4f;
     }
     private void Update()
     {
-        Moving(target.position,GetTarget());
+        if (this.playerController.PlayerPushBack.IsCollision)
+        {
+            this.playerController.PlayerPushBack.PushBack();
+            return;
+        }
+        this.Moving(this.target.position,this.GetTarget());
     }
     public Vector3 GetTarget()
     {

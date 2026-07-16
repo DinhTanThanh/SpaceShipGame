@@ -5,17 +5,29 @@ using UnityEngine;
 public class ThunderRandomEnable : BaseThunder
 {
     [SerializeField] protected List<Transform> listThunder;
+    [SerializeField] protected UIWinGameController uiWinGameController;
     public List<Transform> ListThunder => listThunder;
     protected override void Reset()
     {
         base.Reset();
         this.GetListThunder();
-        this.SetTimeDelay(1f,3f);
+        this.SetTimeDelay(6f,10f);
     }
     protected override void Awake()
     {
         base.Awake();
         this.GetListThunder();
+    }
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadUIWinGameController();
+    }
+    protected virtual void LoadUIWinGameController()
+    {
+        if (this.uiWinGameController != null) return;
+        this.uiWinGameController = FindFirstObjectByType<UIWinGameController>();
+        Debug.LogWarning("Load UIWinGameController: " + transform.name);
     }
     private void Update()
     {
@@ -32,9 +44,10 @@ public class ThunderRandomEnable : BaseThunder
     }
     protected virtual void OnEnableThunderByTime()
     {
+        if (this.uiWinGameController.gameObject.activeSelf) return;
         if (!this.Timing()) return;
         this.RandomEnableThunder();
-        this.SetTimeDelay(1f, 3f);
+        this.SetTimeDelay(6f, 10f);
     }
     protected virtual void RandomEnableThunder()
     {
