@@ -2,7 +2,7 @@
 
 > A fast-paced 2D space ship developed with Unity 6 and C#.
 
-![Banner](Image\MenuScene\Poster_SpaceShip.jpeg)
+![Banner](Assets/Image/MenuScene/Poster_SpaceShip.jpeg)
 
 ---
 
