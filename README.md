@@ -14,8 +14,7 @@ Trailer:
 Play the Game:
 [https://yourname.itch.io/spaceship](https://dinh-tan-thanh.itch.io/spaceship)
 
-Portfolio:
-[https://...](http://dinhtanthanh19.foliwo.com/)
+Portfolio: https://dinhtanthanh.github.io
 
 ---
 
