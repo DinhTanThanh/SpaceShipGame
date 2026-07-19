@@ -30,7 +30,6 @@ public class SortItemInventory : LoadMonoBehaviour
         switch (this.sort)
         {
             case EnumInventorySort.NoSortItem:
-                Debug.Log("No Sort");
                 break;
             case EnumInventorySort.SortItemName:
                 this.SortItemInventoryByName();
@@ -61,34 +60,7 @@ public class SortItemInventory : LoadMonoBehaviour
             currentInventory.SetSiblingIndex(this.inventorySpawnerCtrl.DicItem[Items[i]].transform.GetSiblingIndex());
         }
     }
-    //protected virtual void SortItemInventoryByName()
-    //{
-    //    //bubble sort
-    //    int itemCount = this.inventorySpawnerCtrl.Holder.childCount;
-    //    Transform currentItem, nextItem;
-    //    string nameCurrentItem, nameNextItem;
-    //    bool isSorting=false;
-    //    for (int i = 0; i < itemCount - 1; i++)
-    //    {
-    //        currentItem = this.inventorySpawnerCtrl.Holder.GetChild(i);
-    //        nextItem = this.inventorySpawnerCtrl.Holder.GetChild(i + 1);
-
-    //        nameCurrentItem = currentItem.Find("ItemName").GetComponent<TextMeshProUGUI>().text;
-    //        nameNextItem = nextItem.Find("ItemName").GetComponent<TextMeshProUGUI>().text;
-    //        if (nameCurrentItem.CompareTo(nameNextItem) == 1)
-    //        {
-    //            this.Swap(currentItem, nextItem);
-    //            isSorting = true;
-    //            Debug.Log("Sort: " + i + "|" + i+1);
-    //        }
-    //    }
-    //    if (isSorting)
-    //    {
-    //        this.SortItemInventoryByName();
-    //        Debug.Log("cout");
-    //    }
-    //}
-
+    
     protected virtual void Swap(Transform currentItem, Transform nextItem)
     {
         int indexCurrentItem = currentItem.GetSiblingIndex();

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ChipiMoving : LoadMonoBehaviour
 {
+    [SerializeField] protected float timer = 0f;
+    [SerializeField] protected float timeDelay = 1.5f;
     [SerializeField] protected bool isStart = true;
     [SerializeField] protected float speed;
     [SerializeField] protected GameObject UINoticeCurrent;
@@ -25,11 +27,10 @@ public class ChipiMoving : LoadMonoBehaviour
             this.MoveToPosDestination();
             if (!this.CheckAchiveDistance(this.chipiNoticeController.ListPosNotice[1]))
             {
-                Debug.Log("Chua dat duoc");
                 return;
             }
-            Debug.Log("Voooooooo");
-            Invoke("DisableStart", 1.5f);
+            if (!this.Timing()) return;
+            this.DisableStart();
         }
         if (!this.isStart)
         {
@@ -81,7 +82,6 @@ public class ChipiMoving : LoadMonoBehaviour
     protected virtual void DisableStart()
     {
         this.isStart = false;
-        Debug.Log("Da set isStart = false");
     }
     protected virtual void ActiveUiNotice()
     {
@@ -96,5 +96,12 @@ public class ChipiMoving : LoadMonoBehaviour
     public virtual void SetUINoticeCurrent(GameObject uiNoticeCurrent)
     {
         this.UINoticeCurrent = uiNoticeCurrent;
+    }
+    protected virtual bool Timing()
+    {
+        this.timer += Time.deltaTime;
+        if (this.timer < this.timeDelay) return false;
+        this.timer = 0f;
+        return true;
     }
 }

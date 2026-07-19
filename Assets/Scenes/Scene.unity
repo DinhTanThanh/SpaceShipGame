@@ -14010,6 +14010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97437f1ab829fd749a0692c40bf24ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
+  timeDelay: 1.5
   isStart: 1
   speed: 5
   UINoticeCurrent: {fileID: 0}
@@ -19473,7 +19475,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1498117200}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32203,7 +32205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797315138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a96d3d7ae02252646bcd56e1158db19f, type: 3}
   m_Name: 

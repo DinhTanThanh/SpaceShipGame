@@ -38,8 +38,8 @@ public class RecoverySkill : BaseSkill
         if (this.playerController.AbilityWarpCtrl.PlayerRecovery.IsDone)
         {
             this.timer += Time.deltaTime;
-            string countDown = (this.timeDelay - this.timer).ToString("F2")+"s";
-            this.textMeshPro.text = countDown;
+            float timeCountDown = this.timeDelay - this.timer;
+            this.textMeshPro.SetText("{0:2}s",timeCountDown);
             if (this.timer <= this.timeDelay) return;
             this.timer = 0f;
             this.PlayerController.AbilityWarpCtrl.PlayerRecovery.SetIsDone(false);
