@@ -52,8 +52,11 @@ public class SpawnShootingAbleObject : PoolPrefab
     protected int CountChildEnable()
     {
         int count = 0;
-        foreach(Transform child in transform)
+        int totalChildren = transform.childCount;
+
+        for (int i = 0; i < totalChildren; i++)
         {
+            Transform child = transform.GetChild(i);
             if (child.gameObject.activeSelf)
             {
                 count++;
