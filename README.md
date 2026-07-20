@@ -14,7 +14,7 @@ Trailer:
 Play the Game:
 [https://yourname.itch.io/spaceship](https://dinh-tan-thanh.itch.io/spaceship)
 
-Portfolio: https://dinhtanthanh.github.io
+Portfolio: [https://dinhtanthanh.github.io](https://dinhtanthanh.github.io/project-detail.html)
 
 ---
 
@@ -138,7 +138,7 @@ LinkedIn:
 [https://www.linkedin.com/in/dinhtanthanh](https://www.linkedin.com/in/dinhtanthanh/)
 
 Portfolio:
-[http://dinhtanthanh19.foliwo.com/](http://dinhtanthanh19.foliwo.com/)
+https://dinhtanthanh.github.io/
 
 Email:
 dinhtanthanh19@gmail.com
