@@ -26,20 +26,20 @@ This project was created to strengthen my Unity gameplay programming skills whil
 
 ---
 
-✨ GAME FEATURES
-🚀 Fast-paced 2D space shooter gameplay
-👾 Three handcrafted stages
-💀 Three unique boss battles
-🤖 Enemy AI with different behaviors
-🎒 Inventory and item drop system
-⚡ Multiple player skills and abilities
-🔋 Energy (KI) management system
-💥 Various enemy attack patterns
-🖱️ Mouse-aimed movement and intuitive combat controls
-♻️ Optimized using Object Pooling
-🏗️ Modular architecture using Singleton, Observer Pattern, and ScriptableObject
-🎵 Sound effects and background music
-📈 Performance-focused gameplay systems
+##✨ GAME FEATURES
+-🚀 Fast-paced 2D space shooter gameplay
+-👾 Three handcrafted stages
+-💀 Three unique boss battles
+-🤖 Enemy AI with different behaviors
+-🎒 Inventory and item drop system
+-⚡ Multiple player skills and abilities
+-🔋 Energy (KI) management system
+-💥 Various enemy attack patterns
+-🖱️ Mouse-aimed movement and intuitive combat controls
+-♻️ Optimized using Object Pooling
+-🏗️ Modular architecture using Singleton, Observer Pattern, and ScriptableObject
+-🎵 Sound effects and background music
+-📈 Performance-focused gameplay systems
 
 ---
 
@@ -74,8 +74,7 @@ This project demonstrates my experience with:
 
 ## 🏗 Architecture
 
-Core Systems
-
+### Core Systems
 Player
 
 Enemy AI
@@ -93,14 +92,74 @@ Scene Manager
 UI
 
 Game Manager
+### Design Patterns
+
+- Singleton
+- Observer Pattern
+- ScriptableObject
+- Object Pooling
+- Dirty Flag UI Updates
+---
+# 📈 Performance Profiling
+
+Performance was measured using **Unity Profiler** on a **Windows Standalone Development Build** during the most demanding gameplay scenario, including the highest number of enemies, bullets, meteorites, UI updates, and visual effects.
+
+## Profiling Environment
+
+| Item | Value |
+|------|------|
+| Unity Version | Unity 6 |
+| Platform | Windows Standalone (.exe) |
+| Profiling Tool | Unity Profiler |
+| Build Type | Development Build + Autoconnect Profiler |
+| Test Scenario | Peak gameplay (maximum enemies, bullets, meteorites, UI, and VFX) |
 
 ---
 
-## 📈 Performance Optimization
+## Performance Results
 
-Implemented Object Pooling to eliminate unnecessary runtime instantiation and reduce garbage collection spikes during intense combat.
+| Metric | Result |
+|---------|---------|
+| Average FPS | **~143 FPS** |
+| CPU Frame Time | **~7 ms** |
+| Gameplay GC Allocation | **0 B/frame** |
+| Batch Count | **55** |
+| SetPass Calls | **10** |
+| Triangles | **≈2,500** |
+| Vertices | **≈2,900** |
+| Total Used Memory | **~650 MB** |
+| Managed Heap | **5.9 MB** |
 
-Gameplay systems were designed with modular architecture to simplify future expansion and maintenance.
+---
+
+## Unity Profiler
+
+### CPU Usage
+
+![CPU Profiler](Images/Profiler_CPU.png)
+
+### Timeline
+
+![Timeline](Images/Profiler_Timeline.png)
+
+### Memory
+
+![Memory Profiler](Images/Profiler_Memory.png)
+
+---
+
+# ♻️ Performance Optimization
+
+Performance optimization was considered throughout development to ensure smooth gameplay during large-scale combat scenarios.
+
+Implemented optimizations include:
+
+- ✅ Object Pooling for bullets, enemies, explosions, and visual effects
+- ✅ Eliminated runtime allocations during gameplay (**0 B/frame GC Allocation**)
+- ✅ Maintained approximately **143 FPS (~7 ms CPU Frame Time)** under peak gameplay
+- ✅ Observer Pattern for event-driven communication
+- ✅ Dirty Flag UI updates to reduce unnecessary UI redraws
+- ✅ Modular gameplay systems for easier maintenance and future scalability
 
 ---
 
