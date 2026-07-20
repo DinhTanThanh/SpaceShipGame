@@ -151,12 +151,12 @@ Performance optimization was considered throughout development to ensure smooth 
 
 Implemented optimizations include:
 
-- ✅ Object Pooling for bullets, enemies, explosions, and visual effects
-- ✅ Eliminated runtime allocations during gameplay (**0 B/frame GC Allocation**)
-- ✅ Maintained approximately **143 FPS (~7 ms CPU Frame Time)** under peak gameplay
-- ✅ Observer Pattern for event-driven communication
-- ✅ Dirty Flag UI updates to reduce unnecessary UI redraws
-- ✅ Modular gameplay systems for easier maintenance and future scalability
+- Object Pooling for bullets, enemies, explosions, and visual effects
+- Eliminated runtime allocations during gameplay (**0 B/frame GC Allocation**)
+- Maintained approximately **143 FPS (~7 ms CPU Frame Time)** under peak gameplay
+- Observer Pattern for event-driven communication
+- Dirty Flag UI updates to reduce unnecessary UI redraws
+- Modular gameplay systems for easier maintenance and future scalability
 
 ---
 
