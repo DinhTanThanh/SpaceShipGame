@@ -26,20 +26,21 @@ This project was created to strengthen my Unity gameplay programming skills whil
 
 ---
 
-##✨ GAME FEATURES
--🚀 Fast-paced 2D space shooter gameplay
--👾 Three handcrafted stages
--💀 Three unique boss battles
--🤖 Enemy AI with different behaviors
--🎒 Inventory and item drop system
--⚡ Multiple player skills and abilities
--🔋 Energy (KI) management system
--💥 Various enemy attack patterns
--🖱️ Mouse-aimed movement and intuitive combat controls
--♻️ Optimized using Object Pooling
--🏗️ Modular architecture using Singleton, Observer Pattern, and ScriptableObject
--🎵 Sound effects and background music
--📈 Performance-focused gameplay systems
+## ✨ Game Features
+
+- 🚀 Fast-paced 2D space shooter gameplay
+- 👾 Three handcrafted stages
+- 💀 Three unique boss battles
+- 🤖 Enemy AI with different behaviors
+- 🎒 Inventory and item drop system
+- ⚡ Multiple player skills and abilities
+- 🔋 Energy (KI) management system
+- 💥 Various enemy attack patterns
+- 🖱️ Mouse-aimed movement and intuitive combat controls
+- ♻️ Optimized using Object Pooling
+- 🏗️ Modular architecture using Singleton, Observer Pattern, and ScriptableObject
+- 🎵 Sound effects and background music
+- 📈 Performance-focused gameplay systems
 
 ---
 
@@ -62,12 +63,15 @@ This project demonstrates my experience with:
 
 ---
 
-🎮 CONTROLS
-🖱️ Mouse Cursor               – Move the spaceship toward the cursor
-🔫 Left Mouse Button          – Shoot
-⚡ W / A / S / D              – Instantly dash in the pressed direction
-↖️ W+A, W+D, S+A, S+D         – Dash diagonally
-🚀 1 / 2 / 3 / 4 / 5 / 6 / 7  – Activate spaceship skills
+## 🎮 Controls
+
+| Action | Key |
+|--------|-----|
+| Move spaceship | 🖱️ Mouse Cursor |
+| Shoot | 🔫 Left Mouse Button |
+| Dash | ⚡ W / A / S / D |
+| Diagonal Dash | ↖️ W+A / W+D / S+A / S+D |
+| Activate Skills | 🚀 1 / 2 / 3 / 4 / 5 / 6 / 7 |
 
 
 ---
@@ -75,23 +79,16 @@ This project demonstrates my experience with:
 ## 🏗 Architecture
 
 ### Core Systems
-Player
 
-Enemy AI
-
-Boss AI
-
-Inventory
-
-Audio Manager
-
-Object Pool
-
-Scene Manager
-
-UI
-
-Game Manager
+- Player
+- Enemy AI
+- Boss AI
+- Inventory System
+- Audio Manager
+- Object Pool Manager
+- Scene Manager
+- UI System
+- Game Manager
 ### Design Patterns
 
 - Singleton
@@ -136,15 +133,15 @@ Performance was measured using **Unity Profiler** on a **Windows Standalone Deve
 
 ### CPU Usage
 
-![CPU Profiler](Images/Profiler_CPU.png)
+![CPU Profiler](Image/MenuScene/Profiler_CPU.png)
 
 ### Timeline
 
-![Timeline](Images/Profiler_Timeline.png)
+![Timeline](Image/MenuScene/Profiler_Timeline.png)
 
 ### Memory
 
-![Memory Profiler](Images/Profiler_Memory.png)
+![Memory Profiler](Image/MenuScene/Profiler_Memory.png)
 
 ---
 
