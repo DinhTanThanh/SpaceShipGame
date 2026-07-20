@@ -133,15 +133,15 @@ Performance was measured using **Unity Profiler** on a **Windows Standalone Deve
 
 ### CPU Usage
 
-![CPU Profiler](Image/MenuScene/Profiler_CPU.png)
+![CPU Profiler](Assets/Image/MenuScene/Profiler_CPU.png)
 
 ### Timeline
 
-![Timeline](Image/MenuScene/Profiler_Timeline.png)
+![Timeline](Assets/Image/MenuScene/Profiler_Timeline.png)
 
 ### Memory
 
-![Memory Profiler](Image/MenuScene/Profiler_Memory.png)
+![Memory Profiler](Assets/Image/MenuScene/Profiler_Memory.png)
 
 ---
 
